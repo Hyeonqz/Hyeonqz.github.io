@@ -20,16 +20,14 @@
 lang:                  en
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title:                 Starter Kit
+title:                 Hyeonq
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
-description:           >
-  Hydejack is a boutique Jekyll theme for hackers, nerds, and academics,
-  with a focus on personal sites that are meant to impress.
+description:
 
 # A shorter description for the sidebar.
-tagline:               Change `tagline` in `_config.yml`
+tagline:               Hyeonq's Dev Blog
 
 # A list of keywords for your blog
 keywords:              []
@@ -37,13 +35,13 @@ keywords:              []
 # A (square) logo for your site.
 # If provided, it will be shown at the top of the sidebar.
 # It also used by the `jekyll-seo-tag` plugin.
-logo:                  /assets/img/logo.png
+logo:                  /assets/img/mylogo.jpeg
 
 # This should be the same author as first entry in `_data/authors.yml`.
 author:
   # Used by `jekyll-feed`:
-  name:                <firstname> <lastname>
-  email:               <mail@domain.tld>
+  name:                <Hyeonkyu> <Jin>
+  email:               <wlsgusrb78@naver.com>
   # # Used by `jekyll-seo-tag`:
   # twitter:             <username>
 
@@ -51,8 +49,18 @@ author:
 menu:
   - title:             Dev
     url:               /dev/
+    submenu:
+      - title: spring
+        url: /spring/
+      - title: java
+        url: /java/
   - title:             Study
     url:               /study/
+  - title:             Etc
+    url:               /etc/
+    submenu:
+      - title: 회고
+        url: /retrospect/
   - title:             Documentation
     url:               /docs/
   - title:             About
@@ -151,10 +159,10 @@ defaults:
       sitemap:         false
 
   # # You can use the following to enable comments on all posts.
-  # - scope:
-  #     type:            posts
-  #   values:
-  #     comments:        true
+  - scope:
+       type:            posts
+    values:
+       comments:        true
 
   # `jekyll-seo-tag` will mark collection outputs as `BlogPosting`,
   # but we want them to be `WebPage`s:
