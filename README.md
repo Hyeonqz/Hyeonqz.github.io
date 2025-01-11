@@ -1,1 +1,1 @@
-# Hyeonqz.github.io
+위 블로그는 https://github.com/nomoreFt/plainHydejackSetting 이 글을 참고해서 만들었습니다.
