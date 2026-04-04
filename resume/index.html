@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume | Hyeonkyu Jin</title>
+  <meta name="description" content="진현규 - 핀테크 결제 도메인 백엔드 개발자 이력서">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent:  rgb(79, 177, 186);
+      --dark:    rgb(25, 55, 71);
+      --text:    #2d3748;
+      --muted:   #718096;
+      --bg:      #f7fafc;
+      --card:    #ffffff;
+      --border:  #e2e8f0;
+      --max:     780px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--dark);
+      padding: 52px 24px 44px;
+    }
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .header-text { flex: 1; min-width: 220px; }
+    .header-text h1 {
+      color: #fff;
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    .header-text .role {
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 6px 0 14px;
+      letter-spacing: 0.3px;
+    }
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+    }
+    .contact a {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color .2s;
+    }
+    .contact a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ── MAIN ── */
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 36px 24px 80px;
+    }
+
+    /* ── SECTION ── */
+    section { margin-bottom: 44px; }
+
+    .sec-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--dark);
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 20px;
+    }
+
+    /* ── ABOUT ── */
+    .about-text {
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+    .about-text strong { color: var(--dark); }
+
+    /* ── SKILLS ── */
+    .skill-row {
+      display: flex;
+      gap: 10px 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      align-items: baseline;
+    }
+    .skill-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      min-width: 100px;
+      flex-shrink: 0;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 0.82rem;
+      padding: 3px 11px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    .tag.main { background: var(--accent); color: #fff; }
+    .tag.sub  { background: #e8f6f7; color: var(--dark); border: 1px solid rgba(79,177,186,.25); }
+    .tag.etc  { background: #f0f4f8; color: var(--muted); border: 1px solid var(--border); }
+
+    /* ── EXPERIENCE ── */
+    .exp-block { margin-bottom: 32px; }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+    .exp-company {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+    .exp-company a { color: var(--dark); }
+    .exp-company a:hover { color: var(--accent); text-decoration: none; }
+    .exp-period {
+      font-size: 0.8rem;
+      color: #fff;
+      background: var(--dark);
+      padding: 2px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+    .exp-role {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .exp-role span {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .proj-block { margin-bottom: 22px; }
+    .proj-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .proj-title::before {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 14px;
+      background: var(--accent);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    ul.bullets {
+      padding-left: 16px;
+      list-style: none;
+    }
+    ul.bullets li {
+      font-size: 0.88rem;
+      color: #4a5568;
+      margin-bottom: 5px;
+      padding-left: 4px;
+      position: relative;
+    }
+    ul.bullets li::before {
+      content: '·';
+      position: absolute;
+      left: -12px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    ul.bullets li a { font-size: inherit; }
+
+    /* number badges */
+    .num {
+      display: inline-block;
+      background: #fff0f0;
+      color: #c0392b;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0 6px;
+      border-radius: 4px;
+    }
+    .num.up {
+      background: #e8f6f7;
+      color: rgb(25,55,71);
+    }
+
+    /* ── OPEN SOURCE ── */
+    .oss-block {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: baseline;
+    }
+    .oss-name {
+      font-weight: 700;
+      color: var(--dark);
+      font-size: 0.95rem;
+    }
+    .oss-desc {
+      font-size: 0.88rem;
+      color: #4a5568;
+    }
+
+    /* ── TABLE (Activities) ── */
+    .act-table { width: 100%; border-collapse: collapse; }
+    .act-table td {
+      padding: 10px 8px;
+      font-size: 0.88rem;
+      color: #4a5568;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+    }
+    .act-table tr:last-child td { border-bottom: none; }
+    .act-table td:first-child {
+      font-weight: 700;
+      color: var(--dark);
+      white-space: nowrap;
+      min-width: 160px;
+    }
+    .act-table td:nth-child(2) {
+      white-space: nowrap;
+      color: var(--muted);
+      font-size: 0.8rem;
+      padding-right: 16px;
+    }
+
+    /* ── CERT & EDU ── */
+    .ce-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .ce-item { font-size: 0.88rem; }
+    .ce-item strong { display: block; color: var(--dark); font-weight: 700; font-size: 0.92rem; margin-bottom: 2px; }
+    .ce-item span { color: var(--muted); }
+
+    /* ── PRINT BUTTON ── */
+    .print-wrap { display: flex; justify-content: flex-end; margin-bottom: 28px; }
+    .print-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 7px 18px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .print-btn:hover { opacity: .85; }
+
+    /* ── UPDATED ── */
+    .updated {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 60px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .header-inner { gap: 18px; }
+      .avatar { width: 70px; height: 70px; }
+      .header-text h1 { font-size: 1.4rem; }
+      .ce-grid { grid-template-columns: 1fr; }
+      .skill-label { min-width: 80px; }
+      .act-table td:first-child { min-width: 120px; }
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      body { background: #fff; font-size: 13px; }
+      header { padding: 28px 24px; }
+      .print-wrap { display: none; }
+      main { padding: 24px 24px 40px; }
+      .proj-block, .exp-block, .act-table tr { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════ HEADER ════════════════ -->
+<header>
+  <div class="header-inner">
+    <img class="avatar" src="/assets/img/mylogo.jpeg" alt="진현규" onerror="this.style.display='none'">
+    <div class="header-text">
+      <h1>진현규 (Hyeonkyu Jin)</h1>
+      <p class="role">Backend Developer · 핀테크 결제 도메인</p>
+      <div class="contact">
+        <a href="mailto:jinhyeonkyu@gmail.com">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          jinhyeonkyu@gmail.com
+        </a>
+        <a href="https://github.com/Hyeonqz" target="_blank" rel="noopener">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          github.com/Hyeonqz
+        </a>
+        <a href="https://www.linkedin.com/in/hyeonkyu-jin/" target="_blank" rel="noopener">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://Hyeonqz.github.io" target="_blank" rel="noopener">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          Blog
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════ MAIN ════════════════ -->
+<main>
+  <div class="print-wrap">
+    <button class="print-btn" onclick="window.print()">Print / PDF</button>
+  </div>
+
+  <!-- About -->
+  <section>
+    <h2 class="sec-title">About</h2>
+    <p class="about-text">
+      핀테크 결제 도메인 2년차 서버 개발자입니다.<br>
+      QR 결제 중계 시스템을 0부터 구축하며 일 평균 거래 <strong>50건 → 4,000건</strong> 성장을 경험했습니다.<br>
+      운영 이슈를 직접 식별하고 <strong>Kafka 아키텍처 전환, CS 95% 감소</strong> 등 구조적 개선을 주도하며,<br>
+      장애 격리 · 데이터 정합성 · 트랜잭션 안정성을 최우선으로 설계합니다.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section>
+    <h2 class="sec-title">Skills</h2>
+    <div class="skill-row">
+      <span class="skill-label">Strong</span>
+      <div class="tags">
+        <span class="tag main">Java</span>
+        <span class="tag main">Spring Boot</span>
+        <span class="tag main">JPA</span>
+        <span class="tag main">Kafka</span>
+      </div>
+    </div>
+    <div class="skill-row">
+      <span class="skill-label">Knowledgeable</span>
+      <div class="tags">
+        <span class="tag sub">Kotlin</span>
+        <span class="tag sub">MySQL</span>
+        <span class="tag sub">QueryDSL</span>
+        <span class="tag sub">Spring Security</span>
+        <span class="tag sub">Redis</span>
+        <span class="tag sub">Next.js</span>
+        <span class="tag sub">React</span>
+      </div>
+    </div>
+    <div class="skill-row">
+      <span class="skill-label">Etc</span>
+      <div class="tags">
+        <span class="tag etc">AWS</span>
+        <span class="tag etc">Docker</span>
+        <span class="tag etc">Nginx</span>
+        <span class="tag etc">Jenkins</span>
+        <span class="tag etc">Vault</span>
+        <span class="tag etc">Linux</span>
+        <span class="tag etc">Git</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section>
+    <h2 class="sec-title">Experience</h2>
+
+    <div class="exp-block">
+      <div class="exp-header">
+        <span class="exp-company"><a href="https://qr-road.com/" target="_blank" rel="noopener">(주) 큐뱅</a></span>
+        <span class="exp-period">2024.01 – 현재</span>
+      </div>
+      <p class="exp-role"><span>Server Developer</span> · 국내·국외 QR 결제 중계 서비스 플랫폼</p>
+
+      <div class="proj-block">
+        <p class="proj-title">QR 중계 시스템 개발 및 운영</p>
+        <ul class="bullets">
+          <li>POS 및 간편결제사 연동 REST API Spec <strong>15개 이상</strong> 정의 및 구현</li>
+          <li>Kafka Request-Reply 아키텍처 설계 — 분산 환경 Reply 라우팅 이슈 해결, 타임아웃 <span class="num">50%→0%</span>
+            <a href="https://hyeonq.tistory.com/240" target="_blank" rel="noopener">↗</a></li>
+          <li>Redis Cache-Aside + 트랜잭션 경계 최적화 — DB 쿼리 <span class="num">360회→0회</span>, 응답시간 <span class="num up">200ms→30ms (85%↓)</span></li>
+          <li>Final API 패턴 도입으로 POS↔큐뱅 결제 상태 동기화 구현 — CS <span class="num">월 10건→0~1건 (95%↓)</span>, 연간 <strong>40시간</strong> 수동 공수 절감</li>
+          <li>Outbox 패턴 + SFTP 세션 풀링 — 파일 유실률 <span class="num">100%→0%</span>, 장애 감지 자동화 (30분 이내)
+            <a href="https://hyeonq.tistory.com/243" target="_blank" rel="noopener">↗</a></li>
+          <li>C++ DLL 기반 레거시 POS 네이티브 모듈 직접 개발 → 이기종 시스템 통합, 월 거래액 처리 범위 <span class="num up">30% 확장</span></li>
+        </ul>
+      </div>
+
+      <div class="proj-block">
+        <p class="proj-title">기타 서비스 개발</p>
+        <ul class="bullets">
+          <li>모바일 POS 서버 아키텍처 설계 및 React Native 기반 크로스 플랫폼 앱 개발</li>
+          <li>자사 간편결제 선불 서비스 가맹점 API 연동 · 금융당국 선불 라이센스 취득 기여</li>
+          <li>전자 계약서 유료 솔루션 → 오픈소스 전환, <span class="num up">연 $999 비용 절감</span></li>
+          <li>파일 I/O 비동기(@Async) 도입 — 응답시간 <span class="num up">4s→1s (75%↓)</span>, 가맹 접수 10,000건 무장애 처리</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Open Source -->
+  <section>
+    <h2 class="sec-title">Open Source</h2>
+    <div class="oss-block">
+      <span class="oss-name">
+        <a href="https://github.com/Hyeonqz/es-hangul-java" target="_blank" rel="noopener">es-hangul-java</a>
+      </span>
+      <span class="oss-desc">
+        토스의 한글 처리 라이브러리(es-hangul)를 Java로 포팅 · Maven Central 배포 · 사내 시스템 적용
+      </span>
+    </div>
+  </section>
+
+  <!-- Activities -->
+  <section>
+    <h2 class="sec-title">Activities</h2>
+    <table class="act-table">
+      <tbody>
+        <tr>
+          <td>SLiPP</td>
+          <td>2026.03 – ing</td>
+          <td>백엔드 개발자 커뮤니티 · Claude Code 기반 AI 개발 워크플로우 스터디 진행</td>
+        </tr>
+        <tr>
+          <td>오픈소스 개발자 대회</td>
+          <td>2025.07 – 08</td>
+          <td>seoul-fit : 서울시 공공데이터 API 10개 이상 연동 및 ETL 파이프라인 담당</td>
+        </tr>
+        <tr>
+          <td>인프런 워밍업 클럽 BE</td>
+          <td>2024.10 – 11</td>
+          <td>클린 코드 & 테스트 코드 실무 적용 · <a href="https://github.com/Hyeonqz/Inflearn-Backend-2nd" target="_blank" rel="noopener">GitHub ↗</a></td>
+        </tr>
+        <tr>
+          <td>우아한테크코스 7기</td>
+          <td>2024.10 – 11</td>
+          <td>프리코스 BE · 미션 기반 코드 리뷰 및 객체지향 설계 경험 · <a href="https://github.com/Hyeonqz/woowacourse-springboot" target="_blank" rel="noopener">GitHub ↗</a></td>
+        </tr>
+        <tr>
+          <td>쌍용교육센터</td>
+          <td>2023.06 – 12</td>
+          <td>AWS · Docker 활용 Java FullStack 과정 수료 · 팀 프로젝트 2회 협업</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Certificate & Education -->
+  <section>
+    <h2 class="sec-title">Certificate · Education</h2>
+    <div class="ce-grid">
+      <div class="ce-item">
+        <strong>정보처리기사</strong>
+        <span>한국산업인력공단 · 2024.06</span>
+      </div>
+      <div class="ce-item">
+        <strong>남서울대학교</strong>
+        <span>드론공간정보공학과 학사 · 2018.03 – 2024.02</span>
+      </div>
+    </div>
+  </section>
+
+  <p class="updated">Updated: April 2026</p>
+</main>
+
+</body>
+</html>
