@@ -3,3 +3,10 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+assets/img/profile.jpeg
+
+# 버전 관리용 로컬 백업 (배포 제외)
+resume/v1/
+resume/v2/
+resume/output/
+resume/resume-data.yaml
