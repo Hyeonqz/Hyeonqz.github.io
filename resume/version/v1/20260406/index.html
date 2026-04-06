@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>진현규 | Software development engineer</title>
+  <meta name="description" content="진현규 - 백엔드 개발자 이력서">
+  <link rel="stylesheet" href="/resume/resume.css">
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ── Lang switch ── -->
+  <div class="lang-switch">
+    <a href="/resume/" class="active">KO</a> / <a href="/resume/en/">EN</a>
+  </div>
+
+  <!-- ── Top Header ── -->
+  <div class="top-header">
+    <!-- 아이콘 행 (이름보다 위) -->
+    <div class="top-header-icons">
+      <div class="social-icons">
+        <!-- GitHub -->
+        <a href="https://github.com/Hyeonqz" target="_blank" rel="noopener" title="GitHub">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/hyeonkyu-jin/" target="_blank" rel="noopener" title="LinkedIn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <!-- Blog -->
+        <a href="https://hyeonq.tistory.com/" target="_blank" rel="noopener" title="Blog" class="emoji-icon" style="font-size:1.3rem;">
+          ✍️
+        </a>
+      </div>
+    </div>
+    <!-- 이름 + 연락처 행 -->
+    <div class="top-header-main">
+      <div>
+        <p class="profile-name">진현규</p>
+        <p class="profile-role">Backend Engineer</p>
+      </div>
+      <div class="contact-info">
+        <div>Email: <strong>jinhyeonkyu@gmail.com</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── About ── -->
+  <section>
+    <h2 class="sec-title">About.</h2>
+    <div class="row">
+      <div class="col-left">
+        <div class="about-photo-wrap">
+
+          <img class="about-photo" src="data:image/jpeg;base64,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" alt="진현규" onerror="this.style.display='none'">
+
+        </div>
+      </div>
+      <div class="col-right">
+        <p class="about-text">
+          핀테크 결제 도메인 2년차 서버 개발자로서, QR 결제 중계 시스템을 0부터 구축하며
+          일 평균 거래 <strong>50건 → 4,000건(80배)</strong> 성장하는 과정을 경험했습니다.
+          단순한 기능 개발에 만족하지 않고, 운영 이슈를 직접 식별하여
+          <strong>Kafka 통합 결제 아키텍처 설계, CS 95% 감소</strong> 등 구조적 개선을 주도했습니다.
+          레거시 코드 분석 및 리팩토링을 통해 API 성능을 최적화하고,
+          장애 격리 · 데이터 정합성 · 트랜잭션 안정성을 최우선으로 설계합니다.
+          <br><br>
+          스타트업의 빠른 성장 환경에서 <strong>기술 문서화와 프로세스 표준화</strong>를 주도하며
+          팀 온보딩 시간을 50% 이상 절감하는 데 기여했습니다.
+          <br>
+          현재는 레거시 코드 신뢰성 향상을 위한 단위 테스트 문화 도입과
+          트러블슈팅 · 성능 개선 · 고성능 API 설계에 집중하며 비즈니스 성장에 기여하고 있습니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Work Experience ── -->
+  <section>
+    <h2 class="sec-title">Work Experience.</h2>
+
+    <div class="row">
+      <div class="col-left">
+        <p class="company">(주) 큐뱅</p>
+        <p class="role">Server Developer</p>
+        <p class="period">2024.01 ~ 현재</p>
+      </div>
+      <div class="col-right">
+
+        <div class="proj">
+          <p class="proj-title">QR 중계 시스템 개발 및 운영 · <small style="font-weight:400;color:#666">국내·국외 QR 결제 중계 서비스 플랫폼</small></p>
+          <ul>
+            <li>국내·국외 간편결제사 <strong>7개사 이상</strong> 연동 개발 (라인페이, 알리페이, 위챗페이, 유니온페이 등)</li>
+            <li>POS 및 간편결제사 연동 REST API Spec <strong>15개 이상</strong> 정의 및 구현</li>
+            <li>Kafka Request-Reply 아키텍처 설계
+              <ul class="sub-list">
+                <li><strong>배경:</strong> 분산 환경에서 Kafka Reply 토픽 수신 Consumer 인스턴스 불일치로 타임아웃 빈번 발생</li>
+                <li><strong>진행:</strong> CorrelationId 기반 Reply 라우팅 설계로 Consumer 간 응답 격리</li>
+                <li><strong>결과:</strong> 타임아웃 50%→0%, 수동 CS 월 5건→2건 (60%↓) &nbsp;<a href="https://www.notion.so/01-Kafka-3345cb02eeeb80d9a786d314378e2138" target="_blank" rel="noopener">[→ 상세보기]</a></li>
+              </ul>
+            </li>
+            <li>Redis Cache-Aside + 트랜잭션 경계 최적화
+              <ul class="sub-list">
+                <li><strong>배경:</strong> 거래 상태 Polling 120회 기준 DB 직접 조회 360회 발생 — 응답 지연 및 DB 부하</li>
+                <li><strong>진행:</strong> Cache-Aside 패턴 도입 + 트랜잭션 커밋 후 캐시 갱신으로 정합성 확보</li>
+                <li><strong>결과:</strong> DB 쿼리 360회→0회, 응답시간 200ms→30ms (85%↓) &nbsp;<a href="https://www.notion.so/02-Redis-3345cb02eeeb81fc8f2ece133ba5b68a" target="_blank" rel="noopener">[→ 상세보기]</a></li>
+              </ul>
+            </li>
+            <li>Final API 패턴 도입 — POS↔큐뱅 결제 상태 동기화
+              <ul class="sub-list">
+                <li><strong>배경:</strong> POS 결제 완료 후 큐뱅 서버 상태 미동기화로 CS 문의 월 10건 반복</li>
+                <li><strong>진행:</strong> Final API 패턴으로 결제 최종 상태 단방향 확정, 재시도 멱등성 보장</li>
+                <li><strong>결과:</strong> CS 월 10건→0~1건 (95%↓), 연간 40시간 수동 공수 절감 &nbsp;<a href="https://www.notion.so/03-CS-95-Final-API-3345cb02eeeb81afb108d6d2517a8d6f" target="_blank" rel="noopener">[→ 상세보기]</a></li>
+              </ul>
+            </li>
+            <li>Outbox 패턴 + SFTP 세션 풀링
+              <ul class="sub-list">
+                <li><strong>배경:</strong> SFTP 파일 전송 실패 시 유실 감지 불가 — 파일 유실률 100%, 수동 모니터링 의존</li>
+                <li><strong>진행:</strong> Outbox 패턴으로 전송 상태 영속화, SFTP 세션 풀링으로 연결 안정성 확보 · 파일 I/O 비동기(@Async) 도입으로 가맹 접수 처리 개선</li>
+                <li><strong>결과:</strong> 파일 유실률 100%→0%, 응답시간 4s→1s (75%↓), 가맹 접수 10,000건 무장애 처리 · 장애 감지 수동(불특정) → 30분 이내 자동 감지 &nbsp;<a href="https://www.notion.so/04-Outbox-0-3345cb02eeeb81ecbc74e89dfb547a56" target="_blank" rel="noopener">[→ 상세보기]</a></li>
+              </ul>
+            </li>
+            <li>C++ DLL 기반 레거시 POS 네이티브 모듈 개발 → 이기종 시스템 통합, 월 거래액 30% 확장</li>
+            <li>전자 계약서 유료 솔루션 → 오픈소스 전환, 연 $999 비용 절감</li>
+          </ul>
+        </div>
+
+        <div class="proj">
+          <p class="proj-title">2. 모바일 POS 시스템 개발 및 운영</p>
+          <ul>
+            <li>프로젝트 초기 환경 셋팅 (빌드/배포 파이프라인 구축, CI/CD 설계, 서버 및 인프라 구성)</li>
+            <li>모바일 POS 서버 아키텍처 설계 및 React Native 기반 크로스 플랫폼 앱 개발</li>
+          </ul>
+        </div>
+
+        <div class="proj">
+          <p class="proj-title">3. 선불 서비스 개발</p>
+          <ul>
+            <li>자사 간편결제 선불 서비스 가맹점 API 연동 · 금융당국 선불 라이센스 취득 기여</li>
+
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── Skills ── -->
+  <section>
+    <h2 class="sec-title">Skills.</h2>
+    <div class="skill-row">
+      <span class="skill-key">Strong</span>
+      <span class="skill-val">Java · Spring Boot · JPA · Kafka</span>
+    </div>
+    <div class="skill-row">
+      <span class="skill-key">Knowledgeable</span>
+      <span class="skill-val">Kotlin · MySQL · QueryDSL · Spring Security · Redis · Next.js · React</span>
+    </div>
+    <div class="skill-row">
+      <span class="skill-key">Etc</span>
+      <span class="skill-val">AWS · Docker · Nginx · Jenkins · Vault · Linux · Git</span>
+    </div>
+  </section>
+
+  <!-- ── Open Source ── -->
+  <section>
+    <h2 class="sec-title">Open Source.</h2>
+    <div class="row">
+      <div class="col-left">
+        <p class="company"><a href="https://github.com/Hyeonqz/es-hangul-java" target="_blank" rel="noopener">es-hangul-java</a></p>
+      </div>
+      <div class="col-right">
+        <ul>
+          <li>토스의 한글 처리 라이브러리(es-hangul)를 Java로 포팅 · Maven Central 배포 후 사내 가맹점 접수 서비스에 적용</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Other Experience ── -->
+  <section>
+    <h2 class="sec-title">Other Experience.</h2>
+
+    <!-- Toy Project -->
+    <div class="row">
+      <div class="col-left">
+        <p class="company">Toy Project</p>
+      </div>
+      <div class="col-right">
+        <div class="proj">
+          <p class="proj-title">LinkMap · <small style="font-weight:400;color:#666">AI 기반 북마크 관리 웹 서비스 · 2026.03 – 2026.04</small></p>
+          <ul>
+            <li><strong>Stack:</strong> Kotlin · Spring Boot 4.0 · JPA · PostgreSQL · Redis · Next.js 15</li>
+            <li>브라우저 즐겨찾기를 대체하는 풀스택 북마크 관리 서비스</li>
+            <li>URL 등록 시 OG 메타데이터 자동 수집, Gemini AI 기반 콘텐츠 요약 및 태그 추천 제공</li>
+          </ul>
+        </div>
+
+        <div class="proj">
+          <p class="proj-title"><a href="https://github.com/seoul-fit" target="_blank" rel="noopener">Seoul-Fit </a> · <small style="font-weight:400;color:#666">서울시 공공데이터 기반 알람 서비스 · 2025.07 – 2025.08</small></p>
+          <ul>
+            <li>서울시 공공데이터 API 10개 이상 연동 및 데이터 ETL 파이프라인 담당</li>
+            <li>코드 오픈소스화를 위한 추상화 설계</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Study -->
+    <div class="row">
+      <div class="col-left">
+        <p class="company">Study</p>
+      </div>
+      <div class="col-right">
+        <ul class="act-list">
+          <li>
+            <span class="act-name">SLiPP</span>
+            <span class="act-period">2026.03 – ing</span>
+            <span class="act-desc">백엔드 개발자 커뮤니티 · AI 개발 워크플로우 스터디 진행</span>
+          </li>
+          <li>
+            <span class="act-name">Kafka 기초 스터디</span>
+            <span class="act-period">2025.09 – 2026.04</span>
+            <span class="act-desc">Kafka 핵심 가이드 기반 실무 적용 스터디 · <a href="https://github.com/Hyeonqz/external-study-record/tree/master/202509-%EC%B9%B4%ED%94%84%EC%B9%B4%ED%95%B5%EC%8B%AC%EA%B0%80%EC%9D%B4%EB%93%9C" target="_blank" rel="noopener">GitHub</a></span>
+          </li>
+          <li>
+            <span class="act-name">인프런 워밍업 클럽 BE</span>
+            <span class="act-period">2024.10 – 2024.11</span>
+            <span class="act-desc">클린 코드 & 테스트 코드 실무 적용 · <a href="https://github.com/Hyeonqz/Inflearn-Backend-2nd" target="_blank" rel="noopener">GitHub</a></span>
+          </li>
+          <li>
+            <span class="act-name">쌍용교육센터</span>
+            <span class="act-period">2023.06 – 2023.12</span>
+            <span class="act-desc">AWS · Docker 활용 Java FullStack 과정 수료 · 팀 프로젝트 2회 협업</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+  </section>
+
+  <p class="updated">Updated: April 2026</p>
+
+</div>
+<script>
+  function toggleTheme() {
+    const isDark = document.body.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+  // 저장된 테마 불러오기
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark');
+  }
+</script>
+</body>
+</html>
