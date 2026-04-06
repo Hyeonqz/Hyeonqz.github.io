@@ -355,3 +355,82 @@ ul.sub-list li a {
 ul.sub-list li a:hover { text-decoration: underline; }
 body.dark ul.sub-list li { color: #aaa; }
 body.dark ul.sub-list li a { color: #5b9bd5; }
+
+/* ── Highlight metrics bar ── */
+.metrics-bar {
+  display: flex;
+  gap: 0;
+  margin-bottom: 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.metrics-bar .metric {
+  flex: 1;
+  text-align: center;
+  padding: 14px 10px;
+  border-right: 1px solid #ddd;
+}
+.metrics-bar .metric:last-child { border-right: none; }
+.metrics-bar .metric-value {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #222;
+  letter-spacing: -0.5px;
+}
+.metrics-bar .metric-label {
+  font-size: 0.72rem;
+  color: #888;
+  margin-top: 2px;
+}
+body.dark .metrics-bar { border-color: #333; }
+body.dark .metrics-bar .metric { border-right-color: #333; }
+body.dark .metrics-bar .metric-value { color: #e0e0e0; }
+body.dark .metrics-bar .metric-label { color: #777; }
+
+/* ── Details toggle for sub-list ── */
+details.highlight-detail {
+  margin-top: 4px;
+  margin-bottom: 2px;
+}
+details.highlight-detail summary {
+  cursor: pointer;
+  font-size: 0.83rem;
+  color: #888;
+  list-style: none;
+  padding-left: 2px;
+}
+details.highlight-detail summary::-webkit-details-marker { display: none; }
+details.highlight-detail summary::before {
+  content: '+ ';
+  font-weight: 600;
+  color: #aaa;
+}
+details.highlight-detail[open] summary::before {
+  content: '- ';
+}
+details.highlight-detail .detail-content {
+  margin-top: 4px;
+  padding-left: 12px;
+  border-left: 2px solid #eee;
+}
+details.highlight-detail .detail-content p {
+  font-size: 0.82rem;
+  color: #666;
+  margin-bottom: 2px;
+  line-height: 1.7;
+}
+body.dark details.highlight-detail summary { color: #777; }
+body.dark details.highlight-detail summary::before { color: #666; }
+body.dark details.highlight-detail .detail-content { border-left-color: #333; }
+body.dark details.highlight-detail .detail-content p { color: #999; }
+
+/* ── Notion detail link ── */
+a.notion-link {
+  color: #1a6fc4;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.82rem;
+}
+a.notion-link:hover { text-decoration: underline; }
+body.dark a.notion-link { color: #5b9bd5; }
