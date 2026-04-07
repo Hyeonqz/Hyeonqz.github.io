@@ -26,9 +26,6 @@
 - Spring Boot & React 기반 결제 테스트 자동화 웹앱 개발 — POS 독립 테스트 환경 구축으로 외부기관 커뮤니케이션 비용 **50% 절감**
 - 전자 계약서 유료 솔루션 → 오픈소스 전환 (연 $999 비용 절감)
 
-**기술스택**
-Java · Spring Boot · JPA · MySQL · Redis · Kafka · AWS · Docker
-
 **기술적 개선 사항**
 
 > **Pinpoint APM 모니터링 체계 구축**
@@ -126,11 +123,3 @@ Java · Spring Boot · Jenkins · Docker · AWS · React Native
 - 금융당국 **선불 라이센스 취득** 기여
 
 ---
-
-## 기술 스택 요약
-
-| 구분 | 기술 |
-|---|---|
-| **Strong** | Java · Spring Boot · JPA · Kafka |
-| **Knowledgeable** | Kotlin · MySQL · QueryDSL · Spring Security · Redis · Next.js · React |
-| **Etc** | AWS · Docker · Nginx · Jenkins · Vault · Linux · Git |
