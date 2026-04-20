@@ -218,7 +218,6 @@
 <body>
 <div class="wrap">
 
-  <a href="/resume/" class="back-link">← 이력서로 돌아가기</a>
 
   <!-- ── Header ── -->
   <div class="career-header">
@@ -227,7 +226,7 @@
         <p class="career-title">경력기술서</p>
         <p class="career-subtitle">진현규 · Backend Engineer · jinhyeonkyu@gmail.com</p>
       </div>
-      <button class="theme-toggle" onclick="toggleTheme()" title="다크모드 전환">🌙</button>
+
     </div>
   </div>
 
@@ -265,7 +264,7 @@
       <div class="stack-tags">
         <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">JPA</span>
         <span class="tag">MySQL</span><span class="tag">Redis</span><span class="tag">Kafka</span>
-        <span class="tag">AWS</span><span class="tag">Docker</span>
+        <span class="tag">AWS</span><span class="tag">AWS Bedrock</span><span class="tag">Spring Batch</span><span class="tag">Docker</span>
       </div>
 
       <p class="label">기술적 개선 사항</p>
@@ -298,12 +297,16 @@
         <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>파일 유실률: ↓100%→0%</strong>  &nbsp;<strong>응답시간 4s→1s: ↓75%</strong> &nbsp;<strong>10,000건 무장애</strong> &nbsp;<a href="https://www.notion.so/04-Outbox-0-3345cb02eeeb81ecbc74e89dfb547a56" target="_blank" rel="noopener" class="notion-link">[상세보기]</a></span></div>
       </div>
 
-
       <div class="improve-block">
-        <p class="improve-title">Pinpoint APM 모니터링 체계 구축</p>
-        <div class="improve-row"><span class="improve-key">배경</span><span class="improve-val">운영 중 API 호출 실패 발생 시 병목 지점 식별 불가 — 장애 대응 지연 구조</span></div>
-        <div class="improve-row"><span class="improve-key">해결</span><span class="improve-val">Pinpoint APM 도입으로 전체 API 호출 흐름 시각화, 실패 구간 및 응답 지연 병목 지점 자동 식별</span></div>
-        <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val">API 호출 실패율 감소, 장애 원인 파악 시간 50% 이상 단축 </span></div>
+        <p class="improve-title">AWS Bedrock LLM 기반 운영 자동화 — 가맹점 영문명 의역 배치</p>
+        <div class="improve-row"><span class="improve-key">배경</span><span class="improve-val">신규 가맹점 접수 시 한글명을 영문으로 <strong>직역</strong>(예: <code>코레일유통_화장품점 → KORAILUTONG_HWAJANGPUMJUM</code>)으로 자동 생성하여 가독성 저하 → 운영 담당자가 B/O에서 <strong>월 약 100건</strong>을 수동 수정하며, 담당자 부재 시 누락·지연 발생</span></div>
+        <div class="improve-row"><span class="improve-key">해결</span><span class="improve-val">AWS Bedrock(Claude) 연동 <strong>일 1회 배치</strong> 설계 <br>
+          <code><li>english_name_status</code> 플래그(DRAFT / AI_TRANSLATED / MANUAL)로 처리 상태 관리</li>
+          <code><li>original_english_name 컬럼으로 원본 보존(롤백·감사 대응)</li></code>
+          <code><li>실패 건 스킵 후 다음 배치 재처리</li></code></span>
+        </div>
+        <div class="improve-row"><span class="improve-key">해석</span><span class="improve-val">직역 결과 <code>KORAILUTONG_HWAJANGPUMJUM</code> → 의역 결과 <code>KORAILRETAIL_COSMESTICS</code> 형태로 파스칼케이스 + 카테고리 구분 영문명 자동 생성</span></div>
+        <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>수동 공수: 월 100건 → 0건 (↓100%)</strong> &nbsp; <strong>영문명 품질 일관화</strong> &nbsp; <strong>담당자 부재 리스크 제거</strong></span></div>
       </div>
 
       <p class="label">종합 성과</p>
@@ -311,6 +314,7 @@
         <li>일 평균 거래 <strong>50건 → 4,000건 (80배)</strong> 성장 무장애 운영</li>
         <li>결제사 7개사 연동을 단일 표준 인터페이스로 통합</li>
         <li>월 거래액 <strong>30% 확장</strong> (레거시 POS 통합 이후)</li>
+        <li>AI 기반 운영 자동화로 반복 수동 업무 <strong>월 50건 → 0건</strong> 무인화 (AWS Bedrock 일 배치)</li>
       </ul>
     </div>
 
