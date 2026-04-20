@@ -10,3 +10,6 @@ resume/v1/
 resume/v2/
 resume/output/
 resume/resume-data.yaml
+
+# PDF 파일 제외 (이력서/경력기술서 원본은 외부 공개하지 않음)
+*.pdf
