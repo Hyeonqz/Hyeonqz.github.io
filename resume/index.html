@@ -98,8 +98,20 @@
         <div class="proj">
           <p class="proj-title">QR 중계 시스템 개발 및 운영 · <small style="font-weight:400;color:#666">국내·국외 QR 결제 중계 서비스 플랫폼</small></p>
           <ul>
-            <li>국내·국외 간편결제사 <strong>7개사 이상</strong> 연동 개발 (라인페이, 알리페이, 위챗페이, 유니온페이 등)</li>
-            <li>POS 및 간편결제사 연동 REST API Spec <strong>15개 이상</strong> 정의 및 구현</li>
+            <li>국내·국외 간편결제사 <strong>7개사 이상</strong> 연동 개발 (라인,알리,위챗,유니온,하나은행 등)</li>
+            <li>POS 및 대형 가맹점 연동 REST API Spec <strong>15개 이상</strong> 정의 및 구현</li>
+            <li><b>AWS Bedrock LLM 기반 가맹점 영문명 의역 자동화 배치</b>
+              <ul class="sub-list">
+                <li><strong>배경:</strong> 가맹점 등록 시 한글명 직역(예: KORAILUTONG_HWAJANGPUMJUM)으로 영문명이 자동 생성되어 운영 담당자가 B/O에서 월 100건을 수동 수정하고 있었으며, 담당자 부재 시 누락·지연 리스크 존재</li>
+                <li><strong>진행:</strong> AWS Bedrock(Claude) 연동 일 1회 배치 설계 및 구현
+                  <ul class="sub-list">
+                    <li>상태 플래그(DRAFT / AI_TRANSLATED / MANUAL) + 원본 영문명 보존 컬럼 도입으로 롤백·감사 대응</li>
+                    <li>실패 건 스킵 후 다음 배치에서 자동 재처리</li>
+                  </ul>
+                </li>
+                <li><strong>결과:</strong> 반복 수동 업무 월 평균 100건 → 5건 (95%↓), 영문명 품질 일관화, 수동 override 경로 유지로 운영 유연성 확보</li>
+              </ul>
+            </li>
             <li><b>Kafka Request-Reply 아키텍처 설계</b> <a href="https://www.notion.so/01-Kafka-3345cb02eeeb80d9a786d314378e2138" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
               <ul class="sub-list">
                 <li><strong>배경:</strong> 분산 환경에서 Kafka Reply 토픽 수신 Consumer 인스턴스 불일치로 타임아웃 빈번 발생</li>
@@ -126,13 +138,6 @@
                 <li><strong>배경:</strong> SFTP 파일 전송 실패 시 유실 감지 불가 — 파일 유실률 100%, 수동 모니터링 의존</li>
                 <li><strong>진행:</strong> Outbox 패턴으로 전송 상태 영속화, SFTP 세션 풀링으로 연결 안정성 확보 · 파일 I/O 비동기(@Async) 도입으로 가맹 접수 처리 개선</li>
                 <li><strong>결과:</strong> 파일 유실률 100%→0%, 응답시간 4s→1s (75%↓), 가맹 접수 10,000건 무장애 처리 · 장애 감지 수동(불특정) → 30분 이내 자동 감지</li>
-              </ul>
-            </li>
-            <li><b>AWS Bedrock LLM 기반 가맹점 영문명 의역 자동화 배치</b>
-              <ul class="sub-list">
-                <li><strong>배경:</strong> 가맹점 등록 시 한글명 직역(예: KORAILUTONG_HWAJANGPUMJUM)으로 영문명 자동 생성 — 운영 담당자가 B/O에서 월 50건 수동 수정, 담당자 부재 시 누락·지연 리스크</li>
-                <li><strong>진행:</strong> AWS Bedrock(Claude) 연동 일 1회 배치 설계 · 상태 플래그(DRAFT/AI_TRANSLATED/MANUAL) + 원본 영문명 보존 컬럼 도입으로 롤백·감사 대응 · 실패 건 스킵 후 재처리, CloudWatch 비용 모니터링</li>
-                <li><strong>결과:</strong> 반복 수동 업무 월 평균 100건 → 0건 (100%↓), 영문명 품질 일관화, 수동 override 경로 유지로 운영 유연성 확보</li>
               </ul>
             </li>
             <li>C++ DLL 기반 레거시 POS 네이티브 모듈 개발 → 이기종 시스템 통합, 월 거래액 30% 확장</li>
