@@ -86,13 +86,26 @@ a:hover { color: #555; }
   background: #e85d04;
   transform: scale(1.12);
 }
+/* 기존 것 교체 */
 .contact-info {
   font-size: 0.85rem;
   color: #444;
-  line-height: 1.9;
-  text-align: right;
 }
-.contact-info a { color: #222; }
+
+/* 아래 내용 추가 */
+.contact-row {
+  display: grid;
+  grid-template-columns: 72px 12px 1fr;
+  align-items: baseline;
+}
+
+.contact-label {
+  font-weight: normal;
+}
+
+.contact-sep {
+  text-align: center;
+}
 
 /* ── Dark mode toggle ── */
 .theme-toggle {
@@ -325,10 +338,89 @@ body.dark .pf-link:hover { color: #e85d04; }
 }
 
 @media print {
-  .wrap { padding: 20px 24px 40px; }
-  body { font-size: 13px; }
-  .row { break-inside: avoid; }
-  .lang-switch { display: none; }
+  @page {
+    size: A4;
+    margin: 10mm 12mm;
+  }
+
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  html, body {
+    width: 210mm;
+    background: #fff !important;
+    color: #222 !important;
+    font-size: 11px;
+    line-height: 1.65;
+  }
+
+  .wrap {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .lang-switch,
+  .theme-toggle { display: none !important; }
+
+  .top-header { margin-bottom: 20px; }
+  .profile-name { font-size: 1.9rem; }
+  .profile-role { font-size: 0.85rem; }
+  .social-icons a {
+    width: 34px;
+    height: 34px;
+    background: #222 !important;
+    color: #fff !important;
+  }
+
+  section {
+    margin-bottom: 18px;
+    padding-top: 12px;
+  }
+  .sec-title {
+    font-size: 1rem;
+    margin-bottom: 14px;
+  }
+
+  .row {
+    break-inside: avoid;
+    gap: 24px;
+    margin-bottom: 14px;
+    flex-wrap: nowrap;
+  }
+  .col-left {
+    width: 150px;
+    min-width: 150px;
+  }
+  .col-right { flex: 1; min-width: 0; }
+
+  .proj {
+    break-inside: avoid;
+    margin-bottom: 10px;
+  }
+  .proj-title { font-size: 0.84rem; }
+
+  ul li { font-size: 0.8rem; margin-bottom: 2px; }
+  ul.sub-list li { font-size: 0.76rem; }
+
+  .skill-row { gap: 8px; margin-bottom: 4px; }
+  .skill-key { width: 150px; min-width: 150px; font-size: 0.82rem; }
+  .skill-val { font-size: 0.82rem; }
+
+  .act-name { width: 150px; min-width: 150px; }
+  .act-list li { gap: 20px; }
+
+  .about-photo-wrap { width: 130px; height: 130px; }
+
+  a { color: #222 !important; }
+  a.notion-link { color: #1a6fc4 !important; }
+  a[href]::after { content: none !important; }
+
+  .row + .row { break-inside: avoid; }
+  section { break-before: auto; }
 }
 
 /* ── Sub-list (문제/개선/성과 depth) ── */
