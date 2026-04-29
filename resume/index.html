@@ -98,6 +98,31 @@
                     <ul>
                         <li>국내·국외 간편결제사 <strong>7개사 이상</strong> 연동 개발 (라인,알리,위챗,유니온,하나은행 등)</li>
                         <li>POS 및 대형 가맹점 연동 REST API Spec <strong>15개 이상</strong> 정의 및 구현</li>
+                        <li><b>MSA 분산 환경 TCP Push 아키텍처 설계 — Kafka 기반 서버 간 채널 소유권 문제 해결</b>
+                            <a href="https://www.notion.so/05-MSA-TCP-Push-3505cb02eeeb80889035f19b9c20aa17" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                            <ul class="sub-list">
+                                <li><strong>배경:</strong> MSA 환경에서 LinePay CRE 결제 완료 후 POS 단말에 결과를 Push해야 하나,
+                                    TCP 소켓은 연결을 맺은 서버에만 Netty Channel이 존재해
+                                    API 서버에서 직접 Push 불가 — 분산 인스턴스 간 Channel 소유권 불일치 문제 발생</li>
+                                <li><strong>진행:</strong> API 서버는 Kafka produce만 담당하고,
+                                    TCP 서버 인스턴스 전체가 <strong>인스턴스별 고유 groupId</strong>로 consume 후
+                                    <strong>Redis 소유 서버 판별(isOwnedHost)</strong>을 통해 Channel 보유 서버만 Push 실행하는 구조 설계
+                                    <ul class="sub-list">
+                                        <li>전략 패턴(TcpPushHandler) 적용 — 파트너사 추가 시 기존 Listener 수정 없이 구현체 추가만으로 확장</li>
+                                        <li>Channel 미존재(소켓 단절) 케이스 망취소 자동 처리로 데이터 정합성 확보</li>
+                                    </ul>
+                                </li>
+                                <li><strong>결과:</strong> API 서버와 TCP 서버 간 완전한 디커플링 달성,
+                                    중복 Push 방지 및 장애 격리 구조 확보</li>
+                            </ul>
+                        </li>
+                        <li><b>Kafka Request-Reply 아키텍처 설계</b> <a href="https://www.notion.so/01-Kafka-3345cb02eeeb80d9a786d314378e2138" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                            <ul class="sub-list">
+                                <li><strong>배경:</strong> 분산 환경에서 Kafka Reply 토픽 수신 Consumer 인스턴스 불일치로 타임아웃 빈번 발생</li>
+                                <li><strong>진행:</strong> CorrelationId 기반 Reply 라우팅 설계로 Consumer 간 응답 격리</li>
+                                <li><strong>결과:</strong> 타임아웃 50%→0%, 수동 CS 월 5건→2건 (60%↓)</li>
+                            </ul>
+                        </li>
                         <li><b>AWS Bedrock LLM 기반 가맹점 영문명 의역 자동화 배치</b>
                             <ul class="sub-list">
                                 <li><strong>배경:</strong> 가맹점 영문명이 한글 직역으로 자동 생성(예: <code>HWAJANGPUMJUM</code>)되어 운영팀이 매월 100건을 수동 수정</li>
@@ -108,13 +133,6 @@
                                     </ul>
                                 </li>
                                 <li><strong>결과:</strong> 반복 수동 업무 월 평균 100건 → 5건 (95%↓), 영문명 품질 일관화, 수동 override 경로 유지로 운영 유연성 확보</li>
-                            </ul>
-                        </li>
-                        <li><b>Kafka Request-Reply 아키텍처 설계</b> <a href="https://www.notion.so/01-Kafka-3345cb02eeeb80d9a786d314378e2138" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
-                            <ul class="sub-list">
-                                <li><strong>배경:</strong> 분산 환경에서 Kafka Reply 토픽 수신 Consumer 인스턴스 불일치로 타임아웃 빈번 발생</li>
-                                <li><strong>진행:</strong> CorrelationId 기반 Reply 라우팅 설계로 Consumer 간 응답 격리</li>
-                                <li><strong>결과:</strong> 타임아웃 50%→0%, 수동 CS 월 5건→2건 (60%↓)</li>
                             </ul>
                         </li>
                         <li><b>Redis Cache-Aside + 트랜잭션 경계 최적화</b> <a href="https://www.notion.so/02-Redis-3345cb02eeeb81fc8f2ece133ba5b68a" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
