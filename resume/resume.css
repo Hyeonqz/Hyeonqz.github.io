@@ -352,9 +352,11 @@ body.dark .pf-link:hover { color: #e85d04; }
     width: 210mm;
     background: #fff !important;
     color: #222 !important;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.65;
   }
+
+  .about-text { font-size: 13px; }
 
   .wrap {
     max-width: 100%;
