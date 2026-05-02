@@ -308,14 +308,15 @@
 
       <div class="improve-block">
         <p class="improve-title">AWS Bedrock LLM 기반 운영 자동화 — 가맹점 영문명 의역 배치</p>
-        <div class="improve-row"><span class="improve-key">배경</span><span class="improve-val">신규 가맹점 접수 시 한글명을 영문으로 <strong>직역</strong>(예: <code>코레일유통_화장품점 → KORAILUTONG_HWAJANGPUMJUM</code>)으로 자동 생성하여 가독성 저하 → 운영 담당자가 B/O에서 <strong>월 약 100건</strong>을 수동 수정하며, 담당자 부재 시 누락·지연 발생</span></div>
+        <div class="improve-row"><span class="improve-key">배경</span>
+          <span class="improve-val">신규 가맹점 접수 시 한글명을 영문으로 <strong>직역</strong>(예: <code>코레일유통_화장품점 → KORAILUTONG_HWAJANGPUMJUM</code>)으로 자동 생성하여 가독성 저하 → 운영 담당자가 B/O에서 <strong>월 약 100건</strong>을 수동 수정하며, 담당자 부재 시 누락·지연 발생</span></div>
         <div class="improve-row"><span class="improve-key">해결</span><span class="improve-val">AWS Bedrock(Claude) 연동 <strong>일 1회 배치</strong> 설계 <br>
           <code><li>english_name_status</code> 플래그(DRAFT / AI_TRANSLATED / MANUAL)로 처리 상태 관리</li>
           <code><li>original_english_name 컬럼으로 원본 보존(롤백·감사 대응)</li></code>
           <code><li>실패 건 스킵 후 다음 배치 재처리</li></code></span>
         </div>
         <div class="improve-row"><span class="improve-key">해석</span><span class="improve-val">직역 결과 <code>KORAILUTONG_HWAJANGPUMJUM</code> → 의역 결과 <code>KORAILRETAIL_COSMESTICS</code> 형태로 파스칼케이스 + 카테고리 구분 영문명 자동 생성</span></div>
-        <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>수동 공수: 월 100건 → 0건 (↓100%)</strong> &nbsp; <strong>영문명 품질 일관화</strong> &nbsp; <strong>담당자 부재 리스크 제거</strong></span></div>
+        <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>수동 공수: 월 100건 → 5건 (↓95%)</strong> &nbsp; <strong>영문명 품질 일관화</strong> &nbsp; <strong>담당자 부재 리스크 제거</strong></span></div>
       </div>
 
       <p class="label">종합 성과</p>
