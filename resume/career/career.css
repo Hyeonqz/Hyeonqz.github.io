@@ -1,0 +1,294 @@
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: #888;
+  text-decoration: none;
+  margin-bottom: 40px;
+  transition: color .2s;
+}
+.back-link:hover { color: #222; }
+body.dark .back-link { color: #666; }
+body.dark .back-link:hover { color: #e0e0e0; }
+
+.career-header {
+  margin-bottom: 36px;
+}
+.career-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.career-title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+.career-subtitle {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 6px;
+}
+body.dark .career-subtitle { color: #666; }
+
+.company-header {
+  margin-bottom: 8px;
+}
+.company-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+.company-meta {
+  font-size: 0.82rem;
+  color: #888;
+  margin-top: 3px;
+}
+.company-desc {
+  font-size: 0.88rem;
+  color: #555;
+  line-height: 1.8;
+  margin-top: 8px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #eee;
+}
+body.dark .company-desc { color: #aaa; border-bottom-color: #2a2a2a; }
+body.dark .company-meta { color: #666; }
+
+.proj-num {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+body.dark .proj-num { color: #aaa; }
+.proj-date {
+  color: #bbb;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+body.dark .proj-date { color: #555; }
+
+.proj-block {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #eee;
+}
+.proj-block:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+body.dark .proj-block { border-bottom-color: #2a2a2a; }
+
+.proj-block h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-top: 18px;
+  margin-bottom: 6px;
+}
+body.dark .label { color: #555; }
+
+.stack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.tag {
+  font-size: 0.75rem;
+  background: #f4f4f4;
+  color: #444;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+body.dark .tag { background: #222; color: #aaa; }
+
+.improve-block {
+  margin-top: 6px;
+  margin-bottom: 10px;
+  border-left: 3px solid #eee;
+  padding: 12px 16px;
+  background: #fafafa;
+  border-radius: 0 6px 6px 0;
+}
+body.dark .improve-block { border-left-color: #333; background: #161616; }
+
+.improve-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #222;
+}
+body.dark .improve-title { color: #e0e0e0; }
+
+.improve-row {
+  display: flex;
+  gap: 8px;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  margin-bottom: 3px;
+  align-items: baseline;
+}
+.improve-key {
+  font-weight: 700;
+  color: #888;
+  min-width: 32px;
+  flex-shrink: 0;
+}
+.improve-val { color: #444; flex: 1; }
+body.dark .improve-key { color: #666; }
+body.dark .improve-val { color: #bbb; }
+
+.result-tag {
+  display: inline-block;
+  background: #222;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+body.dark .result-tag { background: #444; }
+
+.outcome-list {
+  margin-top: 6px;
+}
+.outcome-list li {
+  font-size: 0.88rem;
+  color: #333;
+  padding-left: 14px;
+  margin-bottom: 4px;
+}
+body.dark .outcome-list li { color: #ccc; }
+
+.skills-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  margin-top: 8px;
+}
+.skills-table td {
+  padding: 7px 0;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+.skills-table tr:last-child td { border-bottom: none; }
+.skills-table td:first-child {
+  font-weight: 700;
+  width: 160px;
+  color: #222;
+}
+.skills-table td:last-child { color: #444; }
+body.dark .skills-table td { border-bottom-color: #2a2a2a; }
+body.dark .skills-table td:first-child { color: #e0e0e0; }
+body.dark .skills-table td:last-child { color: #bbb; }
+
+.notion-link {
+  color: #1a6fc4;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+.notion-link:hover { text-decoration: underline; }
+body.dark .notion-link { color: #5b9bd5; }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 22mm;
+  }
+
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  html, body {
+    width: 210mm;
+    background: #fff !important;
+    color: #222 !important;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .wrap {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Header */
+  .career-header { margin-bottom: 20px; }
+  .career-title { font-size: 1.6rem; }
+  .career-subtitle { font-size: 0.8rem; }
+
+  /* Company */
+  .company-name { font-size: 1rem; }
+  .company-meta { font-size: 0.75rem; }
+  .company-desc {
+    font-size: 0.78rem;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+  }
+
+  /* Project block — break-inside 제거: 큰 블록에 걸면 통째로 다음 페이지로 밀림 */
+  .proj-block {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+  }
+  .proj-block h3 { font-size: 0.92rem; margin-bottom: 10px; }
+  .proj-num { font-size: 0.68rem; }
+
+  /* Labels & tags */
+  .label { font-size: 0.68rem; margin-top: 10px; margin-bottom: 4px; }
+  .tag { font-size: 0.68rem; padding: 2px 7px; }
+
+  /* Improve block */
+  .improve-block {
+    break-inside: avoid;
+    margin-top: 4px;
+    margin-bottom: 6px;
+    padding: 8px 12px;
+    background: #fafafa !important;
+    border-left: 3px solid #ddd !important;
+  }
+  .improve-title { font-size: 0.8rem; margin-bottom: 5px; }
+  .improve-row { font-size: 0.76rem; line-height: 1.6; margin-bottom: 2px; }
+  .improve-key { min-width: 28px; }
+  .improve-val ul { margin: 3px 0 0 0; padding-left: 12px; }
+  .improve-val ul li { font-size: 0.74rem; margin-bottom: 1px; }
+
+  /* Outcome list */
+  .outcome-list { margin-top: 4px; }
+  .outcome-list li { font-size: 0.78rem; margin-bottom: 2px; }
+
+  /* Links */
+  a { color: #222 !important; }
+  a.notion-link { color: #1a6fc4 !important; }
+  a[href]::after { content: none !important; }
+
+  /* Section spacing */
+  section { margin-bottom: 0; }
+  .updated { font-size: 0.7rem; margin-top: 16px; }
+}

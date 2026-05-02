@@ -55,11 +55,8 @@
             </div>
             <div class="col-right">
                 <p class="about-text">
-                    AI Agent 기반 소프트웨어 개발 패러다임이 빠르게 변화하는 시대에도,
-                    개발자가 놓쳐서는 안 되는 핵심은 <strong>기본기와 맥락에 기반한 문제 정의 능력</strong>이라고 믿습니다. <br>
-
-                    핀테크 결제 도메인 만 <strong>3년차</strong> 서버 개발자로서, QR 결제 중계 시스템을 0부터 구축하며
-                    일 평균 거래 <strong>50건 → 4,000건(80배)</strong> 성장 과정을 주도했습니다.
+                    핀테크 결제 도메인 서버 개발자로서, QR 결제 중계 시스템을 0부터 구축하며
+                    일 평균 거래 <strong>50건 → 5,000건(100배)</strong> 성장 과정을 주도했습니다.
                     국내외 간편결제사 7개사 연동, Kafka 기반 분산 결제 아키텍처 설계,
                     Redis 캐시 최적화(응답 <strong>85%↓</strong>) 등 실제 서비스 트래픽 환경에서 문제를 분석하여
                     구조적 개선을 이끌었습니다.
@@ -67,8 +64,10 @@
                     금융 컴플라이언스(PCI DSS) 달성과 레거시 시스템 마이그레이션 경험을 바탕으로,
                     <strong>장애 격리 · 데이터 정합성 · 트랜잭션 안정성</strong>을 최우선으로 고려해 설계합니다.
                     <br><br>
-                    <strong>AWS Bedrock(Gemini LLM)</strong>을 활용해 가맹점 영문명 수동 수정 업무를 월 100건 → 5건으로 줄이는 운영 업무 자동화를 설계·구현했고,
-                    운영팀에게 AI 활용법을 직접 교육하며 비개발 직군과의 AI 협업 프로세스를 정착시키는 걸 목표로 합니다.
+
+                    <strong>AWS Bedrock 기반 LLM 자동화 배치</strong>를 설계·구현해
+                    가맹점 영문명 수동 수정 업무를 월 100건 → 5건으로 줄인 경험이 있습니다.<br>
+                    현재는 운영팀을 대상으로 AI 활용법을 교육하며, 비개발 직군과 AI가 함께 작동하는 협업 구조를 만들어가는 과정에 있습니다.
                 </p>
             </div>
         </div>
@@ -78,7 +77,7 @@
     <section>
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:32px;">
             <h2 class="sec-title" style="margin-bottom:0;">Work Experience.</h2>
-            <a href="/resume/career/" style="font-size:0.8rem;font-weight:700;color:#888;text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='#222'" onmouseout="this.style.color='#888'">경력기술서 전체보기 →</a>
+            <a href="/resume/career/career.html" style="font-size:0.8rem;font-weight:700;color:#888;text-decoration:none;white-space:nowrap;" onmouseover="this.style.color='#222'" onmouseout="this.style.color='#888'">경력기술서 전체보기 →</a>
         </div>
 
         <div class="row">
@@ -94,66 +93,58 @@
                     <ul>
                         <li>국내·국외 간편결제사 <strong>7개사 이상</strong> 연동 개발 (라인,알리,위챗,유니온,하나은행 등)</li>
                         <li>POS 및 대형 가맹점 연동 REST API Spec <strong>15개 이상</strong> 정의 및 구현</li>
-                        <li><b>MSA 분산 환경 결제 결과 실시간 Push 아키텍처 설계 — Kafka 기반 서버 간 채널 소유권 문제 해결</b>
-                            <a href="https://www.notion.so/05-MSA-TCP-Push-3505cb02eeeb80889035f19b9c20aa17" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                        <li>PCI DSS 컴플라이언스 달성 기여 및 금융당국 선불 라이센스 취득 과정 전반 참여</li>
+                        <li>C++ DLL 기반 레거시 POS 네이티브 모듈 개발 → 이기종 시스템 통합, 월 거래액 30% 확장</li>
+                        <li>DOCX → PDF 전환 유료 솔루션 오픈소스 전환, 연 $999 비용 절감</li>
+                        <li>
+                            <b>MSA 분산 환경 실시간 Push 아키텍처 설계</b>
+                                <a href="https://www.notion.so/05-MSA-TCP-Push-3505cb02eeeb80889035f19b9c20aa17" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
-                                <li><strong>배경:</strong> MSA 환경에서 LinePay CRE 결제 완료 후 POS 단말에 결과를 Push해야 하나,
-                                    TCP 소켓은 연결을 맺은 서버에만 Netty Channel이 존재해
-                                    API 서버에서 직접 Push 불가 — 분산 인스턴스 간 Channel 소유권 불일치 문제 발생</li>
-                                <li><strong>진행:</strong> API 서버는 Kafka produce만 담당하고,
-                                    TCP 서버 인스턴스 전체가 <strong>인스턴스별 고유 groupId</strong>로 consume 후
-                                    <strong>Redis 소유 서버 판별(isOwnedHost)</strong>을 통해 Channel 보유 서버만 Push 실행하는 구조 설계
-                                    <ul class="sub-list">
-                                        <li>전략 패턴(TcpPushHandler) 적용 — 파트너사 추가 시 기존 Listener 수정 없이 구현체 추가만으로 확장</li>
-                                        <li>Channel 미존재(소켓 단절) 케이스 망취소 자동 처리로 데이터 정합성 확보</li>
-                                    </ul>
-                                </li>
-                                <li><strong>결과:</strong> API 서버와 TCP 서버 간 완전한 디커플링 달성,
-                                    중복 Push 방지 및 장애 격리 구조 확보</li>
+                                <li><strong>배경:</strong> TCP Channel 소유권 불일치로 API 서버에서 POS 직접 Push 불가</li>
+                                <li><strong>진행:</strong> Kafka produce/consume 분리 + Redis 소유 서버 판별 + 전략 패턴으로 확장 구조 설계</li>
+                                <li><strong>결과:</strong> API↔TCP 서버 완전 디커플링, 중복 Push 제거, 장애 격리 구조 확보</li>
                             </ul>
                         </li>
-                        <li><b>Kafka Request-Reply 아키텍처 설계</b> <a href="https://www.notion.so/01-Kafka-3345cb02eeeb80d9a786d314378e2138" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                        <li>
+                            <b>Kafka Request-Reply 아키텍처 설계</b> <a href="https://www.notion.so/01-Kafka-3345cb02eeeb80d9a786d314378e2138" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
                                 <li><strong>배경:</strong> 분산 환경에서 Kafka Reply 토픽 수신 Consumer 인스턴스 불일치로 타임아웃 빈번 발생</li>
                                 <li><strong>진행:</strong> CorrelationId 기반 Reply 라우팅 설계로 Consumer 간 응답 격리</li>
                                 <li><strong>결과:</strong> 타임아웃 50%→0%, 수동 CS 월 5건→2건 (60%↓)</li>
                             </ul>
                         </li>
-                        <li><b>AWS Bedrock LLM 기반 가맹점 영문명 의역 자동화 배치</b>
+                        <li>
+                            <b>AWS Bedrock LLM 기반 가맹점 영문명 의역 자동화 배치</b>
                             <ul class="sub-list">
                                 <li><strong>배경:</strong> 가맹점 영문명이 한글 직역으로 자동 생성(예: <code>HWAJANGPUMJUM</code>)되어 운영팀이 매월 100건을 수동 수정</li>
-                                <li><strong>진행:</strong> AWS Bedrock(Claude) 연동 일 1회 배치 설계 및 구현
-                                    <ul class="sub-list">
-                                        <li>상태 플래그(DRAFT / AI_TRANSLATED / MANUAL) + 원본 영문명 보존 컬럼 도입으로 롤백·감사 대응</li>
-                                        <li>실패 건 스킵 후 다음 배치에서 자동 재처리</li>
-                                    </ul>
-                                </li>
+                                <li><strong>진행:</strong> AWS Bedrock(Claude) 연동 일 1회 배치 설계 및 구현</li>
                                 <li><strong>결과:</strong> 반복 수동 업무 월 평균 100건 → 5건 (95%↓), 영문명 품질 일관화, 수동 override 경로 유지로 운영 유연성 확보</li>
                             </ul>
                         </li>
-                        <li><b>Redis Cache-Aside + 트랜잭션 경계 최적화</b> <a href="https://www.notion.so/02-Redis-3345cb02eeeb81fc8f2ece133ba5b68a" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                        <li>
+                            <b>Redis Cache-Aside + 트랜잭션 경계 최적화</b> <a href="https://www.notion.so/02-Redis-3345cb02eeeb81fc8f2ece133ba5b68a" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
                                 <li><strong>배경:</strong> 거래 상태 Polling 120회 기준 DB 직접 조회 360회 발생 — 응답 지연 및 DB 부하</li>
                                 <li><strong>진행:</strong> Cache-Aside 패턴 도입 + 트랜잭션 커밋 후 캐시 갱신으로 정합성 확보</li>
-                                <li><strong>결과:</strong> DB 쿼리 360회→0회, 응답시간 200ms→30ms (85%↓)</li>
+                                <li><strong>결과:</strong> DB I/O 120회→0회, Pinpoint APM 기반 측정 결과 API 응답 200ms→30ms (85%↓)</li>
                             </ul>
                         </li>
-                        <li><b>Final API 패턴 도입 — POS↔큐뱅 결제 상태 동기화</b> <a href="https://www.notion.so/03-CS-95-Final-API-3345cb02eeeb81afb108d6d2517a8d6f" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                        <li>
+                            <b>Final API 패턴 도입 — POS↔큐뱅 결제 상태 동기화</b> <a href="https://www.notion.so/03-CS-95-Final-API-3345cb02eeeb81afb108d6d2517a8d6f" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
                                 <li><strong>배경:</strong> POS 결제 완료 후 큐뱅 서버 상태 미동기화로 CS 문의 월 10건 반복</li>
                                 <li><strong>진행:</strong> Final API 패턴으로 결제 최종 상태 단방향 확정, 재시도 멱등성 보장</li>
                                 <li><strong>결과:</strong> CS 월 10건→0~1건 (95%↓), 연간 40시간 수동 공수 절감</li>
                             </ul>
                         </li>
-                        <li><b>Outbox 패턴 + SFTP 세션 풀링</b> <a href="https://www.notion.so/04-Outbox-0-3345cb02eeeb81ecbc74e89dfb547a56" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                        <li>
+                            <b>Outbox 패턴 + SFTP 세션 풀링</b> <a href="https://www.notion.so/04-Outbox-0-3345cb02eeeb81ecbc74e89dfb547a56" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
                                 <li><strong>배경:</strong> SFTP 파일 전송 실패 시 유실 감지 불가 — 파일 유실률 100%, 수동 모니터링 의존</li>
                                 <li><strong>진행:</strong> Outbox 패턴으로 전송 상태 영속화, SFTP 세션 풀링으로 연결 안정성 확보 · 파일 I/O 비동기(@Async) 도입으로 가맹 접수 처리 개선</li>
                                 <li><strong>결과:</strong> 파일 유실률 100%→0%, 응답시간 4s→1s (75%↓), 가맹 접수 10,000건 무장애 처리 · 장애 감지 수동(불특정) → 30분 이내 자동 감지</li>
                             </ul>
                         </li>
-                        <li>C++ DLL 기반 레거시 POS 네이티브 모듈 개발 → 이기종 시스템 통합, 월 거래액 30% 확장</li>
-                        <li>전자 계약서 유료 솔루션 → 오픈소스 전환, 연 $999 비용 절감</li>
                     </ul>
                 </div>
 
@@ -195,7 +186,7 @@
         </div>
         <div class="skill-row">
             <span class="skill-key">Knowledgeable</span>
-            <span class="skill-val">Kotlin · MySQL · QueryDSL · Spring Security · Redis · Next.js · React</span>
+            <span class="skill-val">Kotlin · MySQL · Spring Security · JUnit5 · Redis · Next.js · React</span>
         </div>
         <div class="skill-row">
             <span class="skill-key">Etc</span>
