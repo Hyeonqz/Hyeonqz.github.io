@@ -241,13 +241,13 @@ body.dark .notion-link { color: #5b9bd5; }
   /* Header */
   .career-header { margin-bottom: 20px; }
   .career-title { font-size: 1.6rem; }
-  .career-subtitle { font-size: 0.8rem; }
+  .career-subtitle { font-size: 0.92rem; }
 
   /* Company */
   .company-name { font-size: 1rem; }
-  .company-meta { font-size: 0.75rem; }
+  .company-meta { font-size: 0.92rem; }
   .company-desc {
-    font-size: 0.78rem;
+    font-size: 0.92rem;
     margin-bottom: 20px;
     padding-bottom: 14px;
   }
@@ -273,15 +273,15 @@ body.dark .notion-link { color: #5b9bd5; }
     background: #fafafa !important;
     border-left: 3px solid #ddd !important;
   }
-  .improve-title { font-size: 0.8rem; margin-bottom: 5px; }
-  .improve-row { font-size: 0.76rem; line-height: 1.6; margin-bottom: 2px; }
+  .improve-title { font-size: 0.92rem; margin-bottom: 5px; }
+  .improve-row { font-size: 0.92rem; line-height: 1.6; margin-bottom: 2px; }
   .improve-key { min-width: 28px; }
   .improve-val ul { margin: 3px 0 0 0; padding-left: 12px; }
-  .improve-val ul li { font-size: 0.74rem; margin-bottom: 1px; }
+  .improve-val ul li { font-size: 0.88rem; margin-bottom: 1px; }
 
   /* Outcome list */
   .outcome-list { margin-top: 4px; }
-  .outcome-list li { font-size: 0.78rem; margin-bottom: 2px; }
+  .outcome-list li { font-size: 0.92rem; margin-bottom: 2px; }
 
   /* Links */
   a { color: #222 !important; }

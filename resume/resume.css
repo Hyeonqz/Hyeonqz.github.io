@@ -356,8 +356,6 @@ body.dark .pf-link:hover { color: #e85d04; }
     line-height: 1.65;
   }
 
-  .about-text { font-size: 13px; }
-
   .wrap {
     max-width: 100%;
     width: 100%;
@@ -388,7 +386,6 @@ body.dark .pf-link:hover { color: #e85d04; }
   }
 
   .row {
-    break-inside: avoid;
     gap: 24px;
     margin-bottom: 14px;
     flex-wrap: nowrap;
@@ -403,16 +400,18 @@ body.dark .pf-link:hover { color: #e85d04; }
     break-inside: avoid;
     margin-bottom: 9px;
   }
-  .proj-title { font-size: 0.84rem; }
+  .proj-title { font-size: 0.92rem; }
 
-  ul li { font-size: 0.8rem; margin-bottom: 2px; }
-  ul.sub-list li { font-size: 0.76rem; }
+  ul li { font-size: 0.92rem; margin-bottom: 2px; }
+  ul.sub-list li { font-size: 0.88rem; }
 
   .skill-row { gap: 8px; margin-bottom: 4px; }
-  .skill-key { width: 150px; min-width: 150px; font-size: 0.82rem; }
-  .skill-val { font-size: 0.82rem; }
+  .skill-key { width: 150px; min-width: 150px; font-size: 0.92rem; }
+  .skill-val { font-size: 0.92rem; }
 
-  .act-name { width: 150px; min-width: 150px; }
+  .act-name { width: 150px; min-width: 150px; font-size: 0.92rem; }
+  .act-period { font-size: 0.92rem; }
+  .act-desc { font-size: 0.92rem; }
   .act-list li { gap: 20px; }
 
   .about-photo-wrap { width: 130px; height: 130px; }
