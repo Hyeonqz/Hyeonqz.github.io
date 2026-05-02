@@ -526,3 +526,17 @@ a.notion-link {
 }
 a.notion-link:hover { text-decoration: underline; }
 body.dark a.notion-link { color: #5b9bd5; }
+
+/* ── Content area links ── */
+.proj-title a,
+.company a,
+.act-desc a {
+  color: #1a6fc4;
+  text-decoration: none;
+}
+.proj-title a:hover,
+.company a:hover,
+.act-desc a:hover { text-decoration: underline; }
+body.dark .proj-title a,
+body.dark .company a,
+body.dark .act-desc a { color: #5b9bd5; }
