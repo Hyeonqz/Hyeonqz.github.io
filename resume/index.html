@@ -137,7 +137,7 @@
                             </ul>
                         </li>
                         <li>
-                            <b>Outbox 패턴 + SFTP 세션 풀링</b> <a href="https://www.notion.so/04-Outbox-0-3345cb02eeeb81ecbc74e89dfb547a56" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                            <b><b>가맹 접수 SFTP 전송 유실 0건 달성 — Outbox 패턴 기반 안정화</b>/b> <a href="https://www.notion.so/04-Outbox-0-3345cb02eeeb81ecbc74e89dfb547a56" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
                                 <li><strong>배경:</strong> SFTP 파일 전송 실패 시 유실 감지 불가 — 파일 유실률 100%, 수동 모니터링 의존</li>
                                 <li><strong>진행:</strong> Outbox 패턴으로 전송 상태 영속화, SFTP 세션 풀링으로 연결 안정성 확보 · 파일 I/O 비동기(@Async) 도입으로 가맹 접수 처리 개선</li>
