@@ -31,8 +31,8 @@
         </div>
     
         <p class="company-desc">
-            국내외 간편결제사와 가맹점(POS) 사이의 QR 결제 데이터를 중계·처리하는 B2C 핀테크 스타트업 입니다.<br>
-            서버 개발자로 입사하여 QR 결제 중계 시스템 설계·구현·운영 전 과정을 담당하고 있습니다.
+            국내은행 및 해외 간편결제사와 가맹점(POS) 사이의 QR 결제 데이터를 중계·처리하는 B2C 핀테크 스타트업에서 근무를 했습니다.<br>
+            서버 개발자로 입사하여 QR 결제 중계 시스템에 필요한 설계·구현·운영 전 과정을 담당하고 있습니다.
         </p>
 
         <!-- ── 1. QR 결제 중계 플랫폼 ── -->
@@ -54,18 +54,10 @@
             <ul class="outcome-list">
                 <li>REST API Spec 15개 이상 정의 및 구현</li>
                 <li>QR 결제 상용화를 위한 온라인 가맹 접수 서비스 개발 · 현재 누적 2만 건 이상 처리 중</li>
-                <li>DLL 기반 레거시 POS 네이티브 모듈 개발로 이기종 시스템 통합/li>
+                <li>DLL 기반 레거시 POS 네이티브 모듈 개발로 이기종 시스템 통합</li>
                 <li>Spring Boot &amp; React 기반 결제 테스트 자동화 웹 개발 — 외부기관 커뮤니케이션 · 테스트 비용 <strong>50% 이상 절감</strong></li>
                 <li>DOCX → PDF 변환 유료 솔루션 → 오픈소스 전환 (연 $999 비용 절감)</li>
                 <li>Thymeleaf → React & NextJs 환경 마이그레이션</li>
-                <li>모놀리식 애플리케이션 아키텍처 → 멀티 모듈 및 DDD 기반 아키텍처 전환
-                    <ul>
-                        <li><strong>패키지 레벨 헥사고날 구조 채용:</strong> 도메인 영역을 외부 인프라 레이어로부터 격리하여 아키텍처적 유연성 확보</li>
-                        <li><strong>ApplicationEventPublisher 기반 이벤트 주도 설계:</strong> 강한 동기식 모듈 간 결합을 비동기 이벤트로 전환하여 트랜잭션 의존성 제거 및 MSA 확장 기반 마련</li>
-                        <li><strong>Nexus</strong>를 활용해 공통 JPA Entity · 유틸 라이브러리 분리 — 5개 프로젝트 공통 적용</li>
-                        <li>멀티 모듈 전이 의존성 제거로 Gradle 빌드 시간 <strong>55s → 35s</strong> 단축</li>
-                    </ul>
-                </li>
             </ul>
 
             <p class="label">기술적 개선 사항</p>
@@ -76,19 +68,15 @@
                 <div class="improve-row">
                     <span class="improve-key">배경</span>
                     <span class="improve-val">
-                        MSA 환경에서 결제 완료 후 POS 단말에 결과를 Push해야 하나,
-                        TCP 소켓 특성상 Netty Channel은 연결을 맺은 서버에만 존재—
-                        API 서버에서 직접 Push 불가, 분산 인스턴스 간 채널 소유권 불일치 문제 발생
+                        MSA 환경에서 결제 결과 실시간 Push 기능 구현 중,Netty Channel이 특정 서버에만 존재하여 분산 인스턴스 간 채널 소유권 관리 문제 발생
                 </span>
                 </div>
                 <div class="improve-row">
                     <span class="improve-key">해결</span>
                     <span class="improve-val">
-                        API 서버는 Kafka produce만 담당, TCP 서버 전체가 인스턴스별 고유 groupId로 consume 후
-                        Redis 기반 소유 서버 판별(isOwnedHost)로 Channel 보유 서버만 Push 실행
+                        API 서버는 Kafka produce만 담당, Socket 서버 전체가 인스턴스별 고유 groupId로 consume 후
+                        Redis 기반 소유 서버 판별로 Channel 보유 서버만 Push 실행
                         <ul style="margin:4px 0 0 0;padding-left:10px;">
-                            <li>전략 패턴(TcpPushHandler) 적용으로 파트너사 추가 시 기존 코드 수정 없이 확장 가능한 구조 설계.</li>
-                            <li>Channel 미존재(소켓 단절) 케이스는 망취소 자동 처리로 데이터 정합성 확보</li>
                         </ul>
                     </span>
                 </div>
@@ -107,10 +95,7 @@
                 <p class="improve-title">Kafka Request-Reply 아키텍처 설계</p>
                 <div class="improve-row"><span class="improve-key">배경</span><span class="improve-val">분산 환경에서 Kafka Reply 토픽의 Consumer 인스턴스 불일치로 타임아웃 빈번 발생</span>
                 </div>
-                <div class="improve-row"><span class="improve-key">해결</span><span class="improve-val">CorrelationId 기반 Reply 라우팅으로 Consumer 간 응답 격리 구현
-                    <ul style="margin:4px 0 0 0;padding-left:10px;">
-                        <li>DLQ 처리 및 재시도 흐름 설계</li>
-                    </ul>
+                <div class="improve-row"><span class="improve-key">해결</span><span class="improve-val">CorrelationId 기반 Reply 라우팅으로 Consumer 간 응답 격리 구현, DLQ 처리 및 재시도 흐름 설계
                 </span>
                 </div>
                 <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>타임아웃: ↓50%→0%</strong> &nbsp; 수동CS: <strong>↓60%</strong> 수동 CS &nbsp;<a
@@ -121,7 +106,7 @@
                       <div class="improve-block">
                 <p class="improve-title">AWS Bedrock LLM 기반 운영 자동화 — 가맹점 영문명 의역 배치</p>
                 <div class="improve-row"><span class="improve-key">배경</span>
-                    <span class="improve-val">신규 가맹점 접수 시 한글명을 영문으로 <strong>직역</strong>(예: <code>코레일유통_화장품점 → KORAILUTONG_HWAJANGPUMJUM</code>)으로 자동 생성하여 가독성 저하 → 운영 담당자가 B/O에서 <strong>월 약 100건</strong>을 수동 수정하며, 담당자 부재 시 누락·지연 발생</span>
+                    <span class="improve-val">신규 가맹점 접수 시 한글명을 영문으로 직역으로 생성하여 가독성 저하 → 운영 담당자가 B/O에서 <strong>월 약 100건</strong>을 수동 수정하며, 담당자 부재 시 가맹접 접수 누락·지연 발생</span>
                 </div>
                 <div class="improve-row"><span class="improve-key">해결</span><span class="improve-val">AWS Bedrock(Claude) 연동 <strong>일 1회 배치</strong> 설계
                     <ul style="margin:4px 0 0 0;padding-left:10px;">
@@ -142,7 +127,7 @@
                 </div>
                 <div class="improve-row"><span class="improve-key">해결</span><span class="improve-val">Cache-Aside 패턴 도입, 트랜잭션 커밋 후 캐시 갱신 순서 보장으로 더티 리드 방지</span>
                 </div>
-                <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>DB I/O: 최대 120→0회</strong>  &nbsp;<strong>Pinpoint APM 기반 측정 결과 API 응답 200ms→30ms (85%↓)</strong>  &nbsp;
+                <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>DB I/O: 최대 120→0회</strong>  &nbsp;<strong>Pinpoint APM 기반 측정 결과 API 응답 200ms→30ms (80%↓)</strong>  &nbsp;
                     <a href="https://www.notion.so/02-Redis-3345cb02eeeb81fc8f2ece133ba5b68a" target="_blank" rel="noopener" class="notion-link">
                         [상세보기]
                     </a>
@@ -155,10 +140,7 @@
                 <div class="improve-row"><span class="improve-key">배경</span><span class="improve-val">POS 결제 완료 후 서버 상태 미동기화로 CS 문의 월 10건 반복</span>
                 </div>
                 <div class="improve-row"><span class="improve-key">해결</span>
-                    <span class="improve-val">SSE·Webhook·Final API 방식을 시장 조사 후 비용·구조 적합성 기준으로 팀 회의 및 사내 PT 발표를 통해 Final API 확정.
-                        <ul style="margin:4px 0 0 0;padding-left:10px;">
-                            <li>결제 최종 상태 단방향 확정 및 멱등성 보장</li>
-                        </ul>
+                    <span class="improve-val">SSE·Webhook·Final API 방식을 시장 조사 후 비용·구조 적합성 기준으로 팀 회의 및 사내 PT 발표를 통해 Final API 확정을 통한 결제 최종 상태 단방향 확정 및 멱등성 보장
                     </span>
                 </div>
                 <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>CS 월 10건→0~1건  ↓95%</strong> &nbsp;<strong>연간 수동 공수 40h 절감</strong>  &nbsp;<a
