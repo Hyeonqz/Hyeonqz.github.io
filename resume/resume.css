@@ -141,6 +141,9 @@ body.dark .act-desc { color: #ccc; }
 body.dark .ce-list li { border-bottom-color: #2a2a2a; }
 body.dark .ce-desc { color: #aaa; }
 body.dark .skill-val { color: #ccc; }
+body.dark .skill-key--strong { color: #f0f0f0; }
+body.dark .skill-key--mid    { color: #aaa; }
+body.dark .skill-key--etc    { color: #777; }
 body.dark .updated { color: #555; }
 body.dark .social-icons a { background: #333; }
 body.dark .social-icons a:hover { background: #555; }
@@ -257,6 +260,10 @@ ul li::before {
   font-weight: 700;
   flex-shrink: 0;
 }
+/* 숙련도 등급별 그레이 단계 */
+.skill-key--strong { color: #222; }
+.skill-key--mid    { color: #5a5a5a; }
+.skill-key--etc    { color: #999; }
 .skill-val { color: #333; }
 
 /* ── Activities ── */
@@ -407,6 +414,9 @@ body.dark .pf-link:hover { color: #e85d04; }
 
   .skill-row { gap: 8px; margin-bottom: 4px; }
   .skill-key { width: 150px; min-width: 150px; font-size: 0.92rem; }
+  .skill-key--strong { color: #222 !important; }
+  .skill-key--mid    { color: #5a5a5a !important; }
+  .skill-key--etc    { color: #999 !important; }
   .skill-val { font-size: 0.92rem; }
 
   .act-name { width: 150px; min-width: 150px; font-size: 0.92rem; }
@@ -417,7 +427,14 @@ body.dark .pf-link:hover { color: #e85d04; }
   .about-photo-wrap { width: 130px; height: 130px; }
 
   a { color: #222 !important; }
+  /* 본문/회사명/활동 링크는 PDF에서도 파란색 유지 (검정 라벨과 구분) */
+  .proj-title a,
+  .company a,
+  .act-desc a,
+  ul.sub-list li a,
   a.notion-link { color: #1a6fc4 !important; }
+  /* es-hangul-java 등 링크 회사명은 PDF에서도 밑줄 표시 */
+  .company a { text-decoration: underline !important; }
   a[href]::after { content: none !important; }
 
   .row + .row { break-inside: avoid; }
