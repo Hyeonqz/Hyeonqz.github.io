@@ -43,7 +43,7 @@
                 국내외 간편결제사(알리페이·위챗페이·라인페이·유니온페이 등) 7개사 이상과 가맹점 POS를 연결하는
                 결제 중계 시스템을 0에서 설계하고 운영했습니다.
             </p>
-                        <p class="label">기술스택</p>
+            <p class="label">기술스택</p>
             <div class="stack-tags">
                 <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">JPA</span>
                 <span class="tag">MySQL</span><span class="tag">Redis</span><span class="tag">Kafka</span>
@@ -98,12 +98,16 @@
                 <div class="improve-row"><span class="improve-key">해결</span><span class="improve-val">CorrelationId 기반 Reply 라우팅으로 Consumer 간 응답 격리 구현, DLQ 처리 및 재시도 흐름 설계
                 </span>
                 </div>
-                <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>타임아웃: ↓50%→0%</strong> &nbsp; 수동CS: <strong>↓60%</strong> 수동 CS &nbsp;<a
-                        href="https://www.notion.so/01-Kafka-3345cb02eeeb80d9a786d314378e2138" target="_blank"
-                        rel="noopener" class="notion-link">[상세보기]</a></span></div>
+                <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>Reply 수신 타임아웃 발생률: ↓50%→0% (분산 환경 Consumer 응답 격리)</strong>
+                    <a href="https://www.notion.so/01-Kafka-3345cb02eeeb80d9a786d314378e2138" target="_blank" rel="noopener" class="notion-link">
+                        [상세보기]
+                    </a>
+                </span>
             </div>
 
-                      <div class="improve-block">
+            </div>
+
+                <div class="improve-block">
                 <p class="improve-title">AWS Bedrock LLM 기반 운영 자동화 — 가맹점 영문명 의역 배치</p>
                 <div class="improve-row"><span class="improve-key">배경</span>
                     <span class="improve-val">신규 가맹점 접수 시 한글명을 영문으로 직역으로 생성하여 가독성 저하 → 운영 담당자가 B/O에서 <strong>월 약 100건</strong>을 수동 수정하며, 담당자 부재 시 가맹접 접수 누락·지연 발생</span>
@@ -123,11 +127,11 @@
 
             <div class="improve-block">
                 <p class="improve-title">Redis Cache-Aside + 트랜잭션 경계 최적화</p>
-                <div class="improve-row"><span class="improve-key">배경</span><span class="improve-val">결제 상태 Polling 120회 기준 DB 직접 조회 360회 발생 — 응답 지연 및 DB 부하</span>
+                <div class="improve-row"><span class="improve-key">배경</span><span class="improve-val">결제 상태 Polling이 매 호출마다 RDB 직접 조회(가맹점 검증·상태 조회 2건) — 거래당 최대 240회(120×2)로 응답 지연·DB 부하</span>
                 </div>
                 <div class="improve-row"><span class="improve-key">해결</span><span class="improve-val">Cache-Aside 패턴 도입, 트랜잭션 커밋 후 캐시 갱신 순서 보장으로 더티 리드 방지</span>
                 </div>
-                <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>DB I/O: 최대 120→0회</strong>  &nbsp;<strong>Pinpoint APM 기반 측정 결과 API 응답 200ms→30ms (80%↓)</strong>  &nbsp;
+                <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>RDB 직접 조회: 거래당 240→0회</strong>  &nbsp;<strong>(Redis 최우선 조회, 쓰기는 상태 변경 시에만) Pinpoint APM 기반 측정 결과 API 응답 200ms→30ms (85%↓)</strong>  &nbsp;
                     <a href="https://www.notion.so/02-Redis-3345cb02eeeb81fc8f2ece133ba5b68a" target="_blank" rel="noopener" class="notion-link">
                         [상세보기]
                     </a>
@@ -166,22 +170,24 @@
                 <div class="improve-row">
                     <span class="improve-key">배경</span>
                     <span class="improve-val">
-                    단일 모놀리식 구조에서 공통 코드 비대화 및 비즈니스 확장 시 모듈 간 강한 트랜잭션 동기 결합 발생—
-                    특정 기능의 장애가 전체 서비스로 전파되고, 향후 독립적인 MSA 서비스 분리 시 거대한 병목 요인으로 작용
+                        단일 모놀리식에서 공통 코드가 비대화돼 거의 모든 변경이 공통 영역을 건드림 → merge 충돌·테스트 상호 간섭·배포-수정 반복으로 팀 병렬 작업이 막힘. 
+                        특정 기능의 장애가 전체 서비스로 전파되고, 모듈 간 동기 결합은 장애 전파·향후 MSA 분리 시 병목 리스크로 이어짐.
                     </span>
                 </div>
                 <div class="improve-row">
                     <span class="improve-key">해결</span>
                     <span class="improve-val">
-                        패키지 레벨에 헥사고날 구조를 채용하여 도메인을 외부 기술로부터 격리하고, ApplicationEventPublisher 기반 비동기 이벤트 레이어 도입
+                        1. Gradle 멀티 모듈 분리(서버 아키텍쳐 기준 API/TCP 경계 정렬) → 빌드·테스트·소유권 독립 <br>
+                        2. 패키지 레벨 헥사고날 아키텍로 도메인을 인프라에서 격리(포트/어댑터) -> 기술 교체 유연성 확보 <br>
+                        3. ApplicationEventPublisher + @TransactionalEventListener(AFTER_COMMIT)로 모듈 간 동기 트랜잭션 결합 제거
                     </span>
                 </div>
                 <div class="improve-row">
                     <span class="improve-key">결과</span>
                     <span class="improve-val">
-                        <strong>모듈 간 트랜잭션 완벽 분리 및 디커플링</strong>
-                        <strong>Gradle 빌드 시간 55s → 35s (36%) 단축</strong> &nbsp;
-                        <a href="https://app.notion.com/p/DDD-36f5cb02eeeb80559bd1f562e26b2330" target="_blank" rel="noopener" class="notion-link">[상세보기]</a>
+                        <strong>모듈 경계 독립화: 빌드·테스트·소유권 분리로 팀 병렬 작업 가능 (부수적으로 Gradle 빌드 55→35s) <a href="https://app.notion.com/p/DDD-36f5cb02eeeb80559bd1f562e26b2330" target="_blank" rel="noopener" class="notion-link">[상세보기]</a> </strong> <br>
+                        <strong>트랜잭션 결합 제거: 모듈 간 동기 호출을 AFTER_COMMIT 이벤트로 전환 → 한 모듈 트랜잭션이 타 모듈로 전파되지 않음</strong> <br>
+                        <strong>도메인-인프라 격리: 포트/어댑터로 기술 교체 유연성·테스트 용이성 확보</strong>
                     </span>
                 </div>
             </div>
@@ -287,11 +293,10 @@
 
             <p class="label">역할 및 구현</p>
             <ul class="outcome-list">
-                <li><strong>HashiCorp Vault 도입</strong> — application.yml 평문 저장 방식 암호화 키를 Vault 중앙집중식 관리로 전환, Spring
-                    Cloud Vault 연동으로 런타임 시크릿 주입, 키 로테이션 자동화
-                </li>
+                <li><strong>HashiCorp Vault 도입</strong> — application.yml 암호화키 저장 방식을 HashiCorp Vault 중앙집중식 관리로 전환</li>
+                <li>Spring Cloud Vault 런타임 시크릿 주입 + 키 중앙 관리로 로테이션 체계 확보</li>
                 <li><strong>Keycloak 기반 백오피스 2FA 구현</strong> — 인증/인가 시스템 강화</li>
-                <li><strong>민감정보 접근 로그 추적 체계 구축</strong> — JPA Auditing + Kafka 활용</li>
+                <li>민감정보 변경·접근 로그 추적 체계 구축 — 변경(쓰기)은 JPA Auditing, 조회(읽기) 접근은 AOP 인터셉터로 기록 후 Kafka 비동기 적재</li>
                 <li>코드 리뷰 체크리스트에 PCI DSS 요구사항 반영</li>
                 <li>보안 취약점 해결: High <strong>3건</strong>, Medium <strong>5건</strong></li>
             </ul>

@@ -109,7 +109,7 @@
                             <ul class="sub-list">
                                 <li><strong>배경:</strong> 분산 환경에서 Kafka Reply 토픽 수신 Consumer 인스턴스 불일치로 타임아웃 빈번 발생</li>
                                 <li><strong>진행:</strong> CorrelationId 기반 Reply 라우팅 설계로 Consumer 간 응답 격리</li>
-                                <li><strong>결과:</strong> 타임아웃 50%→0%, 장애 격리환경 구축</li>
+                                <li><strong>결과:</strong> 장애 격리환경 구축</li>
                             </ul>
                         </li>
                         <li>
@@ -123,9 +123,9 @@
                         <li>
                             <b>Redis Cache-Aside + 트랜잭션 경계 최적화</b> <a href="https://www.notion.so/02-Redis-3345cb02eeeb81fc8f2ece133ba5b68a" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
-                                <li><strong>배경:</strong> 거래 상태 Polling 120회 기준 DB 직접 조회 360회 발생 — 응답 지연 및 DB 부하</li>
+                                <li><strong>배경:</strong> 거래 상태(Polling) 이 매 호출마다 RDB 직접 조회(가맹점 검증·상태 조회 2건) — 거래당 최대 240회(120*2)로 응답 지연 및 DB 부하</li>
                                 <li><strong>진행:</strong> Cache-Aside 패턴 도입 + 트랜잭션 커밋 후 캐시 갱신으로 정합성 확보</li>
-                                <li><strong>결과:</strong> DB I/O 120회→0회, Pinpoint APM 기반 측정 결과 API 응답 200ms→30ms (85%↓)</li>
+                                <li><strong>결과:</strong> 폴링 구간 RDB 직접 조회 240→0회(Redis 최우선 조회, 쓰기는 상태 변경 시에만), Pinpoint APM 측정 API 응답 200ms→30ms (85%↓)</li>
                             </ul>
                         </li>
                         <li>
