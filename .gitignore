@@ -13,3 +13,15 @@ resume/resume-data.yaml
 
 # PDF 파일 제외 (이력서/경력기술서 원본은 외부 공개하지 않음)
 *.pdf
+
+# IDE 설정 제외
+.idea/
+
+# macOS 시스템 파일 제외
+.DS_Store
+
+# AI 도구 관련 파일 제외 (oh-my-claudecode, Claude 등)
+.omc/
+.claude/
+.mcp.json
+CLAUDE.md

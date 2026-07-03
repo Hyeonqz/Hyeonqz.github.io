@@ -96,7 +96,7 @@
                         <li>C++ DLL 기반 레거시 POS 네이티브 모듈 개발 → 이기종 시스템 통합, 월 거래액 30% 확장</li>
                         <li>DOCX → PDF 전환 유료 솔루션 오픈소스 전환, 연 $999 비용 절감</li>
                         <li>
-                            <b>MSA 분산 환경 실시간 Push 아키텍처 설계</b>
+                            <b>Kafka 분산 환경 실시간 Push 아키텍처 설계</b>
                                 <a href="https://www.notion.so/05-MSA-TCP-Push-3505cb02eeeb80889035f19b9c20aa17" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
                                 <li><strong>배경:</strong> TCP Channel 소유권 불일치로 API 서버에서 POS 직접 Push 불가</li>
@@ -105,7 +105,7 @@
                             </ul>
                         </li>
                         <li>
-                            <b>Kafka Request-Reply 아키텍처 설계</b> <a href="https://www.notion.so/01-Kafka-3345cb02eeeb80d9a786d314378e2138" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                            <b>Kafka Request-Reply 통합 아키텍처 설계</b> <a href="https://www.notion.so/01-Kafka-3345cb02eeeb80d9a786d314378e2138" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
                                 <li><strong>배경:</strong> 분산 환경에서 Kafka Reply 토픽 수신 Consumer 인스턴스 불일치로 타임아웃 빈번 발생</li>
                                 <li><strong>진행:</strong> CorrelationId 기반 Reply 라우팅 설계로 Consumer 간 응답 격리</li>

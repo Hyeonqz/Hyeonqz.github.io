@@ -114,9 +114,9 @@
                 </div>
                 <div class="improve-row"><span class="improve-key">해결</span><span class="improve-val">AWS Bedrock(Claude) 연동 <strong>일 1회 배치</strong> 설계
                     <ul style="margin:4px 0 0 0;padding-left:10px;">
-                        <li>english_name_status 플래그(DRAFT / AI_TRANSLATED / MANUAL)로 처리 상태 관리</li>
+                        <li>english_name_status 플래그(DRAFT / AI_TRANSLATED / MANUAL / FAILED)로 처리 상태 관리</li>
                         <li>original_english_name 컬럼으로 원본 보존(롤백·감사 대응)</li>
-                        <li>실패 건 스킵 후 다음 배치 재처리</li>
+                        <li>실패 건 스킵 후 다음 배치 재처리 또는 수동 API 호출을 통한 처리</li>
                     </ul>
                 </div>
                 <div class="improve-row"><span class="improve-key">해석</span><span class="improve-val">직역 결과 <code>KORAILUTONG_HWAJANGPUMJUM</code> → 의역 결과 <code>KORAILRETAIL_COSMESTICS</code> 형태로 파스칼케이스 + 카테고리 구분 영문명 자동 생성</span>
