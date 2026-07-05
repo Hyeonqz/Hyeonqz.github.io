@@ -31,7 +31,7 @@
         </div>
     
         <p class="company-desc">
-            국내은행 및 해외 간편결제사와 가맹점(POS) 사이의 QR 결제 데이터를 중계·처리하는 B2C 핀테크 스타트업에서 근무를 했습니다.<br>
+            국내은행 및 해외 간편결제사와 가맹점(POS) 사이의 QR 결제 데이터를 중계·처리하는 B2B·B2C 핀테크 스타트업에서 근무하고 있습니다.<br>
             서버 개발자로 입사하여 QR 결제 중계 시스템에 필요한 설계·구현·운영 전 과정을 담당하고 있습니다.
         </p>
 
@@ -40,35 +40,35 @@
             <p class="proj-num">Project 01 &nbsp;·&nbsp; <span class="proj-date">2024.02 – ing</span></p>
             <h3>QR 결제 중계 플랫폼 구축 및 운영</h3>
             <p style="font-size:0.88rem;color:#555;line-height:1.8;margin-bottom:12px;">
-                국내외 간편결제사(알리페이·위챗페이·라인페이·유니온페이 등) 7개사 이상과 가맹점 POS를 연결하는
+                국내외 간편결제사(알리페이·위챗페이·라인페이·유니온페이 등) 7개사와 가맹점 POS를 연결하는
                 결제 중계 시스템을 0에서 설계하고 운영했습니다.
             </p>
             <p class="label">기술스택</p>
             <div class="stack-tags">
                 <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">JPA</span>
                 <span class="tag">MySQL</span><span class="tag">Redis</span><span class="tag">Kafka</span>
-                <span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">NextJs</span>
+                <span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">Next.js</span>
             </div>
 
             <p class="label">역할</p>
             <ul class="outcome-list">
-                <li>REST API Spec 15개 이상 정의 및 구현</li>
+                <li>REST API 15종 정의 및 구현</li>
                 <li>QR 결제 상용화를 위한 온라인 가맹 접수 서비스 개발 · 현재 누적 2만 건 이상 처리 중</li>
                 <li>DLL 기반 레거시 POS 네이티브 모듈 개발로 이기종 시스템 통합</li>
-                <li>Spring Boot &amp; React 기반 결제 테스트 자동화 웹 개발 — 외부기관 커뮤니케이션 · 테스트 비용 <strong>50% 이상 절감</strong></li>
+                <li>Spring Boot &amp; React 기반 결제 테스트 자동화 웹 개발 — 외부기관 연동 리드타임 <strong>1개월+ → 2주 단축</strong></li>
                 <li>DOCX → PDF 변환 유료 솔루션 → 오픈소스 전환 (연 $999 비용 절감)</li>
-                <li>Thymeleaf → React & NextJs 환경 마이그레이션</li>
+                <li>Thymeleaf → React & Next.js 환경 마이그레이션</li>
             </ul>
 
             <p class="label">기술적 개선 사항</p>
             <div class="improve-block">
                 <p class="improve-title">
-                    MSA 분산 환경 실시간 Push 아키텍처 설계 — Kafka 기반 채널 소유권 문제 해결
+                    분산 환경 실시간 Kafka Push 아키텍처 설계 — Redis 기반 채널 소유권 문제 해결
                 </p>
                 <div class="improve-row">
                     <span class="improve-key">배경</span>
                     <span class="improve-val">
-                        MSA 환경에서 결제 결과 실시간 Push 기능 구현 중,Netty Channel이 특정 서버에만 존재하여 분산 인스턴스 간 채널 소유권 관리 문제 발생
+                        분산 환경에서 결제 결과 실시간 Push 기능 구현 중, Netty Channel이 특정 서버에만 존재하여 분산 인스턴스 간 채널 소유권 관리 문제 발생
                 </span>
                 </div>
                 <div class="improve-row">
@@ -76,14 +76,12 @@
                     <span class="improve-val">
                         API 서버는 Kafka produce만 담당, Socket 서버 전체가 인스턴스별 고유 groupId로 consume 후
                         Redis 기반 소유 서버 판별로 Channel 보유 서버만 Push 실행
-                        <ul style="margin:4px 0 0 0;padding-left:10px;">
-                        </ul>
                     </span>
                 </div>
                 <div class="improve-row">
                     <span class="improve-key">결과</span>
                     <span class="improve-val">
-                        <strong>API 서버 ↔ TCP 서버 완전 디커플링</strong>
+                        <strong>API 서버 ↔ TCP 서버 완전 디커플링</strong> &nbsp;
                         <strong>중복 Push 0건</strong> &nbsp;
                         <strong>장애 격리 구조 확보</strong> &nbsp;
                         <a href="https://www.notion.so/05-MSA-TCP-Push-3505cb02eeeb80889035f19b9c20aa17" target="_blank" rel="noopener" class="notion-link">[상세보기]</a>
@@ -93,12 +91,14 @@
 
             <div class="improve-block">
                 <p class="improve-title">Kafka Request-Reply 아키텍처 설계</p>
-                <div class="improve-row"><span class="improve-key">배경</span><span class="improve-val">분산 환경에서 Kafka Reply 토픽의 Consumer 인스턴스 불일치로 타임아웃 빈번 발생</span>
+                <div class="improve-row"><span class="improve-key">배경</span><span class="improve-val">국내·해외 결제 시스템 통합 시 동기 REST 직접 연결은 상대 시스템의 장애·지연이 그대로 전파되고 엔드포인트·방화벽·인증 결합 발생 → 기존 Kafka 인프라를 재사용해 Request-Reply 패턴으로 통신 통합 (가용성 디커플링)</span>
                 </div>
-                <div class="improve-row"><span class="improve-key">해결</span><span class="improve-val">CorrelationId 기반 Reply 라우팅으로 Consumer 간 응답 격리 구현, DLQ 처리 및 재시도 흐름 설계
+                <div class="improve-row"><span class="improve-key">문제</span><span class="improve-val">분산 환경에서 Reply 토픽 Consumer 인스턴스 불일치로 요청 서버가 응답을 수신하지 못해 타임아웃 빈번 발생</span>
+                </div>
+                <div class="improve-row"><span class="improve-key">해결</span><span class="improve-val">인스턴스별 전용 Reply 토픽 구독 + CorrelationId 매칭키로 요청-응답 상관관계 보장, 실패 건 DLQ 적재 후 DB 저장
                 </span>
                 </div>
-                <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>Reply 수신 타임아웃 발생률: ↓50%→0% (분산 환경 Consumer 응답 격리)</strong>
+                <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>팀 간 장애 전파 격리 달성 · Reply 타임아웃 0건 · DLQ 적재 건 DB 저장으로 운영팀 거래 모니터링 활용</strong>
                     <a href="https://www.notion.so/01-Kafka-3345cb02eeeb80d9a786d314378e2138" target="_blank" rel="noopener" class="notion-link">
                         [상세보기]
                     </a>
@@ -110,28 +110,28 @@
                 <div class="improve-block">
                 <p class="improve-title">AWS Bedrock LLM 기반 운영 자동화 — 가맹점 영문명 의역 배치</p>
                 <div class="improve-row"><span class="improve-key">배경</span>
-                    <span class="improve-val">신규 가맹점 접수 시 한글명을 영문으로 직역으로 생성하여 가독성 저하 → 운영 담당자가 B/O에서 <strong>월 약 100건</strong>을 수동 수정하며, 담당자 부재 시 가맹접 접수 누락·지연 발생</span>
+                    <span class="improve-val">신규 가맹점 접수 시 한글명을 영문으로 직역 생성하여 가독성 저하 → 운영 담당자가 B/O에서 <strong>월 약 100건</strong>을 수동 수정하며, 담당자 부재 시 가맹점 접수 누락·지연 발생</span>
                 </div>
-                <div class="improve-row"><span class="improve-key">해결</span><span class="improve-val">AWS Bedrock(Claude) 연동 <strong>일 1회 배치</strong> 설계
+                <div class="improve-row"><span class="improve-key">해결</span><span class="improve-val">AWS Bedrock(Claude) 연동 <strong>일 1회 배치</strong> 설계·구현
                     <ul style="margin:4px 0 0 0;padding-left:10px;">
                         <li>english_name_status 플래그(DRAFT / AI_TRANSLATED / MANUAL / FAILED)로 처리 상태 관리</li>
                         <li>original_english_name 컬럼으로 원본 보존(롤백·감사 대응)</li>
                         <li>실패 건 스킵 후 다음 배치 재처리 또는 수동 API 호출을 통한 처리</li>
-                    </ul>
+                    </ul></span>
                 </div>
-                <div class="improve-row"><span class="improve-key">해석</span><span class="improve-val">직역 결과 <code>KORAILUTONG_HWAJANGPUMJUM</code> → 의역 결과 <code>KORAILRETAIL_COSMESTICS</code> 형태로 파스칼케이스 + 카테고리 구분 영문명 자동 생성</span>
+                <div class="improve-row"><span class="improve-key">예시</span><span class="improve-val">직역 결과 <code>KORAILUTONG_HWAJANGPUMJUM</code> → 의역 결과 <code>KORAILRETAIL_COSMETICS</code> 형태로 파스칼케이스 + 카테고리 구분 영문명 자동 생성</span>
                 </div>
-                <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>수동 공수: 월 100건 → 5건 (↓95%)</strong> &nbsp; <strong>영문명 품질 일관화</strong> &nbsp; <strong>담당자 부재 리스크 제거</strong></span>
+                <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>수동 공수: 월 100건 → 5건 (95%↓)</strong> &nbsp; <strong>영문명 품질 일관화</strong> &nbsp; <strong>담당자 부재 리스크 제거</strong></span>
                 </div>
             </div>
 
             <div class="improve-block">
                 <p class="improve-title">Redis Cache-Aside + 트랜잭션 경계 최적화</p>
-                <div class="improve-row"><span class="improve-key">배경</span><span class="improve-val">결제 상태 Polling이 매 호출마다 RDB 직접 조회(가맹점 검증·상태 조회 2건) — 거래당 최대 240회(120×2)로 응답 지연·DB 부하</span>
+                <div class="improve-row"><span class="improve-key">배경</span><span class="improve-val">결제 상태 Polling 최대 120회 × 회당 조인 쿼리 2회·업데이트 1회 — 거래당 최대 360쿼리가 RDB로 직행해 불필요 DB 리소스 사용</span>
                 </div>
                 <div class="improve-row"><span class="improve-key">해결</span><span class="improve-val">Cache-Aside 패턴 도입, 트랜잭션 커밋 후 캐시 갱신 순서 보장으로 더티 리드 방지</span>
                 </div>
-                <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>RDB 직접 조회: 거래당 240→0회</strong>  &nbsp;<strong>(Redis 최우선 조회, 쓰기는 상태 변경 시에만) Pinpoint APM 기반 측정 결과 API 응답 200ms→30ms (85%↓)</strong>  &nbsp;
+                <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>RDB 쿼리: 거래당 360→0회</strong> (Redis 최우선 조회, 쓰기는 상태 변경 시에만) &nbsp;<strong>API 응답 200ms→30ms (85%↓, Pinpoint APM 측정)</strong> &nbsp;
                     <a href="https://www.notion.so/02-Redis-3345cb02eeeb81fc8f2ece133ba5b68a" target="_blank" rel="noopener" class="notion-link">
                         [상세보기]
                     </a>
@@ -144,21 +144,21 @@
                 <div class="improve-row"><span class="improve-key">배경</span><span class="improve-val">POS 결제 완료 후 서버 상태 미동기화로 CS 문의 월 10건 반복</span>
                 </div>
                 <div class="improve-row"><span class="improve-key">해결</span>
-                    <span class="improve-val">SSE·Webhook·Final API 방식을 시장 조사 후 비용·구조 적합성 기준으로 팀 회의 및 사내 PT 발표를 통해 Final API 확정을 통한 결제 최종 상태 단방향 확정 및 멱등성 보장
+                    <span class="improve-val">SSE·Webhook·Final API 3가지 방식을 시장 조사 후 비용·구조 적합성 기준으로 비교(팀 회의·사내 PT 발표)하여 Final API 채택 — 결제 최종 상태 단방향 확정, 재시도 멱등성 보장
                     </span>
                 </div>
-                <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>CS 월 10건→0~1건  ↓95%</strong> &nbsp;<strong>연간 수동 공수 40h 절감</strong>  &nbsp;<a
+                <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>CS 월 10건→0~1건 (95%↓)</strong> &nbsp;<strong>연간 수동 공수 40h 절감</strong>  &nbsp;<a
                         href="https://www.notion.so/03-CS-95-Final-API-3345cb02eeeb81afb108d6d2517a8d6f" target="_blank"
                         rel="noopener" class="notion-link">[상세보기]</a></span></div>
             </div>
 
             <div class="improve-block">
                 <p class="improve-title">Outbox 패턴 + SFTP 세션 풀링</p>
-                <div class="improve-row"><span class="improve-key">배경</span><span class="improve-val">SFTP 파일 전송 실패 시 유실 감지 불가 — 유실률 100%, 수동 모니터링 의존</span>
+                <div class="improve-row"><span class="improve-key">배경</span><span class="improve-val">SFTP 파일 전송 실패 시 유실 감지 불가 — 장애 발생시 파일 유실률 100%, 수동 모니터링 의존</span>
                 </div>
                 <div class="improve-row"><span class="improve-key">해결</span><span class="improve-val">Outbox 패턴으로 전송 이벤트 DB 영속화, SFTP 세션 풀링으로 연결 안정성 확보, 파일 I/O 비동기(@Async) 처리</span>
                 </div>
-                <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>파일 유실률: ↓100%→0%</strong>  &nbsp;<strong>응답시간 4s→1s: ↓75%</strong> &nbsp;<strong>10,000건 무장애</strong> &nbsp;<a
+                <div class="improve-row"><span class="improve-key">결과</span><span class="improve-val"><strong>전송 실패 건 자동 재처리로 유실 0건</strong> (기존: 실패 시 전량 유실·수동 복구) &nbsp;<strong>응답시간 4s→1s (75%↓)</strong> &nbsp;<strong>10,000건 무장애</strong> &nbsp;<strong>장애 감지 수동(불특정) → 30분 내 자동 감지</strong> &nbsp;<a
                         href="https://www.notion.so/04-Outbox-0-3345cb02eeeb81ecbc74e89dfb547a56" target="_blank"
                         rel="noopener" class="notion-link">[상세보기]</a></span></div>
             </div>
@@ -177,15 +177,15 @@
                 <div class="improve-row">
                     <span class="improve-key">해결</span>
                     <span class="improve-val">
-                        1. Gradle 멀티 모듈 분리(서버 아키텍쳐 기준 API/TCP 경계 정렬) → 빌드·테스트·소유권 독립 <br>
-                        2. 패키지 레벨 헥사고날 아키텍로 도메인을 인프라에서 격리(포트/어댑터) -> 기술 교체 유연성 확보 <br>
+                        1. Gradle 멀티 모듈 분리(서버 아키텍처 기준 API/TCP 경계 정렬) → 빌드·테스트·소유권 독립 <br>
+                        2. 패키지 레벨 헥사고날 아키텍처로 도메인을 인프라에서 격리(포트/어댑터) → 기술 교체 유연성 확보 <br>
                         3. ApplicationEventPublisher + @TransactionalEventListener(AFTER_COMMIT)로 모듈 간 동기 트랜잭션 결합 제거
                     </span>
                 </div>
                 <div class="improve-row">
                     <span class="improve-key">결과</span>
                     <span class="improve-val">
-                        <strong>모듈 경계 독립화: 빌드·테스트·소유권 분리로 팀 병렬 작업 가능 (부수적으로 Gradle 빌드 55→35s) <a href="https://app.notion.com/p/DDD-36f5cb02eeeb80559bd1f562e26b2330" target="_blank" rel="noopener" class="notion-link">[상세보기]</a> </strong> <br>
+                        <strong>모듈 경계 독립화: 빌드·테스트·소유권 분리로 팀 병렬 작업 가능 (부수적으로 Gradle 빌드 55s→35s, 36%↓) <a href="https://app.notion.com/p/DDD-36f5cb02eeeb80559bd1f562e26b2330" target="_blank" rel="noopener" class="notion-link">[상세보기]</a> </strong> <br>
                         <strong>트랜잭션 결합 제거: 모듈 간 동기 호출을 AFTER_COMMIT 이벤트로 전환 → 한 모듈 트랜잭션이 타 모듈로 전파되지 않음</strong> <br>
                         <strong>도메인-인프라 격리: 포트/어댑터로 기술 교체 유연성·테스트 용이성 확보</strong>
                     </span>
@@ -195,9 +195,9 @@
             <p class="label">종합 성과</p>
             <ul class="outcome-list">
                 <li>일 평균 거래 <strong>50건 → 5,000건 (100배)</strong> 성장</li>
-                <li>결제사 7개사 연동을 통한 매출 <strong>80%</strong> 이상 기여</li>
-                <li>레거시 POS 통합을 통한 월 거래액 <strong>30% 확장</strong></li>
-                <li>AI 기반 운영 자동화로 반복 수동 업무 <strong>월 100건 → 5건(↓95%)</strong> 무인화 (AWS Bedrock 일 배치)</li>
+                <li>결제사 7개사 연동 — 연동 결제망이 전사 거래액의 <strong>80%</strong> 처리</li>
+                <li>레거시 POS 통합으로 월 거래액 <strong>30% 증가 기반 확보</strong></li>
+                <li>AI 기반 운영 자동화로 반복 수동 업무 <strong>월 100건 → 5건 (95%↓)</strong> 무인화 (AWS Bedrock 일 배치)</li>
             </ul>
         </div>
 
@@ -206,7 +206,7 @@
             <p class="proj-num">Project 02 &nbsp;·&nbsp; <span class="proj-date">2026.01 – ing</span></p>
             <h3>진료비 하이패스 프로젝트</h3>
             <p style="font-size:0.88rem;color:#555;line-height:1.8;margin-bottom:12px;">
-                병원 EMR 시스템과 연동하여 진료비 하이패스 결제 서비스를 개발했습니다.
+                병원 EMR 시스템과 연동하여 진료비 하이패스 결제 서비스를 개발하고 있습니다.
             </p>
 
             <p class="label">기술스택</p>
@@ -221,6 +221,11 @@
                 <li>병원 EMR 시스템 연동을 위한 <strong>DLL 네이티브 모듈 개발</strong> — 이기종 시스템 간 인터페이스 설계 및 구현</li>
                 <li><strong>Next.js (TypeScript) + React</strong> 기반 진료비 하이패스 접수 화면 본인인증 연동 및 결제 플로우 연동</li>
                 <li>Node.js 18 → 22 버전 호환 이슈 해결 — 커스텀 Docker Compose 기반 이미지 빌드를 통한 Jenkins CI/CD 파이프라인 구성</li>
+            </ul>
+
+            <p class="label">성과</p>
+            <ul class="outcome-list">
+                <li>연동 EMR 시스템 2곳 · 일 자동이체 <strong>30건</strong> 이상 처리 중</li>
             </ul>
         </div>
 
@@ -245,12 +250,12 @@
                 <li>CI/CD 파이프라인 설계 및 구축 (Jenkins · Docker · AWS)</li>
                 <li>헥사고날 아키텍처 기반 백엔드 API 구조 표준화</li>
                 <li>React Native 기반 크로스 플랫폼 앱 개발 참여</li>
-                <li>Claude Code(아키텍처 설계·복잡한 비즈니스 로직)와 Codex(코드 구현·테스트·QA)로 AI 역할을 분리해 적용, 개발 기간 50% 이상 단축</li>
+                <li>Claude Code(아키텍처 설계·복잡 로직) · Codex(구현·테스트) 역할 분리 워크플로우 정립 — 개발 일정 50% 이상 단축 <strong>(12주 → 6주)</strong></li>
             </ul>
 
             <p class="label">성과</p>
             <ul class="outcome-list">
-                <li>POS 미보유 영세 가맹점 1,000개 이상 신규 확보 및 월 매출 5% 이상 기여</li>
+                <li>출시 후 POS 미보유 영세 가맹점 <strong>1,000개+</strong>가 사용 — 월 매출 5% 이상 신규 기여</li>
             </ul>
         </div>
 
@@ -308,7 +313,7 @@
                     class="tag">Spring Boot</span>
             </div>
         </div>
-        <p class="updated">Updated: June 2026</p>
+        <p class="updated">Updated: July 2026</p>
     </section>
 </div>
 <script>

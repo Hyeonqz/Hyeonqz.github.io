@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>진현규 | Software development engineer</title>
+    <title>진현규 | Backend Engineer</title>
     <meta name="description" content="진현규 - 백엔드 개발자 이력서">
     <link rel="stylesheet" href="/resume/resume.css">
 </head>
@@ -55,8 +55,8 @@
             </div>
             <div class="col-right">
                 <p class="about-text">
-                    핀테크 결제 도메인 서버 개발자로서, QR 결제 중계 시스템을 0부터 구축하며
-                    일 평균 거래 <strong>50건 → 5,000건(100배)</strong> 성장 과정을 주도했습니다.
+                    핀테크 결제 도메인 서버 개발자로서, QR 결제 중계 시스템을 <b>0→1로 구축</b>하고, 
+                    일 평균 거래 <strong>50건 → 5,000건(100배)</strong> 성장 구간을 무중단으로 운영해왔습니다.
                     국내외 간편결제사 7개사 연동, Kafka 기반 분산 결제 아키텍처 설계,
                     Redis 캐시 최적화(응답 <strong>85%↓</strong>) 등 실제 서비스 트래픽 환경에서 문제를 분석하여
                     구조적 개선을 이끌었습니다.
@@ -66,7 +66,7 @@
                     <br><br>
 
                     <strong>AWS Bedrock 기반 LLM 자동화 배치</strong>를 설계·구현해
-                    가맹점 영문명 수동 수정 업무를 월 100건 → 5건으로 줄인 경험이 있습니다. 현재는 운영팀을 대상으로 AI 활용법을 교육하며, 비개발 직군과 AI가 함께 작동하는 협업 구조를 만들어가는 과정에 있습니다.
+                    가맹점 영문명 수동 수정 업무를 월 100건 → 5건으로 줄인 경험이 있습니다. 현재는 운영팀을 대상으로 AI 활용 교육을 2회 진행해 3명이 실무에 적용 중이며, 비개발 직군과 AI가 함께 작동하는 협업 구조를 만들어가는 과정에 있습니다.
                 </p>
             </div>
         </div>
@@ -90,26 +90,28 @@
                 <div class="proj">
                     <p class="proj-title">1. QR 중계 시스템 개발 및 운영 · <small style="font-weight:400;color:#666">국내·국외 QR 결제 중계 서비스 플랫폼</small></p>
                     <ul>
-                        <li>국내·국외 간편결제사 <strong>7개사 이상</strong> 연동 개발 (라인,알리,위챗,유니온,하나은행 등)</li>
-                        <li>POS 및 대형 가맹점 연동 REST API Spec <strong>15개 이상</strong> 정의 및 구현</li>
-                        <li>PCI DSS 컴플라이언스 달성 기여 및 금융당국 선불 라이센스 취득 과정 전반 참여</li>
-                        <li>C++ DLL 기반 레거시 POS 네이티브 모듈 개발 → 이기종 시스템 통합, 월 거래액 30% 확장</li>
-                        <li>DOCX → PDF 전환 유료 솔루션 오픈소스 전환, 연 $999 비용 절감</li>
+                        <li>국내·국외 간편결제사 <strong>7개사</strong> 연동 (라인·알리·위챗·유니온·하나은행 등) — 결제망이 전사 거래액의 80% 처리</li>
+                        <li>POS·대형 가맹점 연동 REST API <strong>15종 설계·구현</strong> — 온라인 가맹 접수 <b>누적 20,000건+</b> 처리 중</li>
+                        <li>PCI DSS 컴플라이언스 달성 — 보안 취약점 High 3건·Medium 5건 해결</li>
+                        <li>C++ DLL 레거시 POS 네이티브 모듈 개발 — 연동 불가였던 채널 개설로 월 거래액 30% 증가 기반 확보</li>
+                        <li>DOCX → PDF 변환 유료 솔루션을 오픈소스로 전환 — 연 $999 비용 절감</li>
+                        <li>모놀리식 → Gradle 멀티모듈·헥사고날 전환 — 모듈 간 트랜잭션 결합 제거(AFTER_COMMIT 이벤트), 빌드 55s → 35s (36%↓)</li>
                         <li>
                             <b>Kafka 분산 환경 실시간 Push 아키텍처 설계</b>
                                 <a href="https://www.notion.so/05-MSA-TCP-Push-3505cb02eeeb80889035f19b9c20aa17" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
                                 <li><strong>배경:</strong> TCP Channel 소유권 불일치로 API 서버에서 POS 직접 Push 불가</li>
                                 <li><strong>진행:</strong> Kafka produce/consume 분리 + Redis 소유 서버 판별 + 전략 패턴으로 확장 구조 설계</li>
-                                <li><strong>결과:</strong> API↔TCP 서버 완전 디커플링, 중복 Push 제거, 장애 격리 구조 확보</li>
+                                <li><strong>결과:</strong> API↔TCP 서버 완전 디커플링, 중복 Push 0건</li>
                             </ul>
                         </li>
                         <li>
                             <b>Kafka Request-Reply 통합 아키텍처 설계</b> <a href="https://www.notion.so/01-Kafka-3345cb02eeeb80d9a786d314378e2138" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
-                                <li><strong>배경:</strong> 분산 환경에서 Kafka Reply 토픽 수신 Consumer 인스턴스 불일치로 타임아웃 빈번 발생</li>
-                                <li><strong>진행:</strong> CorrelationId 기반 Reply 라우팅 설계로 Consumer 간 응답 격리</li>
-                                <li><strong>결과:</strong> 장애 격리환경 구축</li>
+                                <li><strong>배경:</strong> 국내·해외 결제 시스템 통합 시 동기 REST 직접 연결은 상대 시스템의 장애·지연이 그대로 전파 → 기존 Kafka 인프라를 재사용해 Request-Reply 패턴으로 통신 통합 (가용성 디커플링)</li>
+                                <li><strong>문제:</strong> 분산 환경에서 Reply 토픽 Consumer 인스턴스 불일치로 요청 서버가 응답을 수신하지 못해 타임아웃 발생</li>
+                                <li><strong>해결:</strong> 인스턴스별 전용 Reply 토픽 + CorrelationId 매칭키로 요청-응답 상관관계 보장, 실패 건 DLQ 적재</li>
+                                <li><strong>결과:</strong> 팀 간 장애 전파 격리 달성, Reply 타임아웃 0건 · 실패 건 DLQ→DB 적재로 운영팀 거래 모니터링 활용</li>
                             </ul>
                         </li>
                         <li>
@@ -123,9 +125,9 @@
                         <li>
                             <b>Redis Cache-Aside + 트랜잭션 경계 최적화</b> <a href="https://www.notion.so/02-Redis-3345cb02eeeb81fc8f2ece133ba5b68a" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
-                                <li><strong>배경:</strong> 거래 상태(Polling) 이 매 호출마다 RDB 직접 조회(가맹점 검증·상태 조회 2건) — 거래당 최대 240회(120*2)로 응답 지연 및 DB 부하</li>
+                                <li><strong>배경:</strong> 거래 상태 조회(Polling) 최대 120회 × 회당 조인 2·업데이트 1 쿼리 — 거래당 최대 360쿼리가 RDB로 직행해 DB 커넥션 점유</li>
                                 <li><strong>진행:</strong> Cache-Aside 패턴 도입 + 트랜잭션 커밋 후 캐시 갱신으로 정합성 확보</li>
-                                <li><strong>결과:</strong> 폴링 구간 RDB 직접 조회 240→0회(Redis 최우선 조회, 쓰기는 상태 변경 시에만), Pinpoint APM 측정 API 응답 200ms→30ms (85%↓)</li>
+                                <li><strong>결과:</strong> 폴링 구간 RDB 쿼리 360→0회(캐시 미스·상태 변경 시에만 접근), API 응답 200ms→30ms (85%↓, Pinpoint APM 측정)</li>
                             </ul>
                         </li>
                         <li>
@@ -139,9 +141,9 @@
                         <li>
                             <b>가맹 접수 SFTP 전송 유실 0건 달성 — Outbox 패턴 기반 안정화</b> <a href="https://www.notion.so/04-Outbox-0-3345cb02eeeb81ecbc74e89dfb547a56" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
-                                <li><strong>배경:</strong> SFTP 파일 전송 실패 시 유실 감지 불가 — 파일 유실률 100%, 수동 모니터링 의존</li>
-                                <li><strong>진행:</strong> Outbox 패턴으로 전송 상태 영속화, SFTP 세션 풀링으로 연결 안정성 확보 · 파일 I/O 비동기(@Async) 도입으로 가맹 접수 처리 개선</li>
-                                <li><strong>결과:</strong> 파일 유실률 100%→0%, 응답시간 4s→1s (75%↓), 가맹 접수 10,000건 무장애 처리 · 장애 감지 수동(불특정) → 30분 이내 자동 감지</li>
+                                <li><strong>배경:</strong> SFTP 파일 전송 실패 시 유실 감지 불가 — 파일 업로드 실패시 유실률 100%, 수동 모니터링 의존</li>
+                                <li><strong>진행:</strong> Outbox 패턴으로 전송 상태 영속화, SFTP 세션 풀링으로 연결 안정성 확보 · 파일 업로드 비동기 도입을 통한 응답 개선</li>
+                                <li><strong>결과:</strong> 전송 실패 건 자동 재처리로 유실 0건, 접수 응답 4s→1s (75%↓), 가맹 접수 10,000건 무장애 처리 · 장애 감지 수동(불특정) → 30분 내 자동 감지</li>
                             </ul>
                         </li>
                     </ul>
@@ -150,25 +152,18 @@
                 <div class="proj">
                     <p class="proj-title">2. 진료비 하이패스 서비스 개발 · <small style="font-weight:400;color:#666">진료비 자동이체 제공 서비스</small></p>
                     <ul>
-                        <li>병원 EMR 시스템 연동을 위한 <strong>C++ DLL 네이티브 모듈 개발</strong> — 이기종 시스템 간 인터페이스 설계 및 구현</li>
+                        <li>병원 EMR 연동 <strong>C++ DLL 네이티브 모듈 개발</strong> — 이기종 시스템 간 인터페이스 설계 및 구현</li>
                         <li><strong>Next.js (TypeScript) + React</strong> 기반 진료비 하이패스 접수 화면 개발 및 결제 플로우 연동</li>
-                        <li>기존 클라우드 서버 Node.js 18 → 22 버전 호환 이슈 해결 — 커스텀 Docker 이미지 빌드 후 Docker Compose + Jenkins 자동 배포 파이프라인 구성</li>
+                        <li>기존 클라우드 서버 Node.js 18 → 22 호환 이슈 해결 — 커스텀 Docker 이미지 빌드 후 Docker Compose + Jenkins 자동 배포 구성</li>
+                        <li>연동 EMR 시스템 2곳 · 일 자동이체 30건 이상 처리 중</li>
                     </ul>
                 </div>
 
                 <div class="proj">
                     <p class="proj-title">3. 모바일 POS 시스템 개발 및 운영 · <small style="font-weight:400;color:#666">하드웨어 없이 QR 결제 — 소형 가맹점 전용 모바일 POS 서비스</small></p>
                     <ul>
-                        <li>프로젝트 초기 환경 셋팅 (빌드/배포 파이프라인 구축, CI/CD 설계, 서버 및 인프라 구성) 및 React Natvie 기반 크로스 플랫폼 앱 개발</li>
-                        <li>POS 미보유 영세 가맹점 <strong>1,000개</strong> 이상 확보 및 월 매출 5% 이상 기여</li>
-                    </ul>
-                </div>
-              
-                <div class="proj">
-                    <p class="proj-title">4. 선불 서비스 개발 · <small style="font-weight:400;color:#666">선불 충전 · QR 포인트 결제 통합 핀테크 앱 서비스</small></p>
-                    <ul>
-                        <li>자사 간편결제 선불 서비스 본인인증 서비스 및 가맹점 API 20개 이상 연동</li>
-                        <li>금융당국 선불 라이센스 취득 기여</li>
+                        <li>프로젝트 초기 환경 0→1 구축 (CI/CD·서버·인프라) + React Native 기반 크로스 플랫폼 앱 개발 참여</li>
+                        <li>출시 후 POS 미보유 가맹점 <strong>1,000개+</strong>가 사용 — 월 매출 5%+ 신규 기여 서비스로 성장</li>
                     </ul>
                 </div>
             </div>
@@ -231,12 +226,11 @@
                     <ul>
                         <li>Skills: Kotlin · Spring Boot 4.0 · JPA · PostgreSQL · Redis · Next.js 15</li>
                         <li>브라우저 즐겨찾기를 대체하는 풀스택 북마크 관리 서비스</li>
-                        <li>URL 등록 시 OG 메타데이터 자동 수집, Gemini AI 기반 콘텐츠 요약 및 태그 추천 제공</li>
                     </ul>
                 </div>
 
                 <div class="proj">
-                    <p class="proj-title"><a href="https://github.com/seoul-fit" target="_blank" rel="noopener">Seoul-Fit </a> · <small style="font-weight:400;color:#666">서울시 공공데이터 기반 알람 서비스 · 2025.07 – 2025.08</small></p>
+                    <p class="proj-title"><a href="https://github.com/seoul-fit" target="_blank" rel="noopener">Seoul-Fit</a> · <small style="font-weight:400;color:#666">서울시 공공데이터 기반 알람 서비스 · 2025.07 – 2025.08</small></p>
                     <ul>
                         <li>서울시 공공데이터 API 10개 이상 연동 및 데이터 ETL 파이프라인 담당</li>
                         <li>코드 오픈소스화를 위한 추상화 설계</li>
@@ -277,7 +271,7 @@
         </div>
     </section>
 
-    <p class="updated">Updated: June 2026</p>
+    <p class="updated">Updated: July 2026</p>
 
 </div>
 <script>

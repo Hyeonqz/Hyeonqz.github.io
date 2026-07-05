@@ -404,9 +404,12 @@ body.dark .pf-link:hover { color: #e85d04; }
   .col-right { flex: 1; min-width: 0; }
 
   .proj {
-    break-inside: avoid;
+    /* 한 페이지 넘는 큰 proj까지 avoid하면 통째로 다음 장으로 밀려 빈 공간이 생김 → 자연 분할 */
+    break-inside: auto;
     margin-bottom: 9px;
   }
+  /* 페이지가 나뉘어도 개별 리스트 항목은 쪼개지지 않게 */
+  .proj > ul > li { break-inside: avoid; }
   .proj-title { font-size: 0.92rem; }
 
   ul li { font-size: 0.92rem; margin-bottom: 2px; }

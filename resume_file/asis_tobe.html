@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DRAFT 표준 — 확정 수치·스토리 (2026.07)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif; background: #f7f7f8; color: #222; line-height: 1.7; padding: 40px 20px; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 1.6rem; margin-bottom: 8px; }
+  .guide { background: #e8f7ed; border: 1px solid #cde8d5; border-radius: 8px; padding: 14px 18px; font-size: 0.9rem; margin: 16px 0 40px; }
+  h2 { font-size: 1.15rem; margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #222; }
+  h2 .num { color: #999; font-weight: 400; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.86rem; background: #fff; margin-bottom: 16px; }
+  th, td { border: 1px solid #e0e0e0; padding: 9px 12px; text-align: left; vertical-align: top; }
+  th { background: #f2f2f4; font-size: 0.8rem; }
+  .q { background: #fff; border: 1px solid #e3e3e6; border-radius: 10px; padding: 18px; margin-bottom: 16px; }
+  .q li { margin-bottom: 8px; font-size: 0.9rem; margin-left: 18px; }
+  code { background: #f0f0f2; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; }
+  .small { color:#777; font-size: 0.8rem; }
+  .story { background:#fff; border:1px solid #e3e3e6; border-radius:10px; padding:16px 18px; margin-bottom:16px; font-size:0.88rem; }
+  .story h3 { font-size: 0.95rem; margin-bottom: 8px; }
+  .story .k { font-weight:700; color:#1a56b0; }
+  .note { background:#fff8e6; border:1px solid #f0dfa8; border-radius:8px; padding:14px 18px; font-size:0.87rem; margin-bottom:16px; }
+  .danger { color:#c0392b; font-weight:700; }
+  .ok { color:#1e8449; font-weight:700; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>DRAFT 표준 — 확정 수치·스토리</h1>
+<p class="small">확정일: 2026.07.05 · 검토 1~4차 완료 · 잔여 이슈 0건</p>
+
+<div class="guide">
+  <b>✅ 이 문서가 표준(SSOT)입니다.</b> 이력서·경력기술서·향후 모든 DRAFT는 이 수치와 스토리 구조를 따릅니다.
+  원본: <code>resume/index.html</code> · <code>resume/career/career.html</code> (2026.07 확정).
+  구버전 초안(resume_draft.md · portfolio_draft.md · resume-data.yaml)은 <b>삭제 완료</b> — 과거 숫자를 git에서 복원해 참조하지 말 것.
+  CLAUDE.md의 구버전 수치 표도 이 표준을 가리키도록 교체 완료.
+</div>
+
+<!-- ═══════════ Section 1 ═══════════ -->
+<h2><span class="num">1.</span> 📊 확정 수치표 (유일한 기준)</h2>
+<table>
+  <tr><th>항목</th><th>확정 수치·표현</th><th>비고 (방어 근거)</th></tr>
+  <tr><td>일 평균 거래 성장</td><td>50건 → <b>5,000건 (100배)</b></td><td>"성장을 주도" ❌ → "성장 구간을 무중단 운영" ⭕</td></tr>
+  <tr><td>결제사 연동</td><td><b>7개사</b> (라인·알리·위챗·유니온·하나은행 등)</td><td>연동 결제망이 전사 거래액의 <b>80% 처리</b> ("매출 기여" ❌)</td></tr>
+  <tr><td>REST API</td><td><b>15종</b> 설계·구현</td><td></td></tr>
+  <tr><td>온라인 가맹 접수</td><td>누적 <b>20,000건+</b></td><td></td></tr>
+  <tr><td>PCI DSS</td><td>보안 취약점 <b>High 3건 · Medium 5건</b> 해결</td><td>Vault 시크릿 중앙화 · Keycloak 2FA</td></tr>
+  <tr><td>레거시 POS (C++ DLL)</td><td>월 거래액 <b>30% 증가 기반 확보</b></td><td>"30% 확장" 직접 인과 ❌ — 연동 불가 채널을 새로 연 것</td></tr>
+  <tr><td>멀티모듈·헥사고날</td><td>빌드 <b>55s → 35s (36%↓)</b></td><td>본질은 팀 병렬 작업·트랜잭션 결합 제거, 빌드는 부수 효과</td></tr>
+  <tr><td>Kafka Push</td><td>중복 Push <b>0건</b>, API↔TCP 완전 디커플링</td><td></td></tr>
+  <tr><td>Kafka Request-Reply</td><td>Reply 타임아웃 <b>0건</b> · 실패 건 DLQ→DB 적재(운영 모니터링)</td><td>Section 2 스토리 참조</td></tr>
+  <tr><td>Bedrock 영문명 자동화</td><td>월 <b>100건 → 5건 (95%↓)</b></td><td>일 1회 배치, override 경로 유지</td></tr>
+  <tr><td>Redis Cache-Aside</td><td>폴링 최대 120회 × 회당 쿼리 3회(조인 2·업데이트 1) = <b>거래당 360쿼리 → 0회</b></td><td>캐시 미스·상태 변경 시에만 접근 단서 필수</td></tr>
+  <tr><td>API 응답</td><td><b>200ms → 30ms (85%↓)</b></td><td>Pinpoint APM 실측</td></tr>
+  <tr><td>Final API</td><td>CS 월 <b>10건 → 0~1건 (95%↓)</b> · 연 <b>40h</b> 절감</td><td>SSE·Webhook·Final API 3안 비교 후 채택</td></tr>
+  <tr><td>Outbox + SFTP</td><td>실패 건 자동 재처리로 유실 <b>0건</b> · 응답 <b>4s→1s (75%↓)</b> · <b>10,000건 무장애</b> · 장애 감지 <b>30분 내 자동</b></td><td>"유실률 100%→0%" 표기 ❌ (조건 풀어서)</td></tr>
+  <tr><td>진료비 하이패스</td><td>연동 EMR <b>2곳</b> · 일 자동이체 <b>30건+</b></td><td>진행 중 프로젝트 — 현재형 서술</td></tr>
+  <tr><td>모바일 POS</td><td>가맹점 <b>1,000개+가 사용</b> · 월 매출 <b>5%</b> 신규 기여</td><td>"확보" ❌ (영업 언어)</td></tr>
+  <tr><td>AI 워크플로우</td><td>개발 일정 <b>12주 → 6주 (50%↓)</b></td><td>Claude Code(설계)·Codex(구현) 역할 분리</td></tr>
+  <tr><td>외부기관 연동 리드타임</td><td><b>1개월+ → 2주</b></td><td>구 "테스트 비용 50% 절감" 폐기 (실측 아님 → 기간으로 대체)</td></tr>
+  <tr><td>DOCX→PDF</td><td>연 <b>$999</b> 절감</td><td>유료 솔루션 → 오픈소스</td></tr>
+  <tr><td>AI 교육</td><td><b>2회 진행 · 3명</b> 실무 적용</td><td></td></tr>
+  <tr><td>회사 성격</td><td><b>B2B·B2C</b> 핀테크 스타트업</td><td>중계(B2B) + 앱 서비스(B2C)</td></tr>
+</table>
+
+<!-- ═══════════ Section 2 ═══════════ -->
+<h2><span class="num">2.</span> 🧭 두 Kafka 항목 — 확정 스토리 (혼동 금지)</h2>
+
+<div class="story">
+  <h3>① Kafka 실시간 Push — <span class="k">단방향 알림 전달 문제</span></h3>
+  <b>배경(=설계 동기):</b> TCP Channel이 특정 인스턴스에만 존재 → API 서버가 POS로 직접 Push 불가 ("누가 쏠 것인가")<br>
+  <b>해결:</b> produce/consume 분리 + Redis 소유 서버 판별 + 전략 패턴<br>
+  <b>결과:</b> API↔TCP 완전 디커플링 · 중복 Push 0건
+</div>
+
+<div class="story">
+  <h3>② Kafka Request-Reply — <span class="k">팀 간 장애 전파 격리 문제</span></h3>
+  <b>배경(=설계 동기):</b> 국내·해외 결제 시스템 통합 시 동기 REST 직접 연결은 상대 시스템 장애·지연이 그대로 전파 + 엔드포인트·방화벽·인증 결합 → 기존 Kafka 인프라 재사용, Request-Reply로 가용성 디커플링<br>
+  <b>문제(=트러블슈팅):</b> 분산 환경 Reply 토픽 Consumer 인스턴스 불일치 → 요청 서버가 응답 미수신, 타임아웃<br>
+  <b>해결:</b> 인스턴스별 전용 Reply 토픽 + CorrelationId 매칭키, 실패 건 DLQ 적재 후 DB 저장<br>
+  <b>결과:</b> 팀 간 장애 전파 격리 · Reply 타임아웃 0건 · DLQ→DB로 운영팀 거래 모니터링
+</div>
+<div class="note"><b>⚠️ 규칙:</b> ①은 "채널 소유권", ②는 "장애 전파 격리" — 서로 다른 문제. DRAFT 작성 시 두 항목의 배경이 겹치면 안 됨 (겹치면 같은 문제를 두 번 쓴 것으로 읽힘).</div>
+
+<!-- ═══════════ Section 3 ═══════════ -->
+<h2><span class="num">3.</span> 🎤 면접 대비 노트 (이력서에는 넣지 않음)</h2>
+<div class="q">
+  <p style="margin-bottom:8px;"><b>Q. "다시 설계한다면 Kafka Request-Reply를 또 쓰겠는가?"</b></p>
+  <p style="font-size:0.88rem;">
+    "목표는 그대로 디커플링 — 달라지는 건 그걸 사는 방법. 당시엔 Kafka가 가용성 디커플링을 구조적으로 공짜로 줬지만,
+    비동기로 동기를 흉내 내느라 CorrelationId 매칭·타임아웃 관리·응답 유실 재처리라는 운영 복잡도를 대가로 치렀다.
+    다시 한다면 역할을 나눈다: <b>본질이 동기인 결제 요청-응답은 gRPC</b>(타입 계약) + 서킷브레이커·엄격한 타임아웃으로 장애 전파 방어,
+    <b>본질이 비동기인 것(결과 통지·정산 이벤트·후처리)은 Kafka에 유지</b>.
+    교훈: 기술의 본질을 거슬러 쓰면 원래 문제는 풀려도, 새 문제를 만들어 푸는 비용이 든다."
+  </p>
+  <p class="small" style="margin-top:8px;">→ 트레이드오프 인지 + 재설계 관점을 보여주는 답변. 포트폴리오(Notion) "결과 & 회고" 섹션에 활용 가능.</p>
+</div>
+
+<!-- ═══════════ Section 4 ═══════════ -->
+<h2><span class="num">4.</span> ✍️ DRAFT 작성 규칙 (이번 개편에서 확립)</h2>
+<div class="q">
+  <ol>
+    <li><b>배경 = 설계 동기, 문제 = 구현 중 트러블슈팅</b> — 둘을 섞지 않는다 (Request-Reply 사례).</li>
+    <li><b>사업 성과는 "기여"가 아니라 "처리/사용/기반"으로</b> — 매출 80% 기여 ❌ → 거래망이 80% 처리 ⭕, 가맹점 확보 ❌ → 1,000개+가 사용 ⭕.</li>
+    <li><b>0회·0건 주장에는 조건 단서</b> — "캐시 미스 시에만 접근", "실패 건 자동 재처리로" 등 검산 방어.</li>
+    <li><b>% 뒤에는 절대값 근거</b> — 50% 단축 ❌ → 12주→6주 (50%↓) ⭕. 근거 없는 %는 기간·건수로 대체 (테스트 비용 사례).</li>
+    <li><b>표기 통일:</b> (95%↓) 형식 · — 대시 · 가운뎃점 나열 · 진행 중 프로젝트는 현재형.</li>
+    <li><b>문서 간 수치 100% 일치</b> — 이력서/경력기술서/포트폴리오가 다른 숫자를 말하면 그 순간 신뢰 붕괴.</li>
+  </ol>
+</div>
+
+<!-- ═══════════ Section 5 ═══════════ -->
+<h2><span class="num">5.</span> 📜 검토 이력</h2>
+<table>
+  <tr><th>차수</th><th>내용</th><th>상태</th></tr>
+  <tr><td>1차</td><td>성과 중심 개편 · 신뢰성 리스크 12건 지적 (주도/기여 표현, 숫자 불일치 3건)</td><td class="ok">완료</td></tr>
+  <tr><td>2차</td><td>오타 4건 · 문서 간 프레임 통일 (80% 처리 / 유실 0건 / 타임아웃 0건)</td><td class="ok">완료</td></tr>
+  <tr><td>3차</td><td>문장·흐름 전수 검토 38건 반영 (양 파일)</td><td class="ok">완료</td></tr>
+  <tr><td>4차</td><td>Kafka Request-Reply 재판단 (설계 동기 확정: 장애 전파 격리) · Redis 산식 확정(360쿼리) · 테스트 비용→리드타임 대체 · B2B·B2C · 구버전 참조 문서 삭제</td><td class="ok">완료</td></tr>
+</table>
+
+<!-- ═══════════ Section 6 ═══════════ -->
+<h2><span class="num">6.</span> 🧩 &lt;li&gt; 안에 하위 &lt;li&gt; 넣는 법 (중첩 리스트)</h2>
+
+<div class="note">
+  <b>핵심 규칙:</b> HTML에서 <code>&lt;li&gt;</code> 바로 안에 <code>&lt;li&gt;</code>를 넣는 건 <span class="danger">불가</span>합니다.
+  반드시 <b>부모 <code>&lt;li&gt;</code> 안에 <code>&lt;ul&gt;</code>을 하나 더 넣고, 그 <code>&lt;ul&gt;</code> 안에 자식 <code>&lt;li&gt;</code></b>를 넣습니다.
+  이 프로젝트엔 이미 <code>class="sub-list"</code>가 있어(Kafka·Redis 항목에서 사용 중) 그대로 재사용하면 스타일도 맞습니다.
+</div>
+
+<div class="story">
+  <h3>❌ 잘못된 구조 (li 안에 li 직접)</h3>
+  <pre style="background:#fbeaea;border:1px solid #f0c9c9;border-radius:6px;padding:12px;overflow-x:auto;font-size:0.82rem;line-height:1.6;"><code>&lt;li&gt;간편결제사 7개사 연동
+    &lt;li&gt;라인페이&lt;/li&gt;   &lt;!-- ✗ 브라우저가 자동 교정, 들여쓰기 깨짐 --&gt;
+&lt;/li&gt;</code></pre>
+</div>
+
+<div class="story">
+  <h3>✅ 올바른 구조 (li 안에 ul → 그 안에 li)</h3>
+  <pre style="background:#eef7f0;border:1px solid #cde8d5;border-radius:6px;padding:12px;overflow-x:auto;font-size:0.82rem;line-height:1.6;"><code>&lt;li&gt;
+    국내·국외 간편결제사 &lt;strong&gt;7개사&lt;/strong&gt; 연동 개발 — 연동 결제망이 전사 거래액의 80% 처리
+    &lt;ul class="sub-list"&gt;
+        &lt;li&gt;국내: 하나은행 등&lt;/li&gt;
+        &lt;li&gt;해외: 라인페이 · 알리페이 · 위챗페이 · 유니온페이&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/li&gt;</code></pre>
+  <p class="small" style="margin-top:8px;">포인트: 부모 텍스트를 먼저 쓰고, <b>닫는 <code>&lt;/li&gt;</code> 직전에</b> <code>&lt;ul class="sub-list"&gt;…&lt;/ul&gt;</code>을 넣습니다. 자식 <code>&lt;li&gt;</code>는 그 <code>&lt;ul&gt;</code> 안에만 존재합니다.</p>
+</div>
+
+<div class="note" style="background:#eef4ff;border-color:#c9dcff;">
+  <b>💡 판단 포인트:</b> 이 프로젝트에서 <code>sub-list</code>는 지금까지 <b>"배경/문제/해결/결과" 같은 설계 서사</b>에만 썼습니다.
+  결제사 나열처럼 <b>단순 목록</b>에도 sub-list를 쓰면 시각적으로 "이것도 트러블슈팅 항목인가?"하는 혼동을 줄 수 있습니다.
+  <br>→ 나열이 목적이면 <b>괄호 안에 인라인</b>(현행: "라인·알리·위챗·유니온·하나은행 등")이 더 깔끔할 수 있고,
+  <b>국내/해외 구분처럼 계층 정보</b>가 있을 때만 중첩 리스트가 값어치를 합니다. 어떤 목적인지에 따라 선택하세요.
+</div>
+
+<!-- ═══════════ Section 7 ═══════════ -->
+<h2><span class="num">7.</span> ✂️ 긴 불릿 압축 후보 (PDF 가독성 · index.html)</h2>
+
+<div class="note">
+  <b>원칙:</b> 불릿이 2줄로 넘어가는 건 이력서에서 <b>정상</b>입니다. 못생겨 보이면 <b>구조(sub-list)를 더하지 말고 단어를 빼서</b> 조입니다.
+  주 대상은 이력서(<code>index.html</code>)입니다 — 경력기술서는 상세 문서라 긴 줄이 허용됩니다.
+  아래는 <b>줄바꿈 심한 순</b>으로 정렬. 검토 후 직접 반영하세요 (제거 후보는 <span class="danger">취소선</span> 표시).
+</div>
+
+<table>
+  <tr><th style="width:60px;">위치</th><th>AS-IS (현재)</th><th>압축안</th></tr>
+  <tr>
+    <td>진료비<br>Node.js<br>(가장 김)</td>
+    <td>기존 클라우드 서버 Node.js 18 → 22 <s>버전</s> 호환 이슈 해결 — 커스텀 Docker 이미지 빌드 <s>후</s> Docker Compose + Jenkins 자동 배포 <s>파이프라인</s> 구성</td>
+    <td class="ok">Node.js 18 → 22 호환 이슈 해결 — 커스텀 Docker 이미지 빌드로 Compose + Jenkins 자동 배포 구성</td>
+  </tr>
+  <tr>
+    <td>모바일POS<br>초기환경</td>
+    <td>프로젝트 초기 환경 구축 (CI/CD 빌드·배포 파이프라인, 서버 및 인프라 구성) 및 React Native 기반 크로스 플랫폼 앱 개발</td>
+    <td class="ok">프로젝트 초기 환경 0→1 구축 (CI/CD·서버·인프라) + React Native 크로스 플랫폼 앱 개발</td>
+  </tr>
+  <tr>
+    <td>모바일POS<br>성과</td>
+    <td>서비스 출시 후 POS 미보유 영세 가맹점 1,000개+가 사용 — 월 매출 5% <s>이상을</s> 신규 기여<s>하는 서비스로 성장</s></td>
+    <td class="ok">출시 후 영세 가맹점 1,000개+가 사용 — 월 매출 5%+ 신규 기여 서비스로 성장</td>
+  </tr>
+  <tr>
+    <td>결제사<br>7개사</td>
+    <td>국내·국외 간편결제사 7개사 연동 <s>개발</s> (라인·알리·위챗·유니온·하나은행 등) — <s>연동</s> 결제망이 전사 거래액<s>의</s> 80% 처리</td>
+    <td class="ok">국내·국외 간편결제사 7개사 연동 (라인·알리·위챗·유니온·하나 등) — 결제망이 전사 거래액 80% 처리</td>
+  </tr>
+  <tr>
+    <td>멀티모듈</td>
+    <td>모놀리식 → Gradle 멀티모듈·헥사고날 <s>아키텍처</s> 전환 - 트랜잭션 결합 제거 (AFTER_COMMIT <s>이벤트</s>), 빌드 55s → 35s (36%↓)</td>
+    <td class="ok">모놀리식 → 멀티모듈·헥사고날 전환 — 모듈 간 트랜잭션 결합 제거(AFTER_COMMIT), 빌드 55s→35s (36%↓)</td>
+  </tr>
+  <tr>
+    <td>진료비<br>EMR DLL</td>
+    <td>병원 EMR <s>시스템</s> 연동<s>을 위한</s> C++ DLL 네이티브 모듈 개발 — 이기종 시스템 <s>간</s> 인터페이스 설계 <s>및</s> 구현</td>
+    <td class="ok">병원 EMR 연동 C++ DLL 네이티브 모듈 개발 — 이기종 시스템 인터페이스 설계·구현</td>
+  </tr>
+  <tr>
+    <td>REST API<br>(경계)</td>
+    <td>POS <s>및</s> 대형 가맹점 연동 REST API 15종 설계·구현 — 온라인 가맹 접수 누적 20,000건+ 처리 <s>중</s></td>
+    <td class="ok">POS·대형 가맹점 연동 REST API 15종 설계·구현 — 온라인 가맹 접수 누적 20,000건+ 처리</td>
+  </tr>
+</table>
+
+<div class="note" style="background:#fdeef2;border-color:#f5cdd9;">
+  <b>🔧 겸사겸사 발견한 서식 이슈 (index.html, 압축과 별개):</b>
+  <ol style="margin:8px 0 0 18px;font-size:0.86rem;">
+    <li><b>99행 남는 <code>&lt;/li&gt;</code></b> — 멀티모듈 항목이 98행에서 이미 닫혔는데 99행에 <code>&lt;/li&gt;</code>가 하나 더 있음(고아 태그). 렌더엔 무해하나 제거 권장.</li>
+    <li><b>구분자 혼용</b> — 96·98행은 "<code>-</code>"(하이픈), 나머지는 "<code>—</code>"(em 대시). 전체 "<code>—</code>"로 통일 권장.</li>
+    <li><b>96행 "30% 증가 기반"</b> — "확보"가 빠져 문장이 끊김 → "월 거래액 30% 증가 기반 <b>확보</b>"로 마무리.</li>
+  </ol>
+</div>
+
+<div class="note" style="background:#eef4ff;border-color:#c9dcff;">
+  <b>💡 압축 스킬 (재사용):</b> ①동어반복 제거("~시스템 연동을 위한"→"~연동") ②당연한 수식어 제거("버전"·"이상"·"~하는 서비스로") ③명사 나열은 가운뎃점으로("A 및 B 및 C"→"A·B·C") ④"처리 중/구성 등"의 군더더기 어미 정리. <b>수치·고유명사는 절대 건드리지 않음.</b>
+</div>
+
+<p class="small" style="margin-top:40px;">다음 단계: 이 표준을 기반으로 DRAFT 재생성 (resume-tailor 등 Agent 사용 시 이 문서와 원본 HTML 2개만 참조).</p>
+
+</div>
+</body>
+</html>
