@@ -6,6 +6,7 @@ body {
   color: #222;
   font-size: 15px;
   line-height: 1.8;
+  overflow-wrap: break-word; /* 긴 영문·URL은 넘치지 않게 예외 처리 */
 }
 
 a { color: #222; text-decoration: underline; }

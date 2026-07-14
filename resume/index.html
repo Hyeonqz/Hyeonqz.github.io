@@ -55,18 +55,16 @@
             </div>
             <div class="col-right">
                 <p class="about-text">
-                    핀테크 결제 도메인 서버 개발자로서, QR 결제 중계 시스템을 <b>0→1로 구축</b>하고, 
-                    일 평균 거래 <strong>50건 → 5,000건(100배)</strong> 성장 구간을 무중단으로 운영해왔습니다.
-                    국내외 간편결제사 7개사 연동, Kafka 기반 분산 결제 아키텍처 설계,
-                    Redis 캐시 최적화(응답 <strong>85%↓</strong>) 등 실제 서비스 트래픽 환경에서 문제를 분석하여
-                    구조적 개선을 이끌었습니다.
+                    결제 중계 플랫폼을 <b>0→1로 구축</b>하고, 일 거래 <strong>50건 → 5,000건</strong>까지 커지는
+                    성장 구간을 만들고 운영해온 백엔드 개발자입니다. 
+                    <br>
+                    인프라도 배경도 없는 상태에서 국내외 결제사 <strong>7개사</strong> 연동, REST API 15종,
+                    온라인 가맹 접수(누적 2만 건+)를 구축했고, 트래픽이 100배가 되는 동안
+                    Kafka 분산 아키텍처 · Redis 캐시(응답 <strong>85%↓</strong>) · Outbox 패턴(유실 0건)으로
+                    시스템이 비즈니스 성장 속도를 따라가게 만들었습니다.
                     <br><br>
-                    금융 컴플라이언스(PCI DSS) 달성과 레거시 시스템 마이그레이션 경험을 바탕으로,
-                    <strong>장애 격리 · 데이터 정합성 · 트랜잭션 안정성</strong>을 최우선으로 고려해 설계합니다.
-                    <br><br>
-
-                    <strong>AWS Bedrock 기반 LLM 자동화 배치</strong>를 설계·구현해
-                    가맹점 영문명 수동 수정 업무를 월 100건 → 5건으로 줄인 경험이 있습니다. 현재는 운영팀을 대상으로 AI 활용 교육을 2회 진행해 3명이 실무에 적용 중이며, 비개발 직군과 AI가 함께 작동하는 협업 구조를 만들어가는 과정에 있습니다.
+                    최근에는 AWS Bedrock 기반 LLM 자동화 배치로 가맹점 영문명 수동 수정을 월 100건 → 5건으로 줄였고, 
+                    운영팀 대상 AI 교육 2회를 거쳐 3명이 실무에 적용 중이며, 비개발 직군과 AI가 함께 작동하는 협업 구조를 만들어가는 과정에 있습니다.
                 </p>
             </div>
         </div>
@@ -90,80 +88,107 @@
                 <div class="proj">
                     <p class="proj-title">1. QR 중계 시스템 개발 및 운영 · <small style="font-weight:400;color:#666">국내·국외 QR 결제 중계 서비스 플랫폼</small></p>
                     <ul>
-                        <li>국내·국외 간편결제사 <strong>7개사</strong> 연동 (라인·알리·위챗·유니온·하나은행 등) — 결제망이 전사 거래액의 80% 처리</li>
-                        <li>POS·대형 가맹점 연동 REST API <strong>15종 설계·구현</strong> — 온라인 가맹 접수 <b>누적 20,000건+</b> 처리 중</li>
-                        <li>PCI DSS 컴플라이언스 달성 — 보안 취약점 High 3건·Medium 5건 해결</li>
-                        <li>C++ DLL 레거시 POS 네이티브 모듈 개발 — 연동 불가였던 채널 개설로 월 거래액 30% 증가 기반 확보</li>
-                        <li>DOCX → PDF 변환 유료 솔루션을 오픈소스로 전환 — 연 $999 비용 절감</li>
-                        <li>모놀리식 → Gradle 멀티모듈·헥사고날 전환 — 모듈 간 트랜잭션 결합 제거(AFTER_COMMIT 이벤트), 빌드 55s → 35s (36%↓)</li>
+
+                        <li>전사 거래액의 <strong>80%</strong>를 처리하는 결제망 구축
+                            <ul>
+                                <li>국내외 간편결제사 <strong>7개사</strong>(라인·알리·위챗·유니온·하나은행 등) 연동, 5개사 직접 담당</li>
+                            </ul>
+                        </li>
+
                         <li>
-                            <b>Kafka 분산 환경 실시간 Push 아키텍처 설계</b>
+                            외부 연동용(POS·대형 가맹점) REST API <strong>15종 설계·구현</strong>
+                        </li>
+
+                        <li>
+                            온라인 가맹 접수 서비스 0→1 구축 — <strong>누적 2만 건+</strong> 처리 중
+                        </li>
+
+                        <li>
+                            PCI DSS 컴플라이언스 달성<strong>(보안 취약점 High 3건·Medium 5건 해결)</strong>
+                        </li>
+
+                        <li>연동 불가였던 레거시 POS 채널 개설
+                            <ul>
+                                <li>C++ DLL 네이티브 모듈 직접 개발로 이기종 시스템 통합을 통한 <strong>월 거래액 10% 증가</strong></li>
+                            </ul>
+                        </li>
+
+                        <li>모놀리식 → Gradle 멀티모듈·헥사고날 아키텍처 전환
+                            <ul>
+                                <li>모듈 간 장애 전파 차단 · 팀 병렬 개발 구조 확보 및 빌드 55s→25s (55%↓)</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <b>결제 결과 실시간 알림(Push) 아키텍처 설계</b>
                                 <a href="https://www.notion.so/05-MSA-TCP-Push-3505cb02eeeb80889035f19b9c20aa17" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
-                                <li><strong>배경:</strong> TCP Channel 소유권 불일치로 API 서버에서 POS 직접 Push 불가</li>
-                                <li><strong>진행:</strong> Kafka produce/consume 분리 + Redis 소유 서버 판별 + 전략 패턴으로 확장 구조 설계</li>
-                                <li><strong>결과:</strong> API↔TCP 서버 완전 디커플링, 중복 Push 0건</li>
+                                <li><strong>배경:</strong> 서버를 여러 대로 늘리면서, 결제 완료 통지를 보낼 수 있는 서버가 정해져 있어 알림 누락·중복 위험 발생</li>
+                                <li><strong>진행:</strong> Kafka 메시징으로 완료 통지 경로를 재설계하고, Redis로 클라이언트 통지 서버를 자동 판별하도록 역할 분리</li>
+                                <li><strong>결과:</strong> 중복 통지 <strong>0건</strong> · 서버간 디커플링을 통한 장애 격리 구조 확보</li>
                             </ul>
                         </li>
                         <li>
-                            <b>Kafka Request-Reply 통합 아키텍처 설계</b> <a href="https://www.notion.so/01-Kafka-3345cb02eeeb80d9a786d314378e2138" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                            <b>국내·해외 결제 시스템 통합 — Kafka 기반 통신 구조 설계</b> <a href="https://www.notion.so/01-Kafka-3345cb02eeeb80d9a786d314378e2138" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
-                                <li><strong>배경:</strong> 국내·해외 결제 시스템 통합 시 동기 REST 직접 연결은 상대 시스템의 장애·지연이 그대로 전파 → 기존 Kafka 인프라를 재사용해 Request-Reply 패턴으로 통신 통합 (가용성 디커플링)</li>
-                                <li><strong>문제:</strong> 분산 환경에서 Reply 토픽 Consumer 인스턴스 불일치로 요청 서버가 응답을 수신하지 못해 타임아웃 발생</li>
-                                <li><strong>해결:</strong> 인스턴스별 전용 Reply 토픽 + CorrelationId 매칭키로 요청-응답 상관관계 보장, 실패 건 DLQ 적재</li>
-                                <li><strong>결과:</strong> 팀 간 장애 전파 격리 달성, Reply 타임아웃 0건 · 실패 건 DLQ→DB 적재로 운영팀 거래 모니터링 활용</li>
+                                <li><strong>배경:</strong> 두 결제 시스템을 직접 연결(동기 호출)하면 상대 시스템의 장애·지연이 우리 서비스까지 그대로 번지는 구조</li>
+                                <li><strong>진행:</strong> 신규 인프라 도입 대신 기존 Kafka를 재사용하는 요청-응답(Request-Reply) 구조를 제안·설계, 실패 거래는 자동 수집해 운영팀 모니터링에 연결</li>
+                                <li><strong>결과:</strong> 팀 간 장애 전파 격리 · 응답 타임아웃 <strong>0건</strong> · 실패 거래 모니터링 체계 확보</li>
                             </ul>
                         </li>
                         <li>
-                            <b>AWS Bedrock LLM 기반 가맹점 영문명 의역 자동화 배치</b>
+                            <b>AI 기반 운영 업무 자동화 — 가맹점 영문명 자동 생성 배치 (AWS Bedrock)</b>
                             <ul class="sub-list">
-                                <li><strong>배경:</strong> 가맹점 영문명이 한글 직역으로 자동 생성(예: <code>HWAJANGPUMJUM</code>)되어 운영팀이 매월 100건을 수동 수정</li>
-                                <li><strong>진행:</strong> AWS Bedrock(Claude) 연동 일 1회 배치 설계 및 구현</li>
-                                <li><strong>결과:</strong> 반복 수동 업무 월 평균 100건 → 5건 (95%↓), 영문명 품질 일관화, 수동 override 경로 유지로 운영 유연성 확보</li>
+                                <li><strong>배경:</strong> 가맹점 영문명이 한글 발음 그대로 생성(예: <code>HWAJANGPUMJUM</code>)되어 운영팀이 매월 평균 100건 수동 수정</li>
+                                <li><strong>진행:</strong> AWS Bedrock(Claude) 연동 일 1회 배치 설계·구현 — 수동 수정 경로는 남겨 예외 상황 대응</li>
+                                <li><strong>결과:</strong> 반복 수동 업무 <strong>월 100건 → 5건 (95%↓)</strong> · 영문명 품질 일관화</li>
                             </ul>
                         </li>
                         <li>
-                            <b>Redis Cache-Aside + 트랜잭션 경계 최적화</b> <a href="https://www.notion.so/02-Redis-3345cb02eeeb81fc8f2ece133ba5b68a" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                            <b>거래량 급증 대비 DB 병목 선제 해소 — Redis 캐시 도입</b> <a href="https://www.notion.so/02-Redis-3345cb02eeeb81fc8f2ece133ba5b68a" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
-                                <li><strong>배경:</strong> 거래 상태 조회(Polling) 최대 120회 × 회당 조인 2·업데이트 1 쿼리 — 거래당 최대 360쿼리가 RDB로 직행해 DB 커넥션 점유</li>
-                                <li><strong>진행:</strong> Cache-Aside 패턴 도입 + 트랜잭션 커밋 후 캐시 갱신으로 정합성 확보</li>
-                                <li><strong>결과:</strong> 폴링 구간 RDB 쿼리 360→0회(캐시 미스·상태 변경 시에만 접근), API 응답 200ms→30ms (85%↓, Pinpoint APM 측정)</li>
+                                <li><strong>배경:</strong> 거래량 급증에 대비해 시스템 병목 분석 — 거래 1건마다 결제 상태 반복 조회가 최대 120회 실행, 거래 증가시 DB 부하 증폭시키는 구조를 최우선 병목으로 판단</li>
+                                <li><strong>진행:</strong> DB 부하 선제적 차단을 위한 Redis 캐시 도입 — 결제 데이터 정합성이 깨지지 않도록 캐시 갱신 순서 및 재처리 설계</li>
+                                <li><strong>결과:</strong> DB 조회 거래당 <strong>최대 120회 → 0회</strong> · API 응답 <strong>200ms → 30ms (85%↓)</strong> — 거래량이 늘어도 DB 부하가 늘지 않는 구조 확보</li>
                             </ul>
                         </li>
                         <li>
-                            <b>Final API 패턴 도입 — POS↔큐뱅 결제 상태 불일치 문제해결</b> <a href="https://www.notion.so/03-CS-95-Final-API-3345cb02eeeb81afb108d6d2517a8d6f" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                            <b>결제 상태 불일치 해소 — CS 95% 감소</b> <a href="https://www.notion.so/03-CS-95-Final-API-3345cb02eeeb81afb108d6d2517a8d6f" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
-                                <li><strong>배경:</strong> POS 결제 완료 후 큐뱅 서버 상태 미동기화로 CS 문의 월 10건 반복</li>
-                                <li><strong>진행:</strong> Final API 패턴으로 결제 최종 상태 단방향 확정, 재시도 멱등성 보장</li>
-                                <li><strong>결과:</strong> CS 월 10건→0~1건 (95%↓), 연간 40시간 수동 공수 절감</li>
+                                <li><strong>배경:</strong> POS에서 결제 완료 후 서버에 상태가 반영되지 않는 경우가 있어, 가맹점 CS 문의 월 10건씩 반복</li>
+                                <li><strong>진행:</strong> 세 가지 해결 방식(SSE·Webhook·Final API)을 비용·구조 기준으로 비교, 사내 발표를 거쳐 Final API 채택 — 재시도가 발생해도 결제 상태가 정확히 한 번만 확정되도록 설계</li>
+                                <li><strong>결과:</strong> CS 문의 <strong>월 10건 → 0~1건 (95%↓)</strong> · 연간 운영 수동 대응 40시간 절감</li>
                             </ul>
                         </li>
                         <li>
-                            <b>가맹 접수 SFTP 전송 유실 0건 달성 — Outbox 패턴 기반 안정화</b> <a href="https://www.notion.so/04-Outbox-0-3345cb02eeeb81ecbc74e89dfb547a56" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                            <b>가맹 접수 파일 유실 0건 달성 — 자동 재처리 구조(Outbox) 설계</b> <a href="https://www.notion.so/04-Outbox-0-3345cb02eeeb81ecbc74e89dfb547a56" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
-                                <li><strong>배경:</strong> SFTP 파일 전송 실패 시 유실 감지 불가 — 파일 업로드 실패시 유실률 100%, 수동 모니터링 의존</li>
-                                <li><strong>진행:</strong> Outbox 패턴으로 전송 상태 영속화, SFTP 세션 풀링으로 연결 안정성 확보 · 파일 업로드 비동기 도입을 통한 응답 개선</li>
-                                <li><strong>결과:</strong> 전송 실패 건 자동 재처리로 유실 0건, 접수 응답 4s→1s (75%↓), 가맹 접수 10,000건 무장애 처리 · 장애 감지 수동(불특정) → 30분 내 자동 감지</li>
+                                <li><strong>배경:</strong> 가맹점 접수 시 수신한 파일이 비동기로 처리되는 과정에서, 실패하면 감지되지 않은 채 유실 — 발견과 복구 모두 수동 대응에 의존</li>
+                                <li><strong>진행:</strong> 모든 파일의 처리 상태를 기록해 실패 시 자동 재처리하는 구조(Outbox 패턴) 설계</li>
+                                <li><strong>결과:</strong> 파일 유실 <strong>0건</strong> (도입 후 누적 1만 건 무장애) · 장애 인지 수동 → <strong>30분 내 자동 감지</strong></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
 
                 <div class="proj">
-                    <p class="proj-title">2. 진료비 하이패스 서비스 개발 · <small style="font-weight:400;color:#666">진료비 자동이체 제공 서비스</small></p>
+                    <p class="proj-title">2. 진료비 자동이체 신규 서비스 구축 · <small style="font-weight:400;color:#666">진료비 자동이체 제공 서비스</small></p>
                     <ul>
-                        <li>병원 EMR 연동 <strong>C++ DLL 네이티브 모듈 개발</strong> — 이기종 시스템 간 인터페이스 설계 및 구현</li>
-                        <li><strong>Next.js (TypeScript) + React</strong> 기반 진료비 하이패스 접수 화면 개발 및 결제 플로우 연동</li>
-                        <li>기존 클라우드 서버 Node.js 18 → 22 호환 이슈 해결 — 커스텀 Docker 이미지 빌드 후 Docker Compose + Jenkins 자동 배포 구성</li>
-                        <li>연동 EMR 시스템 2곳 · 일 자동이체 30건 이상 처리 중</li>
+                        <li>진료비 자동이체 신규 서비스 개발 — 병원 시스템(EMR) <strong>2곳 연동</strong>, 일 자동이체 <strong>30건+</strong> 처리 중</li>
+                        <li>병원 시스템 연동 네이티브 모듈(C++·C# DLL) <strong>단독 개발</strong> — 병원 내부 시스템과 결제 서버를 잇는 인터페이스 설계</li>
+                        <li>접수 화면(<strong>Next.js + React</strong>) 개발 완료 및 결제 플로우 연동 — Docker·Jenkins 자동 배포 환경까지 직접 구성</li>
                     </ul>
                 </div>
 
                 <div class="proj">
                     <p class="proj-title">3. 모바일 POS 시스템 개발 및 운영 · <small style="font-weight:400;color:#666">하드웨어 없이 QR 결제 — 소형 가맹점 전용 모바일 POS 서비스</small></p>
                     <ul>
-                        <li>프로젝트 초기 환경 0→1 구축 (CI/CD·서버·인프라) + React Native 기반 크로스 플랫폼 앱 개발 참여</li>
-                        <li>출시 후 POS 미보유 가맹점 <strong>1,000개+</strong>가 사용 — 월 매출 5%+ 신규 기여 서비스로 성장</li>
+                        <li>POS 단말 없이 QR 결제가 가능한 신규 서비스 <strong>0→1 구축</strong> — 출시 후 소형 가맹점 <strong>1,000개+</strong> 사용, 
+                            회사 월 매출의 <strong>5% 이상</strong>을 차지하는 서비스로 성장
+                        </li>
+                        <li>
+                            초기 환경(CI/CD·서버·인프라) 설계·구축 담당, React Native 크로스 플랫폼 앱 개발 참여
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -184,7 +209,7 @@
         </div>
         <div class="skill-row">
             <span class="skill-key skill-key--etc">Etc</span>
-            <span class="skill-val">AWS · AWS Bedrock · Spring Batch · Docker · Nginx · Jenkins · Vault · Linux · Git</span>
+            <span class="skill-val">AWS · AWS Bedrock · Spring Batch · Docker · Nginx · Jenkins · Vault · Linux · C++·C#</span>
         </div>
     </section>
 
@@ -224,8 +249,7 @@
                 <div class="proj">
                     <p class="proj-title"><a href="https://link-map-delta.vercel.app/login">LinkMap</a> · <small style="font-weight:400;color:#666">AI 기반 북마크 관리 웹 서비스 · 2026.03 – 2026.04</small></p>
                     <ul>
-                        <li>Skills: Kotlin · Spring Boot 4.0 · JPA · PostgreSQL · Redis · Next.js 15</li>
-                        <li>브라우저 즐겨찾기를 대체하는 풀스택 북마크 관리 서비스</li>
+                        <li>브라우저 즐겨찾기를 대체하는 풀스택 북마크 관리 서비스 (Kotlin · Spring Boot · Next.js)</li>
                     </ul>
                 </div>
 
@@ -249,7 +273,7 @@
                     <li>
                         <span class="act-name">SLiPP</span>
                         <span class="act-period">2026.03 – ing</span>
-                        <span class="act-desc">백엔드 개발자 커뮤니티 · Agentic AI 개발 워크플로우 스터디 진행</span>
+                        <span class="act-desc">백엔드 개발자 커뮤니티 · Agentic AI 개발 워크플로우 스터디 참여</span>
                     </li>
                     <li>
                         <span class="act-name">Kafka 기초 스터디</span>
