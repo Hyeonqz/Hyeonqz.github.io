@@ -142,9 +142,7 @@ body.dark .act-desc { color: #ccc; }
 body.dark .ce-list li { border-bottom-color: #2a2a2a; }
 body.dark .ce-desc { color: #aaa; }
 body.dark .skill-val { color: #ccc; }
-body.dark .skill-key--strong { color: #f0f0f0; }
-body.dark .skill-key--mid    { color: #aaa; }
-body.dark .skill-key--etc    { color: #777; }
+body.dark .skill-key { color: #f0f0f0; }
 body.dark .updated { color: #555; }
 body.dark .social-icons a { background: #333; }
 body.dark .social-icons a:hover { background: #555; }
@@ -172,6 +170,7 @@ body.dark .proj-title { color: #e0e0e0; }
   font-size: 0.92rem;
   color: #333;
   line-height: 1.95;
+  margin-top: -8px;
 }
 
 /* ── Section ── */
@@ -210,6 +209,15 @@ section {
   font-weight: 800;
   margin-bottom: 4px;
 }
+.open-source-links {
+  font-size: 0.74rem;
+  color: #888;
+}
+.open-source-links a {
+  color: inherit;
+  font-weight: 600;
+}
+body.dark .open-source-links { color: #999; }
 .col-left .role {
   font-size: 0.85rem;
   font-weight: 700;
@@ -229,6 +237,13 @@ section {
   font-weight: 700;
   margin-bottom: 6px;
 }
+.proj-group-title {
+  margin: 10px 0 5px;
+  color: #777;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+body.dark .proj-group-title { color: #999; }
 
 ul {
   list-style: none;
@@ -260,11 +275,8 @@ ul li::before {
   min-width: 180px;
   font-weight: 700;
   flex-shrink: 0;
+  color: #222;
 }
-/* 숙련도 등급별 그레이 단계 */
-.skill-key--strong { color: #222; }
-.skill-key--mid    { color: #5a5a5a; }
-.skill-key--etc    { color: #999; }
 .skill-val { color: #333; }
 
 /* ── Activities ── */
@@ -284,6 +296,15 @@ ul li::before {
   font-size: 0.88rem;
   flex-shrink: 0;
 }
+.activity-link {
+  display: block;
+  width: fit-content;
+  margin-top: 2px;
+  color: #888;
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+body.dark .activity-link { color: #999; }
 .act-period {
   min-width: 110px;
   color: #888;
@@ -419,9 +440,7 @@ body.dark .pf-link:hover { color: #e85d04; }
 
   .skill-row { gap: 8px; margin-bottom: 4px; }
   .skill-key { width: 150px; min-width: 150px; font-size: 0.92rem; }
-  .skill-key--strong { color: #222 !important; }
-  .skill-key--mid    { color: #5a5a5a !important; }
-  .skill-key--etc    { color: #999 !important; }
+  .skill-key { color: #222 !important; }
   .skill-val { font-size: 0.92rem; }
 
   .act-name { width: 150px; min-width: 150px; font-size: 0.92rem; }
