@@ -154,6 +154,12 @@ body.dark .improve-title { color: #e0e0e0; }
   flex-shrink: 0;
 }
 .improve-val { color: #444; flex: 1; }
+.improve-val ul {
+  margin: 2px 0 0;
+  padding-left: 16px;
+}
+.improve-val li { margin-bottom: 1px; }
+.improve-val li:last-child { margin-bottom: 0; }
 body.dark .improve-key { color: #666; }
 body.dark .improve-val { color: #bbb; }
 
