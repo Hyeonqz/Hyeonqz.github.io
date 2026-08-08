@@ -57,46 +57,52 @@
             <p class="proj-num">Project 01 &nbsp;·&nbsp; <span class="proj-date">2024.02 – 현재</span></p>
             <h3>QR 결제 중계 플랫폼 구축 및 운영</h3>
             <p style="font-size:0.88rem;color:#555;line-height:1.8;margin-bottom:12px;">
-                REST API로 POS·대형 가맹점 채널을 연결하고 Kafka로 국내·해외 결제 시스템을 통합해,
-                7개 결제사의 일 평균 거래 5,000건과 전사 거래액의 80% 이상을 처리하는 핵심 서비스입니다.
+                간편결제사·POS·대형 가맹점 채널을 연결하고, 국내·해외 시스템 연동을 통해 은행 결제를 국내 가맹점까지 확장한 QR 결제 중계 서비스입니다.
             </p>
+
+            <p class="label">핵심 성과 요약</p>
+            <ul class="outcome-list">
+                <li>초기 공동 구축 이후 서버 개발·배포와 외부기관 연동을 단독으로 마무리해 첫 상용 오픈, 이후 일 평균 거래 <strong>50건 → 5,000건(100배)</strong> 성장 구간 무중단 운영</li>
+                <li>국내외 결제사 <strong>7개사 중 5개사</strong>를 직접 연동하고 POS·대형 가맹점용 REST API <strong>15종</strong>을 설계·구현해, 현재 전사 거래액의 <strong>80% 이상</strong>을 처리</li>
+                <li>가맹점·대리점 온라인 접수 채널을 0→1 단독 구축해 <strong>누적 2만 건 이상</strong> 처리하고, 구형 POS 전용 DLL 연동으로 회사 월 거래액 <strong>10% 증가</strong></li>
+                <li>Gemini·MySQL 용어 사전으로 KYC 영문명 수동 수정 <strong>95% 감소</strong>, 결제 상태 확정 API로 상태 불일치 CS <strong>90% 감소</strong>, Outbox 적용 후 가맹 접수 파일 <strong>2만 건 이상 유실 0건</strong> 유지</li>
+            </ul>
+
             <p class="label">기술스택</p>
             <div class="stack-tags">
                 <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">JPA</span>
                 <span class="tag">MySQL</span><span class="tag">Redis</span><span class="tag">Kafka</span>
-                <span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">Thymeleaf</span>
-                <span class="tag">React</span><span class="tag">Next.js</span><span class="tag">C++</span><span class="tag">C#</span>
-                <span class="tag">HashiCorp Vault</span><span class="tag">Spring Cloud Vault</span><span class="tag">Keycloak</span>
+                <span class="tag">NCP</span><span class="tag">Docker</span>
             </div>
 
             <p class="label">주요 역할 및 성과</p>
             <ul class="outcome-list">
                 <li>
-                    <strong>국내외 결제사 7개사 중 5개사 연동 및 POS·대형 가맹점용 REST API 15종 직접 설계·구현</strong>
+                    <strong>국내외 결제사 7개사 중 5개사를 직접 연동하고, POS·대형 가맹점용 REST API 15종 설계·구현</strong>
                     <ul>
                         <li>연동 대상: 유니온페이·위챗페이·알리페이·라인페이 등 결제사, 세븐일레븐·이디야 등 대형 가맹점</li>
-                        <li>HMAC 서명·API Key 인증, DB Unique 제약 기반 멱등성, HTTP 상태 코드와 비즈니스 에러 코드 분리 설계</li>
+                        <li>HMAC 서명·API Key 인증을 적용하고, DB UNIQUE 제약으로 멱등성을 확보</li>
                     </ul>
                 </li>
                 <li>
                     <strong>가맹점·대리점이 직접 접수하는 온라인 채널을 0→1 단독 구축해 누적 2만 건 이상 처리</strong>
                     <ul>
-                        <li>영업 계약 후 개발팀이 수기로 가맹점 신청하던 절차를 온라인 입력 구조로 전환하고, 접수 파일 생성부터 KYC 담당자 전달까지 자동화</li>
-                        <li>Docx, Word 업로드 → Naver Cloud OCR → docx4j PDF 변환·저장·다운로드 흐름을 구현해 도입 예정이던 연 $999 라이선스 비용 제거</li>
+                        <li>영업 계약 후 개발팀이 수기로 등록하던 절차를 가맹점·대리점의 온라인 입력 방식으로 전환하고, 접수 파일 생성부터 KYC 담당자 전달까지 자동화</li>
+                        <li>DOCX 문서 업로드 → docx4j 기반 PDF 변환·저장·다운로드 흐름을 구현해 도입 예정이던 연 $999 라이선스 비용 제거</li>
                     </ul>
                 </li>
                 <li>
-                    <strong>레거시 POS 전용 결제 연동 모듈을 구축해 신규 QR 결제 채널 개설, 회사 월 거래액 10% 증가</strong>
+                    <strong>구형 POS 전용 DLL 연동 모듈을 구축해 신규 QR 결제 채널을 확장하고 회사 월 거래액 10% 증가</strong>
                     <ul>
-                        <li>HTTP·TCP 방식으로 직접 연동할 수 없고 전용 DLL만 호출할 수 있는 구형 POS 환경에 맞춰 C++ 네이티브 모듈 설계·개발</li>
+                        <li>HTTP·TCP 직접 연동을 지원하지 않고 전용 DLL만 호출하는 구형 POS 환경에 맞춰 C++ 네이티브 모듈 설계·개발</li>
                         <li><code>POS(C#) → DLL(C++) → 결제 서버(Java)</code> 구조의 인터페이스와 서버 API를 직접 설계·구현</li>
                     </ul>
                 </li>
                 <li>
-                    <strong>외부 연동사가 직접 결제 흐름을 검증하는 테스트 웹을 단독 구축해 통합 테스트·검수 리드타임을 1개월 이상에서 2주로 단축</strong>
+                    <strong>결제 흐름을 직접 검증할 수 있는 테스트 웹을 단독 구축해 통합 테스트·검수 리드타임을 1개월 이상에서 2주로 단축</strong>
                     <ul>
-                        <li>개발자가 연동사와 시간을 맞춰 QR 이미지를 생성·전달하고 유효시간 내 결제하던 수동 검증 절차를 사용자가 직접 테스트하는 방식으로 전환</li>
-                        <li>Spring Boot·React 기반으로 실제 POS와 동일한 결제 프로세스를 구현해 사내 개발·운영팀과 외부 결제사·가맹점이 공동 사용</li>
+                        <li>개발자가 연동사와 일정을 맞춰 QR 이미지를 생성·전달하던 수동 검증 절차를, 연동사가 직접 QR을 생성·결제하는 셀프 테스트 방식으로 전환</li>
+                        <li>실제 POS와 동일한 결제 전 과정을 구현해 사내 개발·운영팀과 외부 결제사·가맹점이 사용</li>
                     </ul>
                 </li>
             </ul>
@@ -104,29 +110,29 @@
             <p class="label">보안 및 컴플라이언스</p>
             <ul class="outcome-list">
                 <li>
-                    <strong>PCI DSS 인증 심사 통과를 위한 결제 시스템 보안 통제 구축</strong>
+                    <strong>Vault·Keycloak·민감정보 감사로그 기반 결제 시스템 보안 통제 구축</strong>
                     <ul>
-                        <li>HashiCorp Vault·Spring Cloud Vault로 애플리케이션 시크릿을 중앙 관리하고 런타임 주입·수동 교체 구조로 전환</li>
-                        <li>Keycloak OTP 기반 백오피스 2FA와 JPA Auditing·AOP·Kafka 기반 민감정보 변경·조회 감사 로그 구현</li>
+                        <li>HashiCorp Vault·Spring Cloud Vault로 애플리케이션 시크릿을 중앙 관리하고 런타임 주입 방식으로 전환</li>
+                        <li>Keycloak OTP로 백오피스 2FA를 적용하고, JPA Auditing·AOP·Kafka로 민감정보 조회·변경 감사로그 구현</li>
                     </ul>
                 </li>
                 <li>
-                    <strong>외부 보안 점검에서 발견된 High 3건·Medium 5건을 모두 해결하고 코드 리뷰 기준에 PCI DSS 요구사항을 반영해 회사 인증 심사 통과에 기여</strong>
+                    <strong>외부 보안 점검 High 3건·Medium 5건을 모두 해소해 회사 PCI DSS 인증 심사 통과에 기여</strong>
                 </li>
             </ul>
 
             <p class="label">기술적 개선 사항</p>
             <div class="improve-block">
                 <p class="improve-title">
-                    분산 환경 결제 결과 실시간 Push 기능 신규 구축 — 운영 중 중복 통지 0건 유지
+                    분산 환경에서 결제 결과 실시간 알림(Push) 기능을 신규 구축해 운영 중 중복 통지 0건 유지
                     <a href="https://calix-wiki.vercel.app/blog/distributed-tcp-push" target="_blank" rel="noopener" class="notion-link">[상세보기]</a>
                 </p>
                 <div class="improve-row">
                     <span class="improve-key">배경</span>
                     <div class="improve-val">
                         <ul>
-                            <li>다중 TCP 서버에서 Netty Channel은 연결을 수립한 인스턴스 메모리에만 존재</li>
-                            <li>API 서버가 결제 결과를 전달할 대상 서버를 직접 식별할 수 없는 구조</li>
+                            <li>다중 TCP 서버 환경에서 단말 연결 정보인 Netty Channel이 연결을 수립한 인스턴스 메모리에만 존재</li>
+                            <li>API 서버가 결제 단말의 연결을 보유한 TCP 서버를 식별할 수 없는 구조</li>
                         </ul>
                     </div>
                 </div>
@@ -134,8 +140,8 @@
                     <span class="improve-key">해결</span>
                     <div class="improve-val">
                         <ul>
-                            <li>Kafka로 결제 결과를 fan-out하고, Redis의 단말기·Channel·서버 매핑으로 연결을 보유한 서버만 Push</li>
-                            <li>에러 코드 기반 재시도와 Push 미수신 거래 자동 취소로 미처리 거래 방지</li>
+                            <li>Kafka로 결제 결과를 TCP 서버에 fan-out하고, Redis의 단말기·Channel·서버 매핑을 조회해 연결을 보유한 서버에서만 Push</li>
+                            <li>Push 실패 시 에러 코드에 따라 재시도하고, 단말이 결과를 수신하지 못한 거래는 배치에서 자동 취소해 미처리 거래 방지</li>
                         </ul>
                     </div>
                 </div>
@@ -143,132 +149,141 @@
                     <span class="improve-key">결과</span>
                     <div class="improve-val">
                         <ul>
-                            <li><strong>운영 중 중복 Push 0건 유지 · API·TCP 서버 간 통신을 분리하고 알림 누락 및 장애 전파 위험 통제</strong></li>
+                            <li><strong>운영 중 중복 Push 0건을 유지하고, API·TCP 서버 간 통신 분리로 알림 누락과 장애 전파 위험 통제</strong></li>
                         </ul>
                     </div>
                 </div>
             </div>
 
             <div class="improve-block">
-                <p class="improve-title">국내·해외 결제 시스템 단일 진입점 통합 — Kafka Request-Reply로 동기 거래 처리
+                <p class="improve-title">은행 결제의 국내 확장을 위한 국내·해외 결제 시스템 연동 — Kafka Request-Reply
                     <a href="https://calix-wiki.vercel.app/blog/kafka-unified-payment-gateway" target="_blank" rel="noopener" class="notion-link">[상세보기]</a>
                 </p>
                 <div class="improve-row"><span class="improve-key">배경</span><div class="improve-val">
                     <ul>
-                        <li>국내·해외 결제를 하나의 진입점에서 처리하도록 <code>POS → 국내 → 해외 → 결제사</code> 경로 통합</li>
-                        <li>QR 생성·환불처럼 즉시 응답이 필요한 거래를 Kafka 기반으로 처리해야 했음</li>
-                    </ul>
-                </div>
-                </div>
-                <div class="improve-row"><span class="improve-key">문제</span><div class="improve-val">
-                    <ul>
-                        <li>개발 중 요청과 관계없는 인스턴스가 Reply 이벤트를 소비</li>
-                        <li>실제 요청 서버가 응답을 받지 못해 타임아웃 발생</li>
+                        <li>해외 시스템에만 연동돼 있던 은행 간편결제를 국내 가맹점까지 확장해야 했음</li>
+                        <li>인프라 제약과 일정상 은행·국내 시스템의 직접 연동이 어려워, 자체 거래 원장과 상태를 관리하는 해외 시스템과 국내 시스템을 연결</li>
                     </ul>
                 </div>
                 </div>
                 <div class="improve-row"><span class="improve-key">해결</span><div class="improve-val">
                     <ul>
-                        <li>서버별 Reply Topic·Consumer Group으로 응답을 fan-out하고 CorrelationId로 요청 보유 인스턴스만 처리</li>
-                        <li>응답·네트워크 타임아웃을 DLQ·DB에 저장하고, 배치에서 거래 상태 재확인 후 운영팀에 Telegram 알림</li>
+                        <li>QR 생성·결제 검증·취소·환불은 Kafka Request-Reply로 처리하고, 결제 결과 통지는 단방향 Kafka 이벤트로 분리</li>
+                        <li>국내 시스템의 요구사항 분석과 <code>ReplyingKafkaTemplate</code>·CorrelationId 기반 Request-Reply 설계·구현·테스트·배포 담당</li>
+                        <li>해외 시스템 담당 개발자와 Topic·JSON Payload·Reply·15초 타임아웃 계약 협의</li>
+                        <li>거래번호를 Kafka Message Key와 멱등성 기준으로 사용하고, 국내 원장의 상태 전이 가능 여부를 검사해 중복·역순 이벤트 방어</li>
+                        <li><code>EXPIRED</code> 이후 늦은 성공은 취소 대기 상태로 전환하고, 10분 주기 배치에서 결제사 상태를 재확인해 취소 처리하며 취소 실패 시 최대 3회 재시도 후 Telegram으로 운영팀에 알림</li>
+                    </ul>
+                </div>
+                </div>
+                <div class="improve-row"><span class="improve-key">트러블슈팅</span><div class="improve-val">
+                    <ul>
+                        <li>이중화 개발 환경에서 두 인스턴스가 동일 Consumer Group을 사용해 요청하지 않은 인스턴스가 Reply를 소비하고, 약 50%의 요청이 타임아웃되는 문제 발견</li>
+                        <li>네 가지 대안을 비교한 뒤 공유 Reply Topic과 인스턴스별 고유 Consumer Group으로 Reply를 fan-out하고, CorrelationId가 일치하는 요청을 보유한 인스턴스만 Future 완료</li>
                     </ul>
                 </div>
                 </div>
                 <div class="improve-row"><span class="improve-key">결과</span><div class="improve-val">
                     <ul>
-                        <li><strong>국내·해외 결제 경로 단일화 · 운영 중 Reply 타임아웃 0건 · 시스템 간 장애 전파 격리 · 실패 거래 모니터링 자동화</strong></li>
+                        <li><strong>분산 환경에서 동시 요청·타임아웃·늦은 Reply·중복·역순 결과를 검증하고, 운영 약 2개월간 일 평균 약 500건을 처리하며 메시지 유실·15초 Reply 타임아웃 0건 유지</strong></li>
                     </ul>
                 </div>
                 </div>
             </div>
 
             <div class="improve-block">
-                <p class="improve-title">Google AI Gemini API·MySQL 용어 사전 기반 KYC 영문명 자동화 — 수동 수정 95% 감소
+                <p class="improve-title">Gemini API·MySQL 용어 사전 기반 KYC 영문명 자동화로 수동 수정 95% 감소
                     <a href="https://calix-wiki.vercel.app/blog/gemini-kyc-glossary" target="_blank" rel="noopener" class="notion-link">[상세보기]</a>
                 </p>
                 <div class="improve-row"><span class="improve-key">배경</span>
                     <div class="improve-val">
                         <ul>
-                            <li>단순 로마자 변환으로 영문 상호명의 의미가 불분명하고 동일 단어의 번역도 일관되지 않음</li>
-                            <li>간편결제사 가맹점 KYC 제출 전 운영팀이 월평균 100건을 수동 수정</li>
+                            <li>기존 단순 로마자 변환이 상호명의 의미를 반영하지 못해, KYC 제출 전 운영팀이 월평균 100건을 수동 수정</li>
+                            <li>Gemini 도입 시 동일 단어의 생성 결과가 달라질 가능성을 고려해 일관된 영문명 생성 기준이 필요했음</li>
                         </ul>
                     </div>
                 </div>
                 <div class="improve-row"><span class="improve-key">해결</span><div class="improve-val">
                     <ul>
-                        <li>검수된 한글·영문 매핑을 MySQL에서 검색해 Gemini 프롬프트에 전달하고 동일 단어의 번역 결과 고정</li>
-                        <li>미등록 단어는 Gemini가 생성하고 운영팀 수정 결과를 다시 저장하는 Human-in-the-loop 구조 구현</li>
+                        <li>MySQL 용어 사전에서 상호명과 부분 일치하는 검수된 한글·영문 매핑을 조회해 Gemini 프롬프트에 전달하고 번역 결과 고정</li>
+                        <li>용어 사전에 없는 단어는 Gemini가 생성하고, 운영팀이 수정한 한글·영문 매핑을 용어 사전에 재등록하는 Human-in-the-loop 구조 구현</li>
                     </ul>
                 </div>
                 </div>
                 <div class="improve-row"><span class="improve-key">예시</span><div class="improve-val">
                     <ul>
-                        <li><code>KORAILUTONG_HWAJANGPUMJUM</code> → <code>KORAILRETAIL_COSMETICS</code> 형태의 대문자 스네이크 케이스로 변환</li>
+                        <li><code>코레일유통</code>은 용어 사전의 <code>KORAILRETAIL</code> 매핑을 우선 적용해 <code>KORAILUTONG_HWAJANGPUMJUM</code> 대신 <code>KORAILRETAIL_COSMETICS</code>로 생성</li>
                     </ul>
                 </div>
                 </div>
                 <div class="improve-row"><span class="improve-key">결과</span><div class="improve-val">
                     <ul>
-                        <li><strong>운영팀 수동 수정 월평균 100건 → 5건으로 95% 감소 · 간편결제사 KYC 영문명의 일관성 확보</strong></li>
+                        <li><strong>용어 사전에 없는 신규 단어만 운영팀이 검수하도록 범위를 줄여, 수동 수정 월평균 100건 → 5건으로 95% 감소</strong></li>
                     </ul>
                 </div>
                 </div>
             </div>
 
             <div class="improve-block">
-                <p class="improve-title">결제 상태 Polling에 Redis Cache-Aside 도입 — RDB 조회 최대 240회 제거
+                <p class="improve-title">결제 상태 Polling에 Redis Cache-Aside를 도입해 반복 RDB 조회 최대 240회 제거
                     <a href="https://calix-wiki.vercel.app/blog/redis-cache-aside-polling" target="_blank" rel="noopener" class="notion-link">[상세보기]</a>
                 </p>
                 <div class="improve-row"><span class="improve-key">배경</span><div class="improve-val">
                     <ul>
-                        <li>클라이언트가 결제 상태 확인을 위해 거래당 최대 120회 Polling</li>
-                        <li>매 요청마다 조회 2회·UPDATE 1회가 실행돼 RDB 접근 최대 360회 발생</li>
+                        <li>클라이언트가 결제 상태를 확인하기 위해 거래당 최대 120회 Polling</li>
+                        <li>요청마다 가맹점 유효성·거래 상태 조회 2회와 Polling 횟수 UPDATE 1회가 실행돼 RDB 쿼리 최대 360회 발생</li>
                     </ul>
                 </div>
                 </div>
                 <div class="improve-row"><span class="improve-key">해결</span><div class="improve-val">
                     <ul>
-                        <li>POS ID·거래번호를 Redis Key로 사용하고 Polling 주기와 오버헤드를 고려해 TTL 125초 설정</li>
-                        <li>캐시 미스 시 RDB에서 적재하고, 상태 변경은 <code>AFTER_COMMIT</code> 이벤트로 반영해 정합성 보장</li>
+                        <li>POS ID·거래번호를 Redis Key로 구성하고 전체 Polling 시간과 오버헤드를 고려해 TTL을 125초로 설정</li>
+                        <li>캐시 미스 시 RDB 조회 후 Redis에 적재하고, 거래 상태 변경은 트랜잭션 커밋 이후 <code>AFTER_COMMIT</code> 이벤트로 캐시에 반영</li>
                     </ul>
                 </div>
                 </div>
                 <div class="improve-row"><span class="improve-key">결과</span><div class="improve-val">
                     <ul>
-                        <li><strong>RDB 조회 최대 240회 → 0회 · 전체 접근 최대 360회 → 120회 · Pinpoint 기준 기존 최대 200ms, 적용 후 평균 30ms 확인</strong></li>
+                        <li><strong>캐시 적중 시 거래당 RDB 조회 최대 240회를 제거하고 Polling 횟수 UPDATE만 유지해, RDB 쿼리를 최대 360회 → 120회로 66.7% 감소 · 적용 후 Pinpoint 기준 평균 응답시간 30ms 확인</strong></li>
                     </ul>
                 </div>
                 </div>
             </div>
 
             <div class="improve-block">
-                <p class="improve-title">POS 최종 결제 확정 API 도입 — 상태 불일치 CS 월 10건 → 1건
+                <p class="improve-title">POS 최종 결제 확정 API를 도입해 상태 불일치 CS 월 10건 → 1건
                     <a href="https://calix-wiki.vercel.app/blog/final-api-payment-state-sync" target="_blank" rel="noopener" class="notion-link">[상세보기]</a>
                 </p>
                 <div class="improve-row"><span class="improve-key">배경</span><div class="improve-val">
                     <ul>
-                        <li>승인 지연·네트워크 오류로 POS가 결제 결과를 받지 못해 거래 실패로 판단</li>
-                        <li>결제 서버·간편결제사·사용자와 POS의 상태가 달라 월 10건의 CS 발생</li>
+                        <li>결제가 성공했더라도 승인 지연이나 네트워크 오류로 POS가 결과를 받지 못하면 거래 실패로 판단</li>
+                        <li>결제 서버·간편결제사·사용자는 승인으로 인식하지만 POS에는 실패로 남아 월 10건의 상태 불일치 CS 발생</li>
                     </ul>
                 </div>
                 </div>
                 <div class="improve-row"><span class="improve-key">해결</span>
                     <div class="improve-val">
                         <ul>
-                            <li>SSE·Webhook과 비교 후 POS가 결제 완료를 서버에 확정하는 Final API를 신규 연동 표준으로 설계·구현</li>
-                            <li>거래번호 DB Unique 제약·현재 상태 검사로 재시도 요청의 멱등성 보장</li>
+                            <li>기존 연동사의 변경을 최소화하기 위해 SSE·Webhook 대신 Final API를 선택하고 신규 연동 표준으로 설계·구현</li>
+                            <li>POS가 PL Polling으로 승인 결과를 확인한 후 Final API를 호출하면 결제 서버가 거래를 최종 확정하도록 구성</li>
+                            <li>거래번호 DB UNIQUE 제약과 현재 상태 검사로 중복 호출의 멱등성 확보</li>
                         </ul>
                     </div>
                 </div>
+                <div class="improve-row"><span class="improve-key">예시</span><div class="improve-val">
+                    <ul>
+                        <li><code>결제 승인 → POS의 PL Polling으로 승인 확인 → Final API 호출 → 결제 서버 거래 확정</code></li>
+                    </ul>
+                </div></div>
                 <div class="improve-row"><span class="improve-key">결과</span><div class="improve-val">
                     <ul>
-                        <li><strong>결제 상태 불일치 CS 월 10건 → 1건으로 90% 감소 · 운영팀·개발팀의 반복적인 거래 확인 및 CS 처리 공수 절감</strong></li>
+                        <li><strong>결제 상태 불일치 CS를 월 10건 → 1건으로 90% 줄이고, 운영팀·개발팀의 반복적인 거래 확인과 CS 처리 공수 절감</strong></li>
                     </ul>
                 </div></div>
             </div>
 
             <div class="improve-block">
-                <p class="improve-title">가맹 접수 파일 유실 재발 방지 — Outbox 적용 후 2만 건 이상 처리 중 유실 0건
+                <p class="improve-title">Outbox 패턴을 적용하여 가맹 접수 파일 2만 건 이상 처리 중 유실 0건 유지
                     <a href="https://calix-wiki.vercel.app/blog/outbox-sftp-file-loss-zero" target="_blank" rel="noopener" class="notion-link">[상세보기]</a>
                 </p>
                 <div class="improve-row"><span class="improve-key">배경</span><div class="improve-val">
@@ -280,21 +295,26 @@
                 </div>
                 <div class="improve-row"><span class="improve-key">해결</span><div class="improve-val">
                     <ul>
-                        <li>가맹점 접수 데이터와 Outbox 레코드를 동일 트랜잭션으로 저장하고, 실패 상태를 기준으로 10분마다 재시도·3회 실패 시 운영팀 알림</li>
-                        <li>SFTP 세션 풀링과 <code>@Async</code> 처리로 파일 I/O를 접수 API 응답에서 분리</li>
+                        <li>가맹점 접수 데이터와 Outbox 레코드를 동일 트랜잭션으로 저장해 파일 전송 대상이 누락되지 않도록 구성</li>
+                        <li>SFTP 전송 결과를 Outbox 상태로 기록하고 실패 건은 10분 주기로 최대 3회 재시도한 뒤 운영팀에 알림</li>
                     </ul>
                 </div>
                 </div>
+                <div class="improve-row"><span class="improve-key">예시</span><div class="improve-val">
+                    <ul>
+                        <li><code>가맹점 접수·Outbox 저장 → 비동기 SFTP 전송 → 성공·실패 기록 → 10분 주기 재시도 → 3회 실패 시 운영팀 알림</code></li>
+                    </ul>
+                </div></div>
                 <div class="improve-row"><span class="improve-key">결과</span><div class="improve-val">
                     <ul>
-                        <li><strong>개선 이후 파일 2만 건 이상 처리 중 유실 0건 · 응답시간 4초 → 1초로 75% 단축 · 반복 실패 30분 이내 감지</strong></li>
+                        <li><strong>적용 후 가맹 접수 파일 2만 건 이상 처리 중 유실 0건 유지 · API 응답시간 4초 → 1초로 75% 단축 · 반복 실패를 30분 이내 감지</strong></li>
                     </ul>
                 </div></div>
             </div>
 
             <div class="improve-block">
                 <p class="improve-title">
-                    모놀리식 결제 시스템을 API·TCP 독립 배포 구조로 전환 — CI 빌드 55초 → 각 25초
+                    모놀리식 결제 시스템을 API·TCP 독립 빌드·배포 구조로 분리해 CI 빌드 55초 → 각 25초
                     <a href="https://calix-wiki.vercel.app/blog/monolith-to-multimodule-eda" target="_blank" rel="noopener" class="notion-link">[상세보기]</a>
                 </p>
                 <div class="improve-row">
@@ -302,7 +322,7 @@
                     <div class="improve-val">
                         <ul>
                             <li>API·TCP 서버가 하나의 프로젝트와 공통 코드에 결합돼 Merge·테스트 충돌이 주 1회 수준으로 발생</li>
-                            <li>결제 후 상태 갱신·App Push가 결제 트랜잭션과 결합돼 변경 영향과 장애 전파 위험이 존재</li>
+                            <li>결제 후 상태 갱신·App Push까지 결제 트랜잭션에 결합돼 변경 영향과 후처리 장애 전파 위험이 존재</li>
                         </ul>
                     </div>
                 </div>
@@ -310,8 +330,9 @@
                     <span class="improve-key">해결</span>
                     <div class="improve-val">
                         <ul>
-                            <li>Gradle 프로젝트를 <code>api·tcp·domain·core·infrastructure</code>로 분리하고 헥사고날 구조에 맞춰 의존성 방향 정리</li>
-                            <li>상태 갱신·App Push를 <code>AFTER_COMMIT</code> 이벤트로 분리하고 Outbox 기반 재시도·보상 처리 적용</li>
+                            <li>Gradle 프로젝트를 <code>api·tcp·domain·core·infrastructure</code> 모듈로 분리하고 헥사고날 구조에 맞춰 패키지와 의존성 방향 정리</li>
+                            <li>API·TCP 모듈을 각각 독립적으로 빌드·배포하고, 상태 갱신·App Push는 <code>AFTER_COMMIT</code> 이벤트로 결제 트랜잭션과 분리</li>
+                            <li>후처리 실패는 Outbox 기반 재시도·보상 처리로 복구하도록 구성</li>
                         </ul>
                     </div>
                 </div>
@@ -319,19 +340,12 @@
                     <span class="improve-key">결과</span>
                     <div class="improve-val">
                         <ul>
-                            <li><strong>Merge·테스트 충돌 대부분 해소 및 API·TCP 독립 배포 기반 확보 · 개별 CI 빌드 55초 → 25초 · 결제 트랜잭션과 후처리 장애 격리</strong></li>
+                            <li><strong>공통 코드 변경이 줄어 Merge·테스트 충돌을 거의 제거하고 API·TCP 독립 배포 기반 확보 · 모듈별 CI 빌드시간을 각각 55초 → 25초로 단축 · 결제 트랜잭션으로의 후처리 장애 전파 위험 통제</strong></li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <p class="label">핵심 성과 요약</p>
-            <ul class="outcome-list">
-                <li>초기 공동 구축 이후 백엔드·외부 연동을 단독 마무리해 첫 상용 오픈, 일 평균 거래 <strong>50건 → 5,000건(100배)</strong> 성장 구간 운영</li>
-                <li>국내외 결제사 <strong>7개사 중 5개사</strong>와 외부 API <strong>15종</strong>을 직접 연동, 해당 결제망이 전사 거래액의 <strong>80% 이상</strong> 처리</li>
-                <li>가맹점 온라인 접수 채널을 0→1 구축해 <strong>누적 2만 건 이상</strong> 처리하고, 레거시 POS 채널 개설로 월 거래액 <strong>10% 증가</strong></li>
-                <li>운영 자동화로 KYC 영문명 수정 <strong>95% 감소</strong>, 결제 상태 불일치 CS <strong>90% 감소</strong>, 개선 이후 파일 <strong>2만 건 이상 유실 0건</strong></li>
-            </ul>
         </div>
 
         <!-- ── 2. 진료비 하이패스 ── -->
@@ -339,8 +353,7 @@
             <p class="proj-num">Project 02 &nbsp;·&nbsp; <span class="proj-date">2026.01 – 현재</span></p>
             <h3>진료비 하이패스 프로젝트</h3>
             <p style="font-size:0.88rem;color:#555;line-height:1.8;margin-bottom:12px;">
-                병원 EMR의 환자정보를 결제 시스템에 전달하는 C++ 연동 모듈과 환자의 자동이체 계좌 등록 페이지를 개발했습니다.
-                현재 EMR 업체 2개사·병원 10곳 이상에서 일 30건 이상의 자동이체를 처리하고 있습니다.
+                환자가 결제수단을 사전 등록하면 진료 종료 후 자동으로 결제되는 진료비 하이패스 서비스로, EMR 연동 모듈과 환자 계좌 등록 페이지를 개발했습니다.
             </p>
 
             <p class="label">기술스택</p>
@@ -353,10 +366,10 @@
             <p class="label">주요 역할 및 성과</p>
             <ul class="outcome-list">
                 <li>
-                    <strong>EMR 업체 2개사 연동용 C++ DLL을 단독 개발해 병원 10곳 이상에 적용</strong>
+                    <strong>EMR 업체 2개사 연동용 C++ DLL을 단독 개발해 병원 10곳 이상에서 일 30건 이상의 진료비 자동이체 처리</strong>
                     <ul>
-                        <li>병원 EMR에서 환자정보를 읽어 결제 시스템으로 전달하는 인터페이스 설계·구현</li>
-                        <li>C# 테스트 프로그램으로 DLL 호출과 업체별 EMR 연동 검증</li>
+                        <li>병원 EMR의 환자정보를 읽어 결제 시스템으로 전달하는 C++ DLL 인터페이스 설계·구현</li>
+                        <li>C# 테스트 프로그램으로 DLL 호출과 EMR 업체별 연동 규격 검증</li>
                     </ul>
                 </li>
                 <li>
@@ -366,17 +379,13 @@
                     </ul>
                 </li>
                 <li>
-                    <strong>Next.js 실행 환경을 Node.js 22 기반 Docker 컨테이너로 전환</strong>
+                    <strong>Node.js 22가 필요한 Next.js 서비스를 Docker 컨테이너로 분리해 Jenkins 배포 환경 구축</strong>
                     <ul>
-                        <li>기존 Node.js 18 환경과의 버전 충돌을 분리하고 Jenkins 기반 컨테이너 빌드·배포 구성</li>
+                        <li>사내 기존 Node.js 18 실행 환경과의 버전 충돌을 방지하고 애플리케이션별 런타임 버전을 고정해 빌드·배포 구성 일관성 확보</li>
                     </ul>
                 </li>
             </ul>
 
-            <p class="label">성과</p>
-            <ul class="outcome-list">
-                <li><strong>EMR 업체 2개사·실제 병원 10곳 이상 연동 · 일 자동이체 30건 이상 처리 중</strong></li>
-            </ul>
         </div>
 
         <!-- ── 3. 모바일 POS ── -->
@@ -385,7 +394,6 @@
             <h3>모바일 POS 프로젝트</h3>
             <p style="font-size:0.88rem;color:#555;line-height:1.8;margin-bottom:12px;">
                 POS 단말 없이 가맹점 스마트폰에서 QR을 생성해 결제받는 모바일 POS 서비스를 3인 팀으로 구축했습니다.
-                백엔드 개발의 50%와 CI/CD 구축 전반을 담당했습니다.
             </p>
 
 
@@ -398,9 +406,10 @@
             <p class="label">주요 역할 및 성과</p>
             <ul class="outcome-list">
                 <li>
-                    <strong>결제·가맹점 정보 연동 백엔드 API 개발의 50% 담당</strong>
+                    <strong>3인 팀에서 결제·가맹점 연동 백엔드 개발의 50%를 담당해 목표보다 약 6주 앞서 출시하고, 등록 가맹점 1,000개 이상·회사 월 매출 5%에 기여</strong>
                     <ul>
-                        <li>외부 결제·가맹점 API 호출을 Adapter로 분리해 핵심 로직과 외부 기술 의존성 격리</li>
+                        <li>외부 결제·가맹점 연동을 Adapter로 분리해 핵심 로직과 외부 기술 의존성 격리</li>
+                        <li>Claude Code·Codex를 설계 검토·구현·테스트에 활용해 반복 작업과 검증 시간을 줄이고 조기 출시에 기여</li>
                     </ul>
                 </li>
                 <li>
@@ -409,67 +418,50 @@
                         <li>애플리케이션 빌드부터 컨테이너 배포까지의 파이프라인 구성</li>
                     </ul>
                 </li>
-                <li>
-                    <strong>Claude Code·Codex를 설계 검토·구현·테스트 과정에 활용</strong>
-                    <ul>
-                        <li>개발·테스트 일정을 단축해 12월 중순 출시 목표를 11월 초로 앞당김</li>
-                    </ul>
-                </li>
             </ul>
 
-            <p class="label">성과</p>
-            <ul class="outcome-list">
-                <li><strong>목표보다 약 6주 앞서 출시 · 등록 가맹점 1,000개 이상 확보 · 회사 월 매출의 5% 기여</strong></li>
-            </ul>
         </div>
 
 
         <!-- ── 4. 선불 서비스 ── -->
         <div class="proj-block">
             <p class="proj-num">Project 04 &nbsp;·&nbsp; <span class="proj-date">2025.08 – 2025.11</span></p>
-            <h3>선불카드 프로젝트</h3>
+            <h3>선불 충전·QR 결제 서비스 구축</h3>
             <p style="font-size:0.88rem;color:#555;line-height:1.8;margin-bottom:12px;">
-                기존 QR 결제망과 연동한 선불 충전·결제 서비스를 5인 팀으로 구축했습니다.
-                백엔드 개발의 20%를 담당하고 금융당국 질의 대응과 선불전자지급수단 관련 심사 대상 시스템 개발에 참여했습니다.
+                사내 복지 포인트를 충전하고 기존 QR 결제망으로 사용할 수 있는 선불전자지급수단 서비스를 5인 팀으로 구축했으며, 현재 사내에서 운영 중입니다.
             </p>
-
-            <p class="label">주요 역할 및 성과</p>
-            <ul class="outcome-list">
-                <li>
-                    <strong>선불금 충전·가맹점 관리 백엔드 개발 담당</strong>
-                    <ul>
-                        <li>사용자가 앱에서 복지 포인트를 충전하고 가맹점 QR로 결제하는 API 설계·구현</li>
-                        <li>기존 QR 결제망과 연동해 간편결제 앱에서 선불 거래를 처리하도록 구성</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>거래 정산 리포트와 선불 원장 관리 기능 구현</strong>
-                    <ul>
-                        <li>거래 이력 기반 정산 리포트와 선불금 원장·거래 이력 관리 로직 개발</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>금융당국 질의 대응 및 심사 대상 시스템 개발 참여</strong>
-                    <ul>
-                        <li>충전·결제·원장·가맹점 관리 흐름에 대한 질의 대응과 심사 자료 검증 지원</li>
-                    </ul>
-                </li>
-            </ul>
-
-            <p class="label">성과</p>
-            <ul class="outcome-list">
-                <li><strong>선불전자지급수단 관련 금융당국 심사 통과 · 사내 복지 포인트 서비스로 실제 운영 중</strong></li>
-            </ul>
-
 
             <p class="label">기술스택</p>
             <div class="stack-tags">
                 <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Jenkins</span>
                 <span class="tag">Docker</span><span class="tag">AWS</span>
             </div>
+
+            <p class="label">주요 역할 및 성과</p>
+            <ul class="outcome-list">
+                <li>
+                    <strong>5인 팀에서 선불금 충전·가맹점 관리 백엔드 개발의 20% 담당</strong>
+                    <ul>
+                        <li>복지 포인트 충전과 가맹점 QR 결제를 위한 API 설계·구현</li>
+                        <li>기존 QR 결제망과 연동해 간편결제 앱에서 선불 거래를 처리하도록 구성</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>선불금 원장과 거래 기반 정산 리포트 구현</strong>
+                    <ul>
+                        <li>충전·결제 거래 이력과 선불금 원장을 관리하고 정산 리포트를 생성하는 로직 개발</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>금융당국 질의 대응과 심사 대상 시스템 개발에 참여해 선불전자지급수단 관련 심사 통과에 기여</strong>
+                    <ul>
+                        <li>충전·결제·원장·가맹점 관리 흐름에 대한 질의 대응과 심사 자료 검증 지원</li>
+                    </ul>
+                </li>
+            </ul>
         </div>
 
-        <p class="updated">Updated: July 2026</p>
+        <p class="updated">Updated: August 2026</p>
     </section>
 </div>
 <script>
