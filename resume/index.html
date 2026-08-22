@@ -38,7 +38,7 @@
                 <div class="contact-row">
                     <span class="contact-label">Wiki</span>
                     <span class="contact-sep">:</span>
-                    <strong><a href="https://calix-wiki.vercel.app/">https://calix-wiki.vercel.app/</a></strong>
+                    <strong><a href="https://calix.kr/">https://calix.kr/</a></strong>
                 </div>
             </div>
         </div>
@@ -114,42 +114,42 @@
                     <ul>
                         <li>
                             <b>분산 환경에서 결제 결과 실시간 알림(Push) 기능을 신규 구축해 운영 중 중복 통지 0건 유지</b>
-                                <a href="https://calix-wiki.vercel.app/blog/distributed-tcp-push" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                                <a href="https://calix.kr/blog/distributed-tcp-push" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
                                 <li>Kafka로 결제 결과를 전달하고 Redis로 알림 대상 서버를 자동 판별해 누락·중복 위험 예방</li>
                             </ul>
                         </li>
                         <li>
-                            <b>은행 결제의 국내 가맹점 확장을 위해 국내·해외 결제 시스템을 Kafka Request-Reply로 연동해 일평균 약 500건 처리</b> <a href="https://calix-wiki.vercel.app/blog/kafka-unified-payment-gateway" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                            <b>은행 결제의 국내 가맹점 확장을 위해 국내·해외 결제 시스템을 Kafka Request-Reply로 연동해 일평균 약 500건 처리</b> <a href="https://calix.kr/blog/kafka-unified-payment-gateway" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
                                 <li>분산 서버 환경에서 응답이 다른 서버로 전달되던 문제를 해결해 운영 2개월간 메시지 유실 0건 유지</li>
                             </ul>
                         </li>
                         <li>
-                            <b>가맹점 영문명 생성 업무를 AI로 자동화해 운영팀 수작업 월 100건 → 5건(95% 감소)</b> <a href="https://calix-wiki.vercel.app/blog/gemini-kyc-glossary" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                            <b>가맹점 영문명 생성 업무를 AI로 자동화해 운영팀 수작업 월 100건 → 5건(95% 감소)</b> <a href="https://calix.kr/blog/gemini-kyc-glossary" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
                                 <li>Google AI Gemini API와 MySQL 용어 사전으로 번역 결과를 고정하고 운영팀 보정 결과를 용어 사전에 반영</li>
                             </ul>
                         </li>
                         <li>
-                            <b>결제 상태 조회에 Redis 캐시를 도입해 거래당 RDB 조회 최대 240회 제거, 적용 후 평균 30ms 확인</b> <a href="https://calix-wiki.vercel.app/blog/redis-cache-aside-polling" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                            <b>결제 상태 조회에 Redis 캐시를 도입해 거래당 RDB 조회 최대 240회 제거, 적용 후 평균 30ms 확인</b> <a href="https://calix.kr/blog/redis-cache-aside-polling" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
                                 <li>최대 120회 반복 조회(Polling)를 제거하고, 결제 상태가 확정된 시점에만 캐시를 갱신해 DB·캐시 정합성 확보</li>
                             </ul>
                         </li>
                         <li>
-                            <b>POS·서버 간 결제 상태 동기화 구조를 개선해 CS 월 10건 → 1건(90% 감소)</b> <a href="https://calix-wiki.vercel.app/blog/final-api-payment-state-sync" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                            <b>POS·서버 간 결제 상태 동기화 구조를 개선해 CS 월 10건 → 1건(90% 감소)</b> <a href="https://calix.kr/blog/final-api-payment-state-sync" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
                                 <li>SSE·Webhook 등 3가지 방식을 비용·구조 기준으로 비교해 최종 상태 확인 API를 도입하고, 재시도 시 중복 반영 방지</li>
                             </ul>
                         </li>
                         <li>
-                            <b>가맹 접수 파일 자동 재처리 구조를 구축해 개선 이후 2만 건 이상 처리 중 유실 0건 유지</b> <a href="https://calix-wiki.vercel.app/blog/outbox-sftp-file-loss-zero" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                            <b>가맹 접수 파일 자동 재처리 구조를 구축해 개선 이후 2만 건 이상 처리 중 유실 0건 유지</b> <a href="https://calix.kr/blog/outbox-sftp-file-loss-zero" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul class="sub-list">
                                 <li>Outbox 패턴으로 10분마다 실패 건을 재처리하고 3회 실패 시 운영팀에 알려 반복 실패를 30분 이내 감지</li>
                             </ul>
                         </li>
-                        <li><strong>모놀리식 결제 시스템을 API·TCP 독립 배포 구조로 전환해 개별 CI 빌드 55초 → 25초, Merge·테스트 충돌 해소</strong> <a href="https://calix-wiki.vercel.app/blog/monolith-to-multimodule-eda" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
+                        <li><strong>모놀리식 결제 시스템을 API·TCP 독립 배포 구조로 전환해 개별 CI 빌드 55초 → 25초, Merge·테스트 충돌 해소</strong> <a href="https://calix.kr/blog/monolith-to-multimodule-eda" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                             <ul>
                                 <li>Gradle 멀티 모듈과 헥사고날 구조로 의존성 방향을 정리하고, 결제 처리와 후속 작업(상태 갱신·알림)을 분리해 장애 격리</li>
                             </ul>
@@ -259,7 +259,7 @@
             <div class="col-right">
 
                 <div class="proj">
-                    <p class="proj-title"><a href="https://calix-wiki.vercel.app/" target="_blank" rel="noopener">Calix-Wiki</a> · <small style="font-weight:400;color:#666">개인 기술 지식 아카이빙 플랫폼 · 2026.04 – 현재 · <a href="https://calix-wiki.vercel.app/" target="_blank" rel="noopener">Live</a></small></p>
+                    <p class="proj-title"><a href="https://calix.kr/" target="_blank" rel="noopener">Calix-Wiki</a> · <small style="font-weight:400;color:#666">개인 기술 지식 아카이빙 플랫폼 · 2026.04 – 현재 · <a href="https://calix.kr/" target="_blank" rel="noopener">Live</a></small></p>
                     <ul>
                         <li>Java·Spring, 핀테크 도메인, 아키텍처 학습 내용을 구조화해 공개하는 개인 기술 위키</li>
                     </ul>
