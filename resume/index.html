@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>진현규 | Backend Engineer</title>
     <meta name="description" content="진현규 - 백엔드 개발자 이력서">
-    <link rel="stylesheet" href="/resume/resume.css">
+    <link rel="stylesheet" href="resume.css">
 </head>
 <body>
 <div class="wrap">
@@ -55,15 +55,11 @@
             </div>
             <div class="col-right">
                 <p class="about-text">
-                    QR 결제 중계 플랫폼 초기 구축에 참여한 뒤 단독으로 첫 상용 오픈을 이끌었으며,
-                    일 거래 <strong>50건에서 5,000건</strong> 규모로 성장하는 과정에서 아키텍처 개선과 운영을 담당해온 백엔드 개발자입니다.
-                    국내외 결제사 7개사 중 <strong>5개사 연동</strong>과 외부 REST API <strong>15종</strong>을 직접 설계·구현했으며,
-                    현재 회사 전체 거래액의 <strong>80% 이상</strong>을 처리하는 결제망을 운영·확장해왔습니다.
+                    <strong>서비스 성장에 필요한 결제 연동부터 구조 개선·운영 자동화까지 주도해 온 백엔드 개발자입니다.</strong>
+                    초기 일평균 약 50건에서 일 최대 5,000건을 처리하는 규모로 성장하는 동안, 결제사 5곳·API 10종의 연동 개발과 기술부채 개선·배포 자동화를 담당했습니다.
                     <br><br>
-                    트래픽 증가에 맞춰 Redis로 성능 병목을 줄이고, Kafka 기반 통신 구조로 시스템 간 장애 전파를 분리했으며,
-                    Outbox 패턴으로 비동기 처리 과정의 데이터 유실을 방지했습니다.
-                    최근에는 Google AI Gemini API와 MySQL 용어 사전을 운영 업무에 적용해 월 100건의 반복 수작업을 5건으로 줄이는 등
-                    AI를 활용한 업무 효율화도 이어가고 있습니다.
+                    결제 상태 불일치를 개선해 CS를 월 10건에서 1건으로 줄였고, AI 기반 영문명 자동화로 월평균 약 100건이던 수동 수정을 도입 후 최근 한 달 약 5건으로 줄였습니다.
+                    또한 Kafka 기반으로 국내·해외 결제 시스템을 연결해 해외에서만 제공하던 은행 결제를 국내 가맹점으로 확장하는 등, 인프라 제약 속에서도 서비스 확장과 운영 개선을 함께 이끌었습니다.
                 </p>
             </div>
         </div>
@@ -90,14 +86,15 @@
                     <ul>
 
                         <li>
-                            <strong>서버 개발·배포와 외부기관 연동을 단독으로 마무리해 첫 상용 오픈, 이후 일 평균 거래 50건 → 5,000건(100배) 성장 구간 무중단 운영</strong>
+                            <strong>전사 거래액의 80% 이상을 처리하는 QR 결제 플랫폼의 연동 개발·운영 담당</strong>
                             <ul>
-                                <li>현재 전사 거래액의 <strong>80% 이상</strong> 처리 · 국내외 결제사 <strong>7개사</strong> 중 <strong>5개사</strong> 및 POS·대형 가맹점용 REST API <strong>15종</strong> 직접 연동</li>
+                                <li>초기 일평균 약 50건에서 일 최대 5,000건 규모로 성장하는 동안, 결제 연동 확대와 아키텍처 개선·배포 자동화 주도</li>
+                                <li>결제사 <strong>7개사 중 5개사</strong> 연동, REST API <strong>10종</strong> 및 POS 연동 가이드 개발 · 거래액 비중은 월별 보고서 기준</li>
                             </ul>
                         </li>
 
                         <li>
-                            <strong>가맹점·대리점 온라인 접수 채널을 0→1 단독 구축해 누적 2만 건 이상 처리</strong>
+                            <strong>가맹점·대리점 온라인 접수 채널 단독 구축 및 누적 접수 2만 건 이상 처리</strong>
                             <ul>
                                 <li>개발팀이 수기로 처리하던 가맹점 신청을 온라인 입력으로 전환하고, 접수 파일 생성부터 KYC 담당자 전달까지 자동화</li>
                             </ul>
@@ -115,45 +112,25 @@
                         <li>
                             <b>분산 환경에서 결제 결과 실시간 알림(Push) 기능을 신규 구축해 운영 중 중복 통지 0건 유지</b>
                                 <a href="https://calix.kr/blog/distributed-tcp-push" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
-                            <ul class="sub-list">
-                                <li>Kafka로 결제 결과를 전달하고 Redis로 알림 대상 서버를 자동 판별해 누락·중복 위험 예방</li>
-                            </ul>
                         </li>
                         <li>
                             <b>은행 결제의 국내 가맹점 확장을 위해 국내·해외 결제 시스템을 Kafka Request-Reply로 연동해 일평균 약 500건 처리</b> <a href="https://calix.kr/blog/kafka-unified-payment-gateway" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
-                            <ul class="sub-list">
-                                <li>운영 전 분산 환경의 약 50% 요청 타임아웃을 발견하고, Consumer Group 분리와 CorrelationId로 해결</li>
-                            </ul>
                         </li>
                         <li>
-                            <b>가맹점 영문명 생성 업무를 AI로 자동화해 운영팀 수작업 월 100건 → 5건(95% 감소)</b> <a href="https://calix.kr/blog/gemini-kyc-glossary" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
-                            <ul class="sub-list">
-                                <li>Google AI Gemini API와 MySQL 용어 사전으로 번역 결과를 고정하고 운영팀 보정 결과를 용어 사전에 반영</li>
-                            </ul>
+                            <b>Gemini·용어 사전 기반 영문명 자동화로 수동 수정 감소 — 도입 전 6개월 월평균 약 100건 → 도입 3개월 후 최근 한 달 약 5건</b> <a href="https://calix.kr/blog/gemini-kyc-glossary" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                         </li>
                         <li>
-                            <b>결제 상태 조회에 Redis 캐시를 도입해 거래당 RDB 조회 최대 240회 제거, 적용 후 평균 30ms 확인</b> <a href="https://calix.kr/blog/redis-cache-aside-polling" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
-                            <ul class="sub-list">
-                                <li>최대 120회 반복 조회(Polling)를 제거하고, 결제 상태가 확정된 시점에만 캐시를 갱신해 DB·캐시 정합성 확보</li>
-                            </ul>
+                            <b>결제 상태 조회·Polling 횟수 집계를 Redis로 전환해 반복적인 DB 조회·갱신 감소</b> <a href="https://calix.kr/blog/redis-cache-aside-polling" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
                         </li>
                         <li>
                             <b>POS·서버 간 결제 상태 동기화 구조를 개선해 CS 월 10건 → 1건(90% 감소)</b> <a href="https://calix.kr/blog/final-api-payment-state-sync" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
-                            <ul class="sub-list">
-                                <li>SSE·Webhook 등 3가지 방식을 비용·구조 기준으로 비교해 최종 상태 확인 API를 도입하고, 재시도 시 중복 반영 방지</li>
-                            </ul>
                         </li>
                         <li>
                             <b>가맹 접수 파일 자동 재처리 구조를 구축해 개선 이후 2만 건 이상 처리 중 유실 0건 유지</b> <a href="https://calix.kr/blog/outbox-sftp-file-loss-zero" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
-                            <ul class="sub-list">
-                                <li>Outbox 패턴으로 10분마다 실패 건을 재처리하고 3회 실패 시 운영팀에 알려 반복 실패를 30분 이내 감지</li>
-                            </ul>
                         </li>
                         <li><strong>모놀리식 결제 시스템을 API·TCP 독립 배포 구조로 전환해 개별 CI 빌드 55초 → 25초, Merge·테스트 충돌 해소</strong> <a href="https://calix.kr/blog/monolith-to-multimodule-eda" target="_blank" rel="noopener" class="notion-link">[→ 상세보기]</a>
-                            <ul>
-                                <li>Gradle 멀티 모듈과 헥사고날 구조로 의존성 방향을 정리하고, 결제 처리와 후속 작업(상태 갱신·알림)을 분리해 장애 격리</li>
-                            </ul>
                         </li>
+                        <li><strong>이중화 서버의 LB 제어·정상 기동 확인을 포함한 Jenkins 순차 배포 자동화</strong></li>
                     </ul>
                 </div>
 
@@ -175,13 +152,13 @@
                     <p class="proj-title">3. 모바일 POS 시스템 개발 및 운영 · <small style="font-weight:400;color:#666">소형 가맹점 전용 모바일 POS 서비스</small></p>
                     <p class="proj-group-title">핵심 성과</p>
                     <ul>
-                        <li><strong>3인 팀에서 모바일 POS 백엔드 개발 50%와 CI/CD 전반을 담당 — 등록 가맹점 1,000개 이상, 회사 월 매출의 5%를 차지하는 서비스로 성장</strong></li>
+                        <li><strong>팀 목표일보다 6주 조기 출시한 모바일 POS의 결제 연동·정산 조회 API 및 CI/CD 담당(3인 팀)</strong></li>
                     </ul>
 
                     <p class="proj-group-title">기술적 개선 사항</p>
                     <ul>
-                        <li>Jenkins·Docker·NCP 기반 CI/CD를 단독 구축하고 외부 결제·가맹점 API 구현</li>
-                        <li>Claude Code·Codex를 설계 검토·구현·테스트에 활용하여 App 출시 일정 6주 단축</li>
+                        <li>등록 가맹점 1,000개 이상 · 기존 정산 결과의 앱 조회 연동 및 Jenkins·Docker·NCP 배포 환경 구축</li>
+                        <li>CLAUDE.md·AGENTS.md에 프로젝트 규칙을 정리해 팀원들과 공유하고, AI를 활용한 기획·티켓 분할·구현·검토 흐름에 적용</li>
                     </ul>
                 </div>
             </div>
@@ -262,6 +239,13 @@
                     <p class="proj-title"><a href="https://calix.kr/" target="_blank" rel="noopener">Calix-Wiki</a> · <small style="font-weight:400;color:#666">개인 기술 지식 아카이빙 플랫폼 · 2026.04 – 현재 · <a href="https://calix.kr/" target="_blank" rel="noopener">Live</a></small></p>
                     <ul>
                         <li>Java·Spring, 핀테크 도메인, 아키텍처 학습 내용을 구조화해 공개하는 개인 기술 위키</li>
+                    </ul>
+                </div>
+
+                <div class="proj">
+                    <p class="proj-title"><a href="intoss://malhaebolka">토스 미니앱 개발·출시</a> · <small style="font-weight:400;color:#666">개인 사이드 프로젝트</small></p>
+                    <ul>
+                        <li>업무 외에도 직접 만든 미니앱을 토스 플랫폼에 꾸준히 출시하며 아이디어를 실제 서비스로 구현</li>
                     </ul>
                 </div>
 
